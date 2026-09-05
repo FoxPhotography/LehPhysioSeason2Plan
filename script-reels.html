@@ -1,0 +1,2554 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>سكريبتات فيزيوهاية ع الماشي & إعلانات الموسم الثاني | بودكاست ليه PHYSIO</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="shortcut icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Google Fonts: Cairo & Tajawal & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap"
+    rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --primary-dark: #1A090D;
+      --primary-maroon: #3D1E24;
+      --accent-gold: #D4AF37;
+      --accent-gold-bright: #F5D061;
+      --accent-gold-glow: rgba(212, 175, 55, 0.35);
+      --accent-amber: #F59E0B;
+      --accent-amber-glow: rgba(245, 158, 11, 0.4);
+      --accent-teal: #0D9488;
+      --accent-teal-light: #5EEAD4;
+      --accent-crimson: #E11D48;
+      --border-gold: rgba(212, 175, 55, 0.4);
+      --border-amber: rgba(245, 158, 11, 0.4);
+      --bg-dark: #0D0406;
+      --bg-card: rgba(255, 255, 255, 0.96);
+      --text-main: #2D1A1E;
+      --text-soft: #5C3A42;
+      --text-muted: #806068;
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 26px;
+      --radius-full: 9999px;
+      --shadow-gold-glow: 0 0 35px rgba(212, 175, 55, 0.3);
+      --shadow-amber-glow: 0 0 35px rgba(245, 158, 11, 0.35);
+      --shadow-lg: 0 16px 45px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      font-family: 'Cairo', 'Tajawal', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: #FFFFFF;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      padding-bottom: 100px;
+    }
+
+    /* Fixed Parallax Background Layers */
+    .fixed-bg-layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: url('assets/background2.webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      filter: brightness(0.28) contrast(1.15);
+      z-index: -2;
+      transform: scale(1.02);
+    }
+
+    .fixed-bg-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at top center, rgba(61, 30, 36, 0.7) 0%, rgba(13, 4, 6, 0.96) 100%);
+      z-index: -1;
+    }
+
+    /* Reading Progress Bar */
+    .reading-progress-track {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 1001;
+    }
+
+    .reading-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #D4AF37, #F59E0B, #F5D061);
+      box-shadow: 0 0 12px #F59E0B;
+      transition: width 0.15s ease-out;
+    }
+
+    /* Sticky Header Navbar */
+    .top-navbar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: rgba(26, 9, 13, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1.5px solid var(--border-amber);
+      z-index: 1000;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-left-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .btn-back-plan {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(212, 175, 55, 0.2));
+      border: 1.5px solid var(--accent-amber);
+      border-radius: var(--radius-full);
+      color: #FDE68A;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 800;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-back-plan:hover {
+      background: linear-gradient(135deg, #F59E0B, #D4AF37);
+      color: #1A090D;
+      transform: translateX(4px);
+      box-shadow: var(--shadow-amber-glow);
+    }
+
+    .brand-title-box {
+      min-width: 0;
+    }
+
+    .brand-title-box h1 {
+      font-size: 1.08rem;
+      font-weight: 900;
+      color: #FDE68A;
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-title-box p {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.75);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav-right-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .nav-action-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .nav-action-btn:hover {
+      background: rgba(245, 158, 11, 0.25);
+      border-color: var(--accent-amber);
+      color: #FDE68A;
+    }
+
+    /* Main Container */
+    .page-main-container {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 28px 16px;
+    }
+
+    /* Hero Banner Card */
+    .hero-banner-card {
+      background: linear-gradient(135deg, rgba(38, 15, 20, 0.95) 0%, rgba(26, 9, 13, 0.98) 100%);
+      border: 2px solid var(--accent-amber);
+      border-radius: var(--radius-lg);
+      padding: 32px 28px;
+      box-shadow: var(--shadow-amber-glow);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    .hero-banner-card::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -20%;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.22) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-top-pills {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .hero-pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #B45309 0%, #78350F 100%);
+      color: #FDE68A;
+      border: 1px solid #F59E0B;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+    }
+
+    .hero-pill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero-main-title {
+      font-size: 2.1rem;
+      font-weight: 900;
+      color: #FFFFFF;
+      line-height: 1.3;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-main-title span {
+      background: linear-gradient(90deg, #FDE68A 0%, #F59E0B 50%, #D4AF37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-description {
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.88);
+      line-height: 1.65;
+      margin-bottom: 22px;
+      max-width: 860px;
+    }
+
+    .hero-structure-box {
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px dashed rgba(245, 158, 11, 0.5);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-bottom: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.88rem;
+    }
+
+    .structure-step {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      font-weight: 700;
+      color: #FDE68A;
+    }
+
+    .structure-arrow {
+      color: var(--accent-amber);
+      font-weight: 900;
+    }
+
+    .hero-hosts-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .hosts-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .host-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #FDE68A;
+    }
+
+    /* Filter & Quick Navigation Bar */
+    .filter-sticky-bar {
+      position: sticky;
+      top: 60px;
+      z-index: 900;
+      background: rgba(26, 9, 13, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      padding: 10px 14px;
+      margin-bottom: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .filter-pills-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .filter-pill {
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .filter-pill.active,
+    .filter-pill:hover {
+      background: linear-gradient(135deg, #F59E0B, #D4AF37);
+      color: #1A090D;
+      border-color: #FDE68A;
+      box-shadow: 0 2px 10px rgba(245, 158, 11, 0.35);
+    }
+
+    .search-box-input {
+      position: relative;
+      min-width: 220px;
+    }
+
+    .search-box-input input {
+      width: 100%;
+      padding: 7px 34px 7px 12px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: var(--radius-full);
+      color: #FFFFFF;
+      font-size: 0.82rem;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .search-box-input input:focus {
+      border-color: var(--accent-amber);
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .search-box-input i {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--accent-amber);
+      pointer-events: none;
+      width: 15px;
+      height: 15px;
+    }
+
+    /* Section Separators */
+    .section-category-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 35px 0 20px 0;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border-gold);
+    }
+
+    .section-category-header h2 {
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: #FDE68A;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-category-header .count-badge {
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      background: rgba(245, 158, 11, 0.2);
+      border: 1px solid var(--accent-amber);
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: #FDE68A;
+    }
+
+    /* Script Reel Card Component */
+    .reel-script-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--border-gold);
+      margin-bottom: 30px;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .reel-script-card:hover {
+      border-color: var(--accent-amber);
+      box-shadow: var(--shadow-amber-glow);
+    }
+
+    .card-top-header {
+      background: linear-gradient(135deg, #2D1418 0%, #1A090D 100%);
+      color: #FFFFFF;
+      padding: 20px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      border-bottom: 1.5px solid var(--border-gold);
+    }
+
+    .card-header-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .card-num-badge {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #F59E0B 0%, #B45309 100%);
+      color: #1A090D;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 900;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+      flex-shrink: 0;
+    }
+
+    .card-titles-group h3 {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: #FDE68A;
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .card-titles-group p {
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 600;
+    }
+
+    .card-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-copy-card {
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #FDE68A;
+      font-size: 0.78rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-copy-card:hover {
+      background: var(--accent-amber);
+      color: #1A090D;
+      border-color: #FDE68A;
+    }
+
+    .card-meta-bar {
+      background: #FDF8F0;
+      padding: 10px 24px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      font-size: 0.82rem;
+      color: var(--text-soft);
+    }
+
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+    }
+
+    .meta-chip i {
+      color: #B45309;
+      width: 15px;
+      height: 15px;
+    }
+
+    .card-body-content {
+      padding: 24px;
+      color: var(--text-main);
+    }
+
+    /* Scene Block Container */
+    .scene-block {
+      background: #FFFFFF;
+      border: 1px solid rgba(61, 30, 36, 0.12);
+      border-radius: var(--radius-md);
+      margin-bottom: 18px;
+      padding: 18px 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+      position: relative;
+    }
+
+    .scene-block.scene-sketch {
+      border-right: 5px solid #E11D48;
+      background: linear-gradient(145deg, #FFFFFF 0%, #FFF1F2 100%);
+    }
+
+    .scene-block.scene-intro {
+      border-right: 5px solid #F59E0B;
+      background: linear-gradient(145deg, #FFFFFF 0%, #FEF3C7 100%);
+    }
+
+    .scene-block.scene-core {
+      border-right: 5px solid #0D9488;
+      background: linear-gradient(145deg, #FFFFFF 0%, #F0FDFA 100%);
+    }
+
+    .scene-block.scene-clinic {
+      border-right: 5px solid #D97706;
+      background: linear-gradient(145deg, #FFFFFF 0%, #FFFBEB 100%);
+    }
+
+    .scene-block.scene-lab {
+      border-right: 5px solid #0D9488;
+      background: linear-gradient(145deg, #FFFFFF 0%, #F0FDFA 100%);
+    }
+
+    .scene-block.scene-quiz {
+      border-right: 5px solid #E11D48;
+      background: linear-gradient(145deg, #FFFFFF 0%, #FFF1F2 100%);
+    }
+
+    .scene-block.scene-myths {
+      border-right: 5px solid #9333EA;
+      background: linear-gradient(145deg, #FFFFFF 0%, #FAF5FF 100%);
+    }
+
+    .scene-block.scene-interactive {
+      border-right: 5px solid #D4AF37;
+      background: linear-gradient(145deg, #FFFFFF 0%, #FEFCE8 100%);
+    }
+
+    .scene-block.scene-rx {
+      border-right: 5px solid #3D1E24;
+      background: linear-gradient(145deg, #FFFFFF 0%, #FDF2F4 100%);
+    }
+
+    .scene-block.scene-outro {
+      border-right: 5px solid #8B5CF6;
+      background: linear-gradient(145deg, #FFFFFF 0%, #F5F3FF 100%);
+    }
+
+    .scene-header-title {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px dashed rgba(61, 30, 36, 0.15);
+    }
+
+    .scene-header-title h4 {
+      font-size: 1.05rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .scene-sketch .scene-header-title h4 {
+      color: #9F1239;
+    }
+
+    .scene-intro .scene-header-title h4 {
+      color: #92400E;
+    }
+
+    .scene-core .scene-header-title h4 {
+      color: #115E59;
+    }
+
+    .scene-clinic .scene-header-title h4 {
+      color: #B45309;
+    }
+
+    .scene-lab .scene-header-title h4 {
+      color: #115E59;
+    }
+
+    .scene-quiz .scene-header-title h4 {
+      color: #BE123C;
+    }
+
+    .scene-myths .scene-header-title h4 {
+      color: #7E22CE;
+    }
+
+    .scene-interactive .scene-header-title h4 {
+      color: #854D0E;
+    }
+
+    .scene-rx .scene-header-title h4 {
+      color: #3D1E24;
+    }
+
+    .scene-outro .scene-header-title h4 {
+      color: #5B21B6;
+    }
+
+    .timer-countdown-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFF1F2;
+      border: 1.5px solid #FDA4AF;
+      color: #BE123C;
+      font-weight: 900;
+      font-size: 0.85rem;
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      margin: 8px 0;
+    }
+
+    .interactive-action-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #FEFCE8;
+      border: 1.5px dashed #D4AF37;
+      color: #854D0E;
+      font-weight: 800;
+      font-size: 0.88rem;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      margin: 10px 0;
+    }
+
+    .scene-badge-pill {
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      background: rgba(0, 0, 0, 0.06);
+    }
+
+    /* Dialogue & Cue Styling */
+    .stage-direction {
+      font-size: 0.86rem;
+      color: #6B7280;
+      font-style: italic;
+      margin-bottom: 12px;
+      background: rgba(0, 0, 0, 0.03);
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.5;
+    }
+
+    .dialogue-item {
+      margin-bottom: 12px;
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .speaker-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 900;
+      padding: 2px 10px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      margin-left: 6px;
+    }
+
+    .speaker-moamen {
+      background: #FFE4E6;
+      color: #9F1239;
+      border: 1px solid #FDA4AF;
+    }
+
+    .speaker-ibrahim {
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FCD34D;
+    }
+
+    .speaker-yomna {
+      background: #EDE9FE;
+      color: #5B21B6;
+      border: 1px solid #C4B5FD;
+    }
+
+    .speaker-voiceover {
+      background: #E0F2FE;
+      color: #075985;
+      border: 1px solid #7DD3FC;
+    }
+
+    .dialogue-text {
+      color: #1F2937;
+      font-weight: 600;
+    }
+
+    .dialogue-text strong {
+      color: #111827;
+      font-weight: 800;
+    }
+
+    .dialogue-text em {
+      color: #B45309;
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    /* Scientific References Box — Theme Aligned (Maroon & Gold) */
+    .scientific-references-box {
+      margin-top: 24px;
+      padding: 20px 22px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(145deg, #1F0B10 0%, #120407 100%);
+      border: 1.5px solid var(--border-gold);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(212, 175, 55, 0.2);
+      color: #FFFFFF;
+    }
+
+    .ref-box-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+      flex-wrap: wrap;
+    }
+
+    .ref-box-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: var(--accent-gold-bright);
+    }
+
+    .ref-evidence-badge {
+      font-size: 0.75rem;
+      font-weight: 800;
+      background: rgba(212, 175, 55, 0.15);
+      color: #FDE68A;
+      border: 1px solid var(--accent-gold);
+      padding: 3px 12px;
+      border-radius: var(--radius-full);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ref-cards-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .ref-item-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(212, 175, 55, 0.22);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+      transition: all 0.25s ease;
+    }
+
+    .ref-item-card:hover {
+      background: rgba(212, 175, 55, 0.06);
+      border-color: var(--accent-gold);
+      transform: translateX(-4px);
+    }
+
+    .ref-card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .ref-source-tag {
+      font-size: 0.8rem;
+      font-weight: 900;
+      color: var(--accent-gold-bright);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ref-topic-badge {
+      font-size: 0.74rem;
+      color: #E6D0D5;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 2px 10px;
+      border-radius: var(--radius-full);
+      font-weight: 700;
+    }
+
+    .ref-paper-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+      line-height: 1.45;
+    }
+
+    .ref-paper-takeaway {
+      font-size: 0.86rem;
+      color: #E2D6D9;
+      line-height: 1.65;
+      margin-bottom: 12px;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      border-right: 3.5px solid var(--accent-gold);
+    }
+
+    .ref-paper-takeaway strong {
+      color: var(--accent-gold-bright);
+    }
+
+    .ref-link-anchor {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--accent-gold-bright);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid var(--border-gold);
+      transition: all 0.2s ease;
+    }
+
+    .ref-link-anchor:hover {
+      background: var(--accent-gold);
+      color: var(--primary-dark);
+      box-shadow: 0 0 15px var(--accent-gold-glow);
+      transform: scale(1.02);
+    }
+
+    /* Toast Notification */
+    .toast-msg {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: linear-gradient(135deg, #1A090D 0%, #3D1E24 100%);
+      color: #FDE68A;
+      border: 1.5px solid #F59E0B;
+      padding: 12px 24px;
+      border-radius: var(--radius-full);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      font-weight: 800;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 2000;
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    .toast-msg.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 768px) {
+      .top-navbar {
+        padding: 10px 14px;
+      }
+
+      .page-main-container {
+        padding: 16px 10px;
+      }
+
+      .hero-banner-card {
+        padding: 22px 16px;
+      }
+
+      .hero-main-title {
+        font-size: 1.45rem;
+      }
+
+      .filter-sticky-bar {
+        top: 54px;
+        padding: 8px;
+      }
+
+      .search-box-input {
+        width: 100%;
+      }
+
+      .card-body-content {
+        padding: 16px 12px;
+      }
+
+      .card-top-header {
+        padding: 16px 14px;
+      }
+
+      .card-num-badge {
+        width: 40px;
+        height: 40px;
+        font-size: 1.05rem;
+      }
+
+      .card-titles-group h3 {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Reading Progress Tracker -->
+  <div class="reading-progress-track">
+    <div class="reading-progress-bar" id="readingProgressBar"></div>
+  </div>
+
+  <!-- Background Parallax Layers -->
+  <div class="fixed-bg-layer"></div>
+  <div class="fixed-bg-overlay"></div>
+
+  <!-- Top Sticky Navigation -->
+  <header class="top-navbar">
+    <div class="nav-left-group">
+      <a href="index.html#sec-11" class="btn-back-plan" title="الرجوع إلى صفحة الخطة الرئيسية">
+        <i data-lucide="arrow-right" style="width:16px; height:16px;"></i>
+        <span>الخطة الكاملة</span>
+      </a>
+      <div class="brand-title-box">
+        <h1>
+          <i data-lucide="clapperboard" style="width:18px; height:18px; color:#F59E0B;"></i>
+          فيزيوهاية ع الماشي — Shorts & Reels 🎬
+        </h1>
+        <p>بودكاست ليه PHYSIO — سلسلة الريلز والشورتس الرسمية</p>
+      </div>
+    </div>
+
+    <div class="nav-right-actions">
+      <a href="script-teaser.html" class="nav-action-btn" title="الانتقال إلى سكريبت إعلان الموسم الثاني">
+        <i data-lucide="sparkles" style="width:15px; height:15px; color:#FB923C;"></i>
+        <span>إعلان الموسم ⏳</span>
+      </a>
+      <button class="nav-action-btn" onclick="window.print()" title="طباعة أو تصدير PDF">
+        <i data-lucide="printer" style="width:15px; height:15px;"></i>
+        <span>طباعة</span>
+      </button>
+      <a href="index.html" class="nav-action-btn" title="الرئيسية">
+        <i data-lucide="home" style="width:15px; height:15px;"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="page-main-container">
+
+    <!-- HERO BANNER -->
+    <section class="hero-banner-card">
+      <div class="hero-top-pills">
+        <span class="hero-pill-badge">
+          <i data-lucide="sparkles" style="width:14px; height:14px;"></i>
+          الموسم الثاني 2026
+        </span>
+        <span class="hero-pill-tag">
+          <i data-lucide="video" style="width:14px; height:14px;"></i>
+          8 حلقات ريلز + برومو البرنامج الرسمي
+        </span>
+        <span class="hero-pill-tag">
+          <i data-lucide="clock" style="width:14px; height:14px;"></i>
+          مدة كل ريل: 1.5 - 3 دقائق
+        </span>
+      </div>
+
+      <h1 class="hero-main-title">
+        سكريبتات برنامج <span>"فيزيوهاية ع الماشي"</span> 🎬⚡
+      </h1>
+
+      <p class="hero-description">
+        سلسلة فيديوهات قصيرة رقمية (Reels & Shorts) تهدف لتبسيط وخطف عقل المشاهد في ثوانٍ، مصممة بهيكل احترافي: سكيتش
+        تمثيلي يكسر الروتين، يليه الانترو، ثم كبسولة طبية غنية بالقصص الواقعية والعالمية، وانتهاءً بشعار البرنامج
+        الخالد.
+      </p>
+
+      <!-- Structure Overview Box -->
+      <div class="hero-structure-box">
+        <div style="width: 100%; font-weight:800; color:#F59E0B; margin-bottom: 4px; display:flex; align-items:center; gap:6px;">
+          <i data-lucide="layers" style="width:16px; height:16px;"></i>
+          الهيكل الإخراجي الموحد لكل ريل:
+        </div>
+        <div class="structure-step">🎬 1. السكيتش التمثيلي (3-5 ثوانٍ)</div>
+        <span class="structure-arrow">⬅️</span>
+        <div class="structure-step">⚡ 2. انترو فيزيوهاية</div>
+        <span class="structure-arrow">⬅️</span>
+        <div class="structure-step">🎙️ 3. صلب القصة والرسالة (1.5 - 3 د)</div>
+        <span class="structure-arrow">⬅️</span>
+        <div class="structure-step">🎯 4. الخاتمة و Call to Action</div>
+      </div>
+
+      <div class="hero-hosts-row">
+        <div class="hosts-group">
+          <span style="font-size:0.85rem; color:rgba(255,255,255,0.7); font-weight:700;">أداء وتقديم:</span>
+          <span class="host-badge"><i data-lucide="user" style="width:14px; height:14px;"></i> د. مؤمن</span>
+          <span class="host-badge"><i data-lucide="user" style="width:14px; height:14px;"></i> د. إبراهيم</span>
+        </div>
+        <div style="font-size:0.8rem; color:rgba(255,255,255,0.6); font-weight:600;">
+          كلية العلاج الطبيعي — جامعة كفر الشيخ
+        </div>
+      </div>
+    </section>
+
+    <!-- FILTER & SEARCH BAR -->
+    <div class="filter-sticky-bar">
+      <div class="filter-pills-group">
+        <button class="filter-pill active" onclick="filterScripts('all', this)">
+          <i data-lucide="layout-grid" style="width:14px; height:14px;"></i> الكل (9)
+        </button>
+        <button class="filter-pill" onclick="filterScripts('promos', this)">
+          <i data-lucide="sparkles" style="width:14px; height:14px;"></i> برومو البرنامج (1)
+        </button>
+        <button class="filter-pill" onclick="filterScripts('part1', this)">
+          <i data-lucide="film" style="width:14px; height:14px;"></i> ريلز 01 - 04
+        </button>
+        <button class="filter-pill" onclick="filterScripts('part2', this)">
+          <i data-lucide="film" style="width:14px; height:14px;"></i> ريلز 05 - 08
+        </button>
+      </div>
+
+      <div class="search-box-input">
+        <input type="text" id="scriptSearchInput" placeholder="ابحث في السكريبتات (نيمار، أعصاب، صليبي...)"
+          oninput="searchScripts()" />
+        <i data-lucide="search"></i>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- SECTION 1: PROMO (برومو فيزيوهاية ع الماشي) -->
+    <!-- ========================================== -->
+    <div class="section-category-header" data-category="promos">
+      <h2>
+        <i data-lucide="sparkles" style="width:24px; height:24px; color:#F59E0B;"></i>
+        برومو برنامج "فيزيوهاية ع الماشي"
+      </h2>
+      <span class="count-badge">برومو تشويقي تمثيلي</span>
+    </div>
+
+    <!-- PROMO 1: برومو فيزيوهاية ع الماشي (دجال مودرن) -->
+    <article class="reel-script-card" data-category="promos" id="promo-physiohaya">
+      <div class="card-top-header">
+        <div class="card-header-left">
+          <div class="card-num-badge">P1</div>
+          <div class="card-titles-group">
+            <h3>برومو برنامج "فيزيوهاية ع الماشي" — دجال مودرن 🧙‍♂️💻</h3>
+            <p>البرومو التشويقي الرسمي لسلسلة الريلز — مركز إبراهيم لفك النحس والشد العضلي (حجز أونلاين)</p>
+          </div>
+        </div>
+        <div class="card-header-actions">
+          <button class="btn-copy-card" onclick="copyCardText('promo-physiohaya-content')" title="نسخ نص السكريبت">
+            <i data-lucide="copy" style="width:14px; height:14px;"></i> نسخ السكريبت
+          </button>
+        </div>
+      </div>
+
+      <div class="card-meta-bar">
+        <span class="meta-chip"><i data-lucide="clapperboard"></i> <strong>النوع:</strong> برومو تمثيلي كوميدي / تشويقي</span>
+        <span class="meta-chip"><i data-lucide="users"></i> <strong>الأبطال:</strong> مؤمن (المريض المستغرب) & إبراهيم (الدجال المودرن / دكتور العلاج الطبيعي)</span>
+        <span class="meta-chip"><i data-lucide="clock"></i> <strong>الموعد:</strong> كل أحد الساعة 6 مساءً</span>
+      </div>
+
+      <div class="card-body-content" id="promo-physiohaya-content">
+        <!-- Scene 1 -->
+        <div class="scene-block scene-sketch">
+          <div class="scene-header-title">
+            <h4><i data-lucide="film"></i> المشهد الأول 🎬</h4>
+            <span class="scene-badge-pill">المدخل — لافتة مركز الحجز أونلاين</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            مؤمن يدخل على مكان شكله عيادة حديثة جدًا، إضاءة بيضاء، مكتب شيك، كرسي، وجهاز كمبيوتر. على باب المكان لافتة مكتوب عليها: <strong>«مركز إبراهيم لفك النحس والشد العضلي — حجز أونلاين»</strong>. مؤمن يقف قدام اللافتة ويبص لها باستغراب شديد.
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن (باستغراب):</span>
+            <span class="dialogue-text">"حجز أونلاين؟ هو الدجل بقى ليه أبليكيشن؟"</span>
+          </div>
+        </div>
+
+        <!-- Scene 2 -->
+        <div class="scene-block scene-sketch">
+          <div class="scene-header-title">
+            <h4><i data-lucide="flame"></i> المشهد الثاني 🎬</h4>
+            <span class="scene-badge-pill">داخل العيادة — الفحص بريموت التكييف والاعتراف</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            <strong>[دخول العيادة]:</strong> إبراهيم قاعد على مكتب حديث، لابس لبس دجال والبالطو على كتفه، وحاطط قدامه بخور صغير جدًا، وفي الخلفية إضاءة حمرا غامضة. إبراهيم، من غير ما يرفع عينه من اللابتوب:
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم (من غير ما يرفع عينه من اللابتوب):</span>
+            <span class="dialogue-text">"اتفضل يا أستاذ مؤمن… أنا كنت مستنيك."</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"إنت عرفت اسمي إزاي؟"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"الاسم كان مكتوب في الحجز عادي."</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم (يحاول يرجع للغموض):</span>
+            <span class="dialogue-text">"بس أنا حسيت بيك قبل ما تدخل."</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"ما أنا باعت اللوكيشن ومأكد المعاد مرتين."</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            هنا يبدأ إبراهيم يفحص رجله بطريقة مبالغ فيها، ويطلع جهاز قياس حديث أو ريموت تلفزيون/تكييف، ويحطه جنب رجل مؤمن كأنه جهاز طبي فائق الحساسية.
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"إيه ده؟"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"جهاز كشف الطاقة السلبية في أوتار الرجل."</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"ده ريموت التكييف."</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم (من غير تردد):</span>
+            <span class="dialogue-text">"موديل قديم… بس حساس جدًا."</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="zap" style="width:14px; height:14px;"></i>
+            إبراهيم يضغط زر في الريموت، فيشتغل التكييف أو يتغير لون النور في المكان.
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"أهو… الطاقة استجابت."</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"دي درجة الحرارة قلت ياعم!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم (يقرب من رجله ويقول بجدية):</span>
+            <span class="dialogue-text">"الحالة واضحة… انت معمولك عمل على خُف جمل."</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"خُف جمل؟"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم (يرجع بسرعة يفتح اللابتوب):</span>
+            <span class="dialogue-text">"بص، هنبدأ بجلسة فك العمل… وبعدها جلسة تأهيل وظيفي."</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"تأهيل وظيفي؟ إنت دجال ولا دكتور علاج طبيعي؟"</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="eye" style="width:14px; height:14px;"></i>
+            إبراهيم يسكت لحظة، ثم يلف ويبص لعين الكاميرا مباشرة بابتسامة اعتراف:
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم (للكاميرا):</span>
+            <span class="dialogue-text" style="font-weight:900; color:#E11D48; font-size:1.05rem;">"اتقفشت."</span>
+          </div>
+        </div>
+
+        <!-- Scene 3 -->
+        <div class="scene-block scene-intro">
+          <div class="scene-header-title">
+            <h4><i data-lucide="zap"></i> الانترو 🎬</h4>
+            <span class="scene-badge-pill">الانترو الرقمي</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="sparkles" style="width:14px; height:14px;"></i>
+            قطع سريع وحماسي، يظهر لوجو وانترو <strong>«فيزيوهاية عَ الماشي»</strong> بجرافيك نيون برتقالي وصوت طلقة سينمائية.
+          </div>
+        </div>
+
+        <!-- Scene 4 -->
+        <div class="scene-block scene-core">
+          <div class="scene-header-title">
+            <h4><i data-lucide="video"></i> المشهد الرابع 🎬</h4>
+            <span class="scene-badge-pill">مشاهد سريعة متبادلة — الاستوديو الأنيق</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            مشاهد سريعة متناوبة بين مؤمن وإبراهيم بإضاءة استوديو راقية وملابس شيك وأنيقة.
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"السحر عمره ما كان علاج!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"طبعًا… بس العلاج الطبيعي؟ هنا بقى فيه سحر من نوع تاني."</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"وده بالظبط اللي هنتكلم عنه في <em>'فيزيوهاية ع الماشي'</em>."</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"كل أسبوع معلومة جديدة في العلاج الطبيعي… ببساطة ومن غير تعقيد."</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"استنونا في برنامج <strong>فيزيوهاية ع الماشي</strong>!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text" style="font-weight:900; color:#B45309;">"كل حد الساعة 6 بليل!"</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ========================================== -->
+    <!-- SECTION 2: THE 8 REELS SCRIPTS -->
+    <!-- ========================================== -->
+    <div class="section-category-header" data-category="reels">
+      <h2>
+        <i data-lucide="film" style="width:24px; height:24px; color:#F59E0B;"></i>
+        سكريبتات الحلقات الـ 8 لبرنامج "فيزيوهاية ع الماشي"
+      </h2>
+      <span class="count-badge">8 حلقات مطابقة للموسم</span>
+    </div>
+
+    <!-- REEL 01: لغز الألم المنعكس (Referred Pain) -->
+    <article class="reel-script-card" data-category="part1" id="reel-01">
+      <div class="card-top-header">
+        <div class="card-header-left">
+          <div class="card-num-badge">01</div>
+          <div class="card-titles-group">
+            <h3>لغز الألم المنعكس (Referred Pain) 🔍</h3>
+            <p>مطابقة للحلقة 01: وثائقي العيادات الخارجية — الفحص السريري والتشخيص الفارقي</p>
+          </div>
+        </div>
+        <div class="card-header-actions">
+          <button class="btn-copy-card" onclick="copyCardText('reel-01-content')" title="نسخ نص السكريبت">
+            <i data-lucide="copy" style="width:14px; height:14px;"></i> نسخ السكريبت
+          </button>
+        </div>
+      </div>
+
+      <div class="card-meta-bar">
+        <span class="meta-chip"><i data-lucide="tag"></i> <strong>الموضوع:</strong> الألم المنعكس والتشخيص الحركي الفارق</span>
+        <span class="meta-chip"><i data-lucide="layout-grid"></i> <strong>الفورمات:</strong> 8 فقرات تفاعلية (مسرح الجريمة + المعمل + لغز 3 ثوانٍ + جرّبها بنفسك)</span>
+        <span class="meta-chip"><i data-lucide="clock"></i> <strong>المدة:</strong> 2:45 دقيقة (إيقاع ريلز سريع ومتجدد)</span>
+      </div>
+
+      <div class="card-body-content" id="reel-01-content">
+        <!-- Segment 1: Sketch -->
+        <div class="scene-block scene-sketch">
+          <div class="scene-header-title">
+            <h4><i data-lucide="drama"></i> الفقرة 01: مسرح الجريمة 🎬</h4>
+            <span class="scene-badge-pill">سكيتش المحقق شارلوك هولمز</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            عيادة بإضاءة درامية خافتة، موسيقى تحقيق غامضة. مؤمن لابس بالطو طبيب وكاب محقق وماسك عدسة مكبرة كبيرة ونوتة، بيستجوب إبراهيم اللي قاعد على السرير بيتألم وماسك ركبته اليمين.
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم (متألم):</span>
+            <span class="dialogue-text">"يا دكتور مؤمن.. ركبتي هتموتني مش قادر أفردها!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن (يبص بالعدسة في ودن إبراهيم وفي قفاه بتركيز مبالغ):</span>
+            <span class="dialogue-text">"اممم.. المشتبه به الأول مش الركبة.. افتح بؤك وقول آاااه!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم (متنرفز):</span>
+            <span class="dialogue-text">"يا ابني بقولك ركبتي! أنت بتكشف على لوزي ليه؟! ركبتي تحت أهي!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن (يقفل النوتة بضربة ويبص للكاميرا):</span>
+            <span class="dialogue-text">"المجرم الحقيقي عمره ما بيسيب بصمته في مكان الجريمة يا هيما!"</span>
+          </div>
+        </div>
+
+        <!-- Segment 2: Intro Sting -->
+        <div class="scene-block scene-intro">
+          <div class="scene-header-title">
+            <h4><i data-lucide="zap"></i> فاصل الانترو ⚡</h4>
+            <span class="scene-badge-pill">انترو فيزيوهاية ع الماشي</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="sparkles" style="width:14px; height:14px;"></i>
+            جرافيك انترو سريع وحيوي (3 ثوانٍ) مع Sound FX قوي وموسيقى ريتميك.
+          </div>
+        </div>
+
+        <!-- Segment 3: Clinic Story -->
+        <div class="scene-block scene-clinic">
+          <div class="scene-header-title">
+            <h4><i data-lucide="stethoscope"></i> الفقرة 02: حكاية من العيادة 🩺</h4>
+            <span class="scene-badge-pill">لغز مريض الـ 30 جلسة</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            وقفة تفاعلية مباشرة بين مؤمن وإبراهيم (كادرات 50mm، حركة كاميرا ديناميكية وتبادل سريع).
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم (يبص للكاميرا بتشويق):</span>
+            <span class="dialogue-text">"تخيل مريض داخل العيادة، عامل 30 جلسة علاج طبيعي و3 أشعات رنين على ركبته.. ومفيش تحسن 1%؟!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن (يدخل بابتسامة ثقة):</span>
+            <span class="dialogue-text">"والصدمة؟ أول ما فحصناه.. ركبته طلعت سليمة 100% ومفيهاش خدش واحد!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم (مستغرب ومتحمس):</span>
+            <span class="dialogue-text">"أومال الوجع اللي مش مخليه يدوس على رجله ده.. جه منين؟!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن (يشاور على حوضه):</span>
+            <span class="dialogue-text">"من فوق.. من مفصل الفخذ! أول ما حركنا الفخذ صرخ وقال: هو ده نفس وجع ركبتي بالظبط!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"وده اللغز اللي بنسميه في الطب <strong>Referred Pain (الألم المنعكس)</strong>.. الركبة بتصرخ، والمجرم الحقيقي مستخبي فوق في الفخذ!"</span>
+          </div>
+        </div>
+
+        <!-- Segment 4: Lab & Research -->
+        <div class="scene-block scene-lab">
+          <div class="scene-header-title">
+            <h4><i data-lucide="flask-conical"></i> الفقرة 03: المعمل والأبحاث 🔬</h4>
+            <span class="scene-badge-pill">أبحاث هارفارد والـ BMJ تكشف السر</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            انتقال مع Sound FX كرتوني لشبكة كهرباء وجرافيك مسارات الأعصاب والحبل الشوكي.
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن (يشرح بالبلدي):</span>
+            <span class="dialogue-text">"طب إزاي ده بيحصل؟ جسمك زي عمارة سكنية قديمة شبكة كهربتها متداخلة؛ لو حصل قفلة في الدور الرابع، لمبة المدخل تحت هي اللي هترعش!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"وده مثبت علمياً بأبحاث <strong>جامعة هارفارد (Harvard)</strong> بنظرية <em>Convergence-Projection</em>؛ إشارات ألم الفخذ والركبة بتلتقي في نفس المحطة بالنخاع الشوكي، فالمخ يتلخبط ويترجم الوجع في الركبة!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن (بنبرة تحذير إكلينيكية):</span>
+            <span class="dialogue-text">"والأخطر بقى، دراسة <strong>المجلة الطبية البريطانية (BMJ)</strong> وثقت إن 20% من أمراض فخذ الأطفال، شكواهم الوحيدة بتكون وجع في الركبة ومحدش بيفحص الفخذ!"</span>
+          </div>
+        </div>
+
+        <!-- Segment 5: 3-Second Quiz Challenge -->
+        <div class="scene-block scene-quiz">
+          <div class="scene-header-title">
+            <h4><i data-lucide="help-circle"></i> الفقرة 04: لغز الـ 3 ثواني ⏱️</h4>
+            <span class="scene-badge-pill">تحدي التخمين وتفاعل الجمهور</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            إضاءة تتغير بلمسة درامية، زوم سريع على مؤمن، جرافيك عد تنازلي على الشاشة مع صوت تكتكة ساعة (Tick.. Tick..).
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن (يبص للكاميرا بتحدي):</span>
+            <span class="dialogue-text">"سؤال للأذكياء: لو كتفك اليمين بيوجعك فجأة ومزمن من غير ما تشيل تقيل.. يا ترى المتهم مزق عضلات.. ولا مرارة؟ معاك 3 ثواني تخمن في الكومنتات!"</span>
+          </div>
+          <div class="timer-countdown-box">
+            <i data-lucide="timer" style="width:16px; height:16px;"></i>
+            <span>عداد الـ 3 ثوانٍ ع الشاشة: 3.. 2.. 1.. وقف الفيديو واكتب توقعك!</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم (يدخل بحماس ويكشف الإجابة):</span>
+            <span class="dialogue-text">"المجرم الحقيقي هو.. المرارة! <strong>أبحاث معهد الصحة الأمريكي (NIH)</strong> بتثبت إن التهاب الحجاب الحاجز والمرارة بيسمّع في لوح الكتف اليمين!"</span>
+          </div>
+        </div>
+
+        <!-- Segment 6: Myths vs Reality -->
+        <div class="scene-block scene-myths">
+          <div class="scene-header-title">
+            <h4><i data-lucide="alert-triangle"></i> الفقرة 05: مين المجرم؟ (إشاعة vs حقيقة) ⚠️</h4>
+            <span class="scene-badge-pill">ألغاز الرقبة والعمود الفقري والـ Red Flags</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            كادرات Jump Cuts متبادلة سريعة، إيقاع مشدود ومفاجآت متتالية.
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"ودي مش الحالة الوحيدة.. عارف الصداع النصفي ووجع العين اللي مدوّخ نص الناس وفاكرينه جيوب أنفية أو إجهاد موبايل؟"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"بيطلع في حالات كتير <strong>Cervicogenic Headache</strong>؛ تشنج عضلات قفا الرقبة وفقرات C1-C3 مسمّع في جبهتك وعينك عبر مسار العصب الخامس!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"ونفس الخدعة في كعب الرجل.. تلاقي كعبك بيولع نار وفاكرها شوكة عظمية وضهرك سليم 100% ومبيوجعكش!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"وتفحصه تلاقي انضغاط في جذر العصب القطني (S1).. الضهر ساكت تماماً، والشرارة ضاربة في الكعب تحت!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن (بجدية وتحذير صارم):</span>
+            <span class="dialogue-text">"والأخطر من ده كله: وجع الكتف والذراع الشمال المفاجئ مع المجهود.. ده <em>Red Flag</em> وإنذار طارئ للقلب لازم طوارئ فوراً!"</span>
+          </div>
+        </div>
+
+        <!-- Segment 7: Try It With Me Now Interactive -->
+        <div class="scene-block scene-interactive">
+          <div class="scene-header-title">
+            <h4><i data-lucide="sparkles"></i> الفقرة 06: جرّبها معايا دلوقتي 🧪</h4>
+            <span class="scene-badge-pill">فحص سريري منزلي مباشر مع الكاميرا</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            مؤمن وإبراهيم يقرّبوا جداً من الكاميرا، يخاطبوا المشاهد مباشرة بنبرة تفاعلية حية، مؤمن يوضح الحركة عملياً على رقبته.
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم (يبص في عين المشاهد):</span>
+            <span class="dialogue-text">"وأنت ماسك الموبايل كدة وبتتفرج علينا.. سيب اللي في إيدك واعمل معايا الحركة دي في 5 ثواني!"</span>
+          </div>
+          <div class="interactive-action-box">
+            <i data-lucide="hand" style="width:18px; height:18px;"></i>
+            <span>حط صوابعك الاتنين عند قاعدة قفاك من ورا تحت الجمجمة.. واضغط ضغطة متوسطة ولف راسك سنة يمين!</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن (يوضح الحركة ويستجوب المشاهد):</span>
+            <span class="dialogue-text">"حسيت بنغزة، أو كهربا، أو صداع ضرب وسمّع في عينك وجبهتك فجأة؟"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم (يبتسم):</span>
+            <span class="dialogue-text">"مبروك! الصداع اللي بتبلع له مسكنات من الصبح ده مش إجهاد شاشات.. دي رقبتك بتستغيث! اكتبلنا في الكومنتات دلوقتي حسيت بإيه؟"</span>
+          </div>
+        </div>
+
+        <!-- Segment 8: Kinetic Prescription -->
+        <div class="scene-block scene-rx">
+          <div class="scene-header-title">
+            <h4><i data-lucide="lightbulb"></i> الفقرة 07: الروشتة الحركية 💡</h4>
+            <span class="scene-badge-pill">الخلاصة ورسالة التخصص (Root Cause Analysis)</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            وقفة ختامية ملهمة وثقة كاملة أمام الكاميرا، كادر سينمائي يجمع الاثنين معاً.
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"المخ دايماً بيترجم إشارة الألم في المحطة السطحية الأسهل ليه، مش المكان اللي فيه الكارثة!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"عشان كده العلاج الطبيعي مش كمادات وجهازين كهربا ع مكان الوجع وخلاص.. شغلنا كشف ألغاز وتحديد <strong>السبب الأصلي (Root Cause)</strong>!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن (يختم الفكرة بذكاء):</span>
+            <span class="dialogue-text">"لأنك لو عالجت العَرَض وسبت السبب.. أنت بتكسر سرينة الإنذار، وسايب النار تاكل في أساسات العمارة!"</span>
+          </div>
+        </div>
+
+        <!-- Segment 9: Outro -->
+        <div class="scene-block scene-outro">
+          <div class="scene-header-title">
+            <h4><i data-lucide="check-circle"></i> الفقرة 08: صافرة النهاية 🎯</h4>
+            <span class="scene-badge-pill">Punchline & Call to Action</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"افهم جسمك صح.. الوجع جرس إنذار، مش شرط يكون هو مكان الجريمة."</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"اطلب تقييم حركي وفحص سريري شامل.. ومتخليش مكان الوجع يخدعك!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-voiceover"><i data-lucide="sparkles"></i> مؤمن وإبراهيم معاً:</span>
+            <span class="dialogue-text" style="color: var(--primary-maroon); font-weight:900; font-size:1.05rem;">"فيزيوهاية ع الماشي.. وأوعى تنسى تسأل نفسك: ليه فيزيووووو؟!"</span>
+          </div>
+        </div>
+
+        <!-- Scientific Evidence & References Section -->
+        <div class="scientific-references-box">
+          <div class="ref-box-header">
+            <div class="ref-box-title">
+              <i data-lucide="book-open-check" style="width:22px; height:22px;"></i>
+              <span>المراجع والأبحاث العلمية الموثقة للحلقة (Scientific Evidence & Citations)</span>
+            </div>
+            <span class="ref-evidence-badge"><i data-lucide="shield-check" style="width:13px; height:13px;"></i> استدلالات علمية محكمة</span>
+          </div>
+
+          <div class="ref-cards-grid">
+            <!-- Reference 1: Harvard -->
+            <div class="ref-item-card">
+              <div class="ref-card-top">
+                <span class="ref-source-tag"><i data-lucide="graduation-cap" style="width:15px; height:15px;"></i> Harvard Health Publishing — Harvard Medical School</span>
+                <span class="ref-topic-badge">نظرية Convergence-Projection</span>
+              </div>
+              <h5 class="ref-paper-title">Referred Pain: When Pain Isn't Where It Hurts & Central Pain Pathways</h5>
+              <div class="ref-paper-takeaway">
+                <strong>الجزء المستدل به في حكايتنا:</strong> يوثق البحث الآلية العصبية لكيفية التقاء وتشابك الإشارات العصبية الحسية القادمة من المفاصل العميقة أو الأحشاء مع مسارات الجلد والمفاصل الطرفية عند نفس خلايا القرن الخلفي للحبل الشوكي (Dorsal Horn)، مما يؤدي لتضليل مراكز الإحساس في القشرة المخية وتفسير الألم في طرف أو مفصل سليم تماماً.
+              </div>
+              <a href="https://www.health.harvard.edu/pain/referred-pain-when-pain-isnt-where-it-hurts" target="_blank" rel="noopener noreferrer" class="ref-link-anchor">
+                <i data-lucide="external-link" style="width:13px; height:13px;"></i> قراءة وتوثيق البحث من جامعة هارفارد
+              </a>
+            </div>
+
+            <!-- Reference 2: BMJ & PubMed -->
+            <div class="ref-item-card">
+              <div class="ref-card-top">
+                <span class="ref-source-tag"><i data-lucide="file-text" style="width:15px; height:15px;"></i> British Medical Journal (BMJ) & National Library of Medicine (PubMed)</span>
+                <span class="ref-topic-badge">ألم الركبة المنعكس من مفصل الفخذ</span>
+              </div>
+              <h5 class="ref-paper-title">Knee Pain as the Initial and Solitary Symptom of Hip Pathology (Perthes Disease & SCFE)</h5>
+              <div class="ref-paper-takeaway">
+                <strong>الجزء المستدل به في حكايتنا:</strong> دراسة إكلينيكية تثبت أن نسبة تصل إلى 20% من اعتلالات وأمراض مفصل الفخذ الحادة والمزمنة تظهر حصرياً على هيئة ألم معزول في الركبة دون أي ألم في الفخذ، وذلك بسبب التفرع الحسي المشترك للعصب السدادي (Obturator Nerve)، مما يؤكد خطورة الاكتفاء بفحص الركبة وعلاجها دون تقييم ميكانيكا الحوض.
+              </div>
+              <a href="https://pubmed.ncbi.nlm.nih.gov/16087799/" target="_blank" rel="noopener noreferrer" class="ref-link-anchor">
+                <i data-lucide="external-link" style="width:13px; height:13px;"></i> عرض الدراسة على PubMed (BMJ Archive)
+              </a>
+            </div>
+
+            <!-- Reference 3: Cephalalgia & PubMed -->
+            <div class="ref-item-card">
+              <div class="ref-card-top">
+                <span class="ref-source-tag"><i data-lucide="brain" style="width:15px; height:15px;"></i> Cephalalgia — International Headache Society & PubMed</span>
+                <span class="ref-topic-badge">الصداع عنقي المنشأ ووجع العين (Trigeminocervical Complex)</span>
+              </div>
+              <h5 class="ref-paper-title">The Trigeminocervical Complex and Mechanism of Referred Pain in Cervicogenic Headache</h5>
+              <div class="ref-paper-takeaway">
+                <strong>الجزء المستدل به في حكايتنا:</strong> يوضح البحث كيف تلتقي الألياف العصبية الحسية القادمة من جذور الأعصاب العنقية العليا (C1-C3) في الرقبة مع مسارات العصب الخامس (Trigeminal Nerve) في جذع المخ، مما يجعل تشنجات عضلات قفا الرقبة ومفاصلها تنعكس مباشرة كصداع شديد خلف العين والجبهة، ويُعامل خطأً كصداع نصفي أو إجهاد بصري.
+              </div>
+              <a href="https://pubmed.ncbi.nlm.nih.gov/11849309/" target="_blank" rel="noopener noreferrer" class="ref-link-anchor">
+                <i data-lucide="external-link" style="width:13px; height:13px;"></i> مطالعة البحث على PubMed (Cephalalgia)
+              </a>
+            </div>
+
+            <!-- Reference 4: NIH / StatPearls -->
+            <div class="ref-item-card">
+              <div class="ref-card-top">
+                <span class="ref-source-tag"><i data-lucide="activity" style="width:15px; height:15px;"></i> National Institutes of Health (NIH) — StatPearls Publishing</span>
+                <span class="ref-topic-badge">ألم الأحشاء والكتف (Kehr's Sign)</span>
+              </div>
+              <h5 class="ref-paper-title">Viscerosomatic Convergence & Phrenic Nerve Anatomy in Referred Shoulder Pain</h5>
+              <div class="ref-paper-takeaway">
+                <strong>الجزء المستدل به في حكايتنا:</strong> توثيق طبي يوضح كيفية حدوث الألم المنعكس بين الأحشاء والجهاز الحركي؛ حيث يؤدي تهيج الحجاب الحاجز أو المرارة إلى ألم حاد في لوح الكتف الأيمن بسبب تشارك الجذور العصبية العنقية المشتركة من C3 إلى C5 بين العصب الحجابي (Phrenic Nerve) وأعصاب الكتف فوق الترقوة (Supraclavicular Nerves).
+              </div>
+              <a href="https://www.ncbi.nlm.nih.gov/books/NBK539828/" target="_blank" rel="noopener noreferrer" class="ref-link-anchor">
+                <i data-lucide="external-link" style="width:13px; height:13px;"></i> مطالعة التوثيق على المكتبة الوطنية للطب (NIH)
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- REEL 02: ملحمة نيمار وريكاردو روزا (الرباط الصليبي) -->
+    <article class="reel-script-card" data-category="part1" id="reel-02">
+      <div class="card-top-header">
+        <div class="card-header-left">
+          <div class="card-num-badge">02</div>
+          <div class="card-titles-group">
+            <h3>ملحمة نيمار وكأس العالم ودكتور ريكاردو روزا ⚽🦵</h3>
+            <p>مطابقة للحلقة 02: د. ياسمين — إصابات الملاعب والرباط الصليبي وتأهيل المحترفين</p>
+          </div>
+        </div>
+        <div class="card-header-actions">
+          <button class="btn-copy-card" onclick="copyCardText('reel-02-content')" title="نسخ نص السكريبت">
+            <i data-lucide="copy" style="width:14px; height:14px;"></i> نسخ السكريبت
+          </button>
+        </div>
+      </div>
+
+      <div class="card-meta-bar">
+        <span class="meta-chip"><i data-lucide="tag"></i> <strong>الموضوع:</strong> الرباط الصليبي وسر عودة الأساطير للملاعب</span>
+        <span class="meta-chip"><i data-lucide="trophy"></i> <strong>القصة الواقعية:</strong> نيمار مع دكتور العلاج الطبيعي ريكاردو روزا</span>
+        <span class="meta-chip"><i data-lucide="clock"></i> <strong>المدة:</strong> 2:40 دقيقة</span>
+      </div>
+
+      <div class="card-body-content" id="reel-02-content">
+        <!-- Scene 1: Sketch -->
+        <div class="scene-block scene-sketch">
+          <div class="scene-header-title">
+            <h4><i data-lucide="drama"></i> المشهد الأول: السكيتش التمثيلي 🎬</h4>
+            <span class="scene-badge-pill">سكيتش نيمار والتمثيل في الملعب</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            مؤمن لابس تيشيرت البرازيل الأصفر وماسك كورة.. فجأة يخبط في ترابيزة خبطة عبيطة جداً ويقع يتدحرج على الأرض 10 لفات وهو بيصرخ وكأنه بيموت.
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم (لابس تيشيرت حكم ومعاه كارت وصفاره):</span>
+            <span class="dialogue-text">"قوم يابني بلاش تمثيل نيمار ده!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن (يقوم يمسح وشه):</span>
+            <span class="dialogue-text">"بمثل إيه بس يا كابتن؟! الركبة دي نعمه من ذهب! أنت عارف لو الصليبي طرقع هيحصل إيه فمسيرتى البطولية؟"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم (يبتسم للكاميرا بجدية):</span>
+            <span class="dialogue-text">"بس تعرف بقى إن نيمار شخصيا في أصعب لحظة في مسيرته على قولك.. الشخص الوحيد اللي ساعده فعلا مكنش المدرب ولا رئيس النادي؟"</span>
+          </div>
+        </div>
+
+        <!-- Scene 2: Intro -->
+        <div class="scene-block scene-intro">
+          <div class="scene-header-title">
+            <h4><i data-lucide="zap"></i> المشهد الثاني: الانترو ⚡</h4>
+            <span class="scene-badge-pill">انترو فيزيوهاية ع الماشي</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="sparkles" style="width:14px; height:14px;"></i>
+            انترو سريع ومثير بجرافيك كرة قدم مشتعلة.
+          </div>
+        </div>
+
+        <!-- Scene 3: Core Story -->
+        <div class="scene-block scene-core">
+          <div class="scene-header-title">
+            <h4><i data-lucide="mic"></i> المشهد الثالث: صلب القصة 🎙️</h4>
+            <span class="scene-badge-pill">كواليس 8 شهور من العذاب والتأهيل الصامت</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            كادرات سينمائية سريعة واستعراض تفاصيل عودة نيمار مع دكتور روزا.
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"أكتوبر 2023.. نيمار بيقع بقوة على الأرض في ماتش أوروجواي، والتشخيص صدم العالم كله: قطع كامل في الرباط الصليبي الأمامي (ACL) مع تمزق في الغضروف المفصلي.. سن 32 سنة يعني بمفهومنا الرياضي: شطب كورة!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"الكل بدأ يكتب عن انتهاء مسيرة الساحر البرازيلي.. لكن نيمار كان عنده سلاح سري للمواقف الطارئه. اسمه <strong>د. ريكاردو روزا (Ricardo Rosa)</strong>، دكتور العلاج الطبيعي والتأهيل الخاص بتاعه من أكتر من 14 سنة كاملين!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"8 شهور كاملة في غرف التأهيل المغلقة.. عياط، ألم مش طبيعي وقت تني وفرد الركبة، تقوية عضلات الـ Quadriceps والـ Hamstrings من الصفر، وبرامج توازن عصبية عضلية ميكرومترية عشان يرجع للملعب بكامل مرونته ورشاقته الى عاهدناه بيها!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"وفي اللحظة اللي نيمار رجع فيها واستلم استدعاء منتخب البرازيل، الكاميرات رصدت المشهد التاريخي.. نيمار ساب المؤتمر كله وجرى على دكتور العلاج الطبيعي وحضنه وهو بيعيط وقاله: <em>'إيمانك بيا وإجتهادك هما سبب وجودى هنا دلوقتي!'</em>."</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"الرباط الصليبي مش مجرد عملية جراحية.. الجراح بيعمل 20% من الشغل، والـ 80% الباقية هي رحلة العلاج الطبيعي اللي بتحدد إذا كنت هترجع لملعبك.. ولا هتعلق جزمتك للأبد على الرف وتبصلها بزعل!"</span>
+          </div>
+        </div>
+
+        <!-- Scene 4: Outro -->
+        <div class="scene-block scene-outro">
+          <div class="scene-header-title">
+            <h4><i data-lucide="check-circle"></i> المشهد الرابع: الخاتمة 🎯</h4>
+            <span class="scene-badge-pill">Punchline & Call to Action</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"ورا كل رياضي عظيم بيقف على منصات التتويج.. دكتور علاج طبيعي كان ظل ملازم بيآمن وبيجتهد عشان حلم يتحقق."</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-voiceover"><i data-lucide="sparkles"></i> مؤمن وإبراهيم معاً:</span>
+            <span class="dialogue-text" style="color:#B45309; font-weight:900; font-size:1.05rem;">"فيزيوهاية ع الماشي.. وأوعى تنسى تسأل نفسك: ليه فيزيووووو؟!"</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- REEL 03: خدعة المرآة وسحر الـ Neuroplasticity -->
+    <article class="reel-script-card" data-category="part1" id="reel-03">
+      <div class="card-top-header">
+        <div class="card-header-left">
+          <div class="card-num-badge">03</div>
+          <div class="card-titles-group">
+            <h3>خدعة المرآة وسحر اللدونة العصبية (Neuroplasticity) 🧠🪞</h3>
+            <p>مطابقة للحلقة 03: أ.د. إبراهيم حمودة — تأهيل الحالات العصبية والجلطات</p>
+          </div>
+        </div>
+        <div class="card-header-actions">
+          <button class="btn-copy-card" onclick="copyCardText('reel-03-content')" title="نسخ نص السكريبت">
+            <i data-lucide="copy" style="width:14px; height:14px;"></i> نسخ السكريبت
+          </button>
+        </div>
+      </div>
+
+      <div class="card-meta-bar">
+        <span class="meta-chip"><i data-lucide="tag"></i> <strong>الموضوع:</strong> ألم الطرف الشبحي (Phantom Limb) وإعادة بناء مسارات المخ</span>
+        <span class="meta-chip"><i data-lucide="sparkles"></i> <strong>الابتكار:</strong> Mirror Therapy وتجربة راماتشاندوران الثورية</span>
+        <span class="meta-chip"><i data-lucide="clock"></i> <strong>المدة:</strong> 2:25 دقيقة</span>
+      </div>
+
+      <div class="card-body-content" id="reel-03-content">
+        <!-- Scene 1: Sketch -->
+        <div class="scene-block scene-sketch">
+          <div class="scene-header-title">
+            <h4><i data-lucide="drama"></i> المشهد الأول: السكيتش التمثيلي 🎬</h4>
+            <span class="scene-badge-pill">سكيتش المراية والساحر</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            إبراهيم قاعد حاطط مراية كبيرة رأسية بين إيديه الاتنين على الترابيزة، وعمال بيحرك إيده اليمين ويبص في المراية ومنبهر جداً وفاتح بؤه.
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن (يدخل مستغرب وماسك مج شاي):</span>
+            <span class="dialogue-text">"إيه يا هيما؟ معجب بنفسك ولا عايز تتلبس؟!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم (مركز في المراية بعدين بصله بحماس):</span>
+            <span class="dialogue-text">"أنا بضحك على عقلى يا مؤمن! شايف الإيد اللي في المراية دي؟ اهو مخي بقى فاكر إن إيدي الشمال المشلولة هي اللي بتتحرك وانا ضحكت عليه واليمين الى بتتحرك!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن (يبص للكاميرا بصدمة):</span>
+            <span class="dialogue-text">"المراية دي مخلتهوش يتلبس لا.. دي أعظم خدعة علاج طبيعي في تاريخ طب الأعصاب بأكمله!"</span>
+          </div>
+        </div>
+
+        <!-- Scene 2: Intro -->
+        <div class="scene-block scene-intro">
+          <div class="scene-header-title">
+            <h4><i data-lucide="zap"></i> المشهد الثاني: الانترو ⚡</h4>
+            <span class="scene-badge-pill">انترو فيزيوهاية ع الماشي</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="sparkles" style="width:14px; height:14px;"></i>
+            انترو مع جرافيك وميض عصبي في خلايا الدماغ.
+          </div>
+        </div>
+
+        <!-- Scene 3: Core Story -->
+        <div class="scene-block scene-core">
+          <div class="scene-header-title">
+            <h4><i data-lucide="mic"></i> المشهد الثالث: صلب القصة 🎙️</h4>
+            <span class="scene-badge-pill">سر الـ Phantom Limb واللدونة العصبية</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            شرح ممتع ومدعم بجرافيك مبسط للمخ ومسارات الحركة.
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"تخيل إن شخص اتعرض لبتر في إيده، لكنه لسه حاسس بوجع وحرقان فظيع في صوابع إيده اللي مش موجودة أصلاً! الظاهرة دي موجوده و اسمها <strong>Phantom Limb Pain (ألم الطرف الشبحي)</strong>."</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"السبب إن إحساس اليد دى في قشرة المخ لسه موجود وبيبعت إشارات استغاثة! سنة 1995، العالم 'راماتشاندوران' مع أطباء التأهيل اخترعوا تقنية <strong>العلاج بالمرآة (Mirror Therapy)</strong>."</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"بيحطوا مراية بين الإيد السليمة والإيد المصابة.. المريض يحرك إيده السليمة ويبص في الانعكاس.. فالمخ بيستقبل إشارة بصرية: <em>'الله! ده إيدي بتتحرك وسليمة ومافيهاش وجع يا سبحان الله!'</em>.. وفي ثواني، إشارات الألم بتقف!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"بس الموضوع مبيقفش هنا.. المخ البشري عنده قدرة خارقة اسمها <strong>اللدونة العصبية (Neuroplasticity)</strong>.. لما مريض جلطة بيفقد جزء من خلايا الحركة، العلاج الطبيعي المكثف والتكرار بيجبر المخ إنه يبني مسارات وطرق عصبية جديدة تماماً عشان يعوض اللي اتدمر!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"العلاج الطبيعي للحالات العصبية مش مجرد اننا نحرك فالمفاصل.. إحنا بنعيد برمجة الكمبيوتر المركزي للإنسان!"</span>
+          </div>
+        </div>
+
+        <!-- Scene 4: Outro -->
+        <div class="scene-block scene-outro">
+          <div class="scene-header-title">
+            <h4><i data-lucide="check-circle"></i> المشهد الرابع: الخاتمة 🎯</h4>
+            <span class="scene-badge-pill">Punchline & Call to Action</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"المخ البشرى مش بييأس ودورنا منيأسش من التأهيل الصح."</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-voiceover"><i data-lucide="sparkles"></i> مؤمن وإبراهيم معاً:</span>
+            <span class="dialogue-text" style="color:#B45309; font-weight:900; font-size:1.05rem;">"فيزيوهاية ع الماشي.. وأوعى تنسى تسأل نفسك: ليه فيزيووووو؟!"</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- REEL 04: قنبلة المشّاية وسحر علاج الأطفال -->
+    <article class="reel-script-card" data-category="part1" id="reel-04">
+      <div class="card-top-header">
+        <div class="card-header-left">
+          <div class="card-num-badge">04</div>
+          <div class="card-titles-group">
+            <h3>كارثة المشّاية وسحر العلاج باللعب 👶🎪</h3>
+            <p>مطابقة للحلقة 04: أ.د. نسمة — العلاج الطبيعي للأطفال Pediatrics والتأخر الحركي</p>
+          </div>
+        </div>
+        <div class="card-header-actions">
+          <button class="btn-copy-card" onclick="copyCardText('reel-04-content')" title="نسخ نص السكريبت">
+            <i data-lucide="copy" style="width:14px; height:14px;"></i> نسخ السكريبت
+          </button>
+        </div>
+      </div>
+
+      <div class="card-meta-bar">
+        <span class="meta-chip"><i data-lucide="tag"></i> <strong>الموضوع:</strong> أضرار الـ Baby Walker ومراحل النمو الحركي الطبيعية</span>
+        <span class="meta-chip"><i data-lucide="shield-alert"></i> <strong>التحذير الطبي:</strong> المشي على أطراف الأصابع وحرمان الجذع من التوازن</span>
+        <span class="meta-chip"><i data-lucide="clock"></i> <strong>المدة:</strong> 2:20 دقيقة</span>
+      </div>
+
+      <div class="card-body-content" id="reel-04-content">
+        <!-- Scene 1: Sketch -->
+        <div class="scene-block scene-sketch">
+          <div class="scene-header-title">
+            <h4><i data-lucide="drama"></i> المشهد الأول: السكيتش التمثيلي 🎬</h4>
+            <span class="scene-badge-pill">سكيتش المشاية وسباق الصواريخ</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            مؤمن جايب "مشاية أطفال" بلاستيك ومتحمس ومربط نفسه فيها ولابس نظارة أطفال وعايز يجري بيها. إبراهيم يدخل يجري برعب ويزقه بعيد عنها.
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم (يصرخ ويزق المشاية):</span>
+            <span class="dialogue-text">"حاااااسب! اوعى تقرب من أداة الجريمة دي!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"أداة جريمة إيه يا عم دي مشاية كيوت وبتنور وبتغني 'بيبي شارك'! دي بتخلي الطفل يجري من غير مايسمى!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم (يبص للكاميرا بحرقة):</span>
+            <span class="dialogue-text">"المشاية دي يا جماعة هي أكتر هدية كارثية فعلا بتدخل بيوتنا وإحنا فاكرين إننا بنفيد الطفل بيها!"</span>
+          </div>
+        </div>
+
+        <!-- Scene 2: Intro -->
+        <div class="scene-block scene-intro">
+          <div class="scene-header-title">
+            <h4><i data-lucide="zap"></i> المشهد الثاني: الانترو ⚡</h4>
+            <span class="scene-badge-pill">انترو فيزيوهاية ع الماشي</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="sparkles" style="width:14px; height:14px;"></i>
+            انترو مرح وسريع مع صوت ضحكة طفل وتأثيرات ألوان زاهية.
+          </div>
+        </div>
+
+        <!-- Scene 3: Core Story -->
+        <div class="scene-block scene-core">
+          <div class="scene-header-title">
+            <h4><i data-lucide="mic"></i> المشهد الثالث: صلب القصة 🎙️</h4>
+            <span class="scene-badge-pill">مراحل النمو السليمة وسحر جلسة الأطفال</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            لقطات سريعة توضيحية لنمط المشي الحقيقي وتأهيل الأطفال.
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"الأكاديمية الأمريكية لطب الأطفال ومنظمات العلاج الطبيعي حذرت رسمياً من المشّاية.. عارفين ليه؟ لأنها بتعلم الطفل يعتمد على أطراف أصابعه (Toe Walking)، وبتحرم عضلات الجذع والحوض والاتزان من إنها تقوى!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"الطفل عشان يمشي صح، لازم يمر بمراحل مقدسة اسمها <strong>Developmental Milestones</strong>.. يتقلب، يقعد، يسحف، يمشى على ركبه عشان يقوي مفصل الحوض وإشارات الاتزان في دماغه.. فلما تحطه في مشاية، أنت بتحرقله كل الخطوات دي!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"طب يا مؤمن لو طفل اتأخر في المشي أو عنده شلل دماغي (CP) وجاي جلسة علاج طبيعي.. تفتكر هنقوله: <em>يلا يا بطل انزل 3 مجاميع سكوات؟!</em>"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن (يضحك):</span>
+            <span class="dialogue-text">"طبعاً لأ! الميزه فى العلاج طبيعي للأطفال هو إن الجلسة كلها بتبان 'لعب'.. بنحط ألعاب ملونة فوق الكنبة عشان الطفل يقف لوحده ويجيبها، بنعمل مسارات حواجز زي سلاحف النينجا عشان يوازن جسمه.. الطفل فاكر نفسه بيلعب في الملاهي، وفي الحقيقة إحنا بنبني له مستقبله الحركي خطوة بخطوة!"</span>
+          </div>
+        </div>
+
+        <!-- Scene 4: Outro -->
+        <div class="scene-block scene-outro">
+          <div class="scene-header-title">
+            <h4><i data-lucide="check-circle"></i> المشهد الرابع: الخاتمة 🎯</h4>
+            <span class="scene-badge-pill">Punchline & Call to Action</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"سيبوا أطفالكم يكتشفوا الأرض ويتحركوا بحرية.. ومتقارنوش طفل بطفل، بس لو حسيتوا بتأخر.. استشيروا بدري!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-voiceover"><i data-lucide="sparkles"></i> مؤمن وإبراهيم معاً:</span>
+            <span class="dialogue-text" style="color:#B45309; font-weight:900; font-size:1.05rem;">"فيزيوهاية ع الماشي.. وأوعى تنسى تسأل نفسك: ليه فيزيووووو؟!"</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- REEL 05: معركة الجلد والبلونة اللمفاوية (الحروق والليمفيديما) -->
+    <article class="reel-script-card" data-category="part2" id="reel-05">
+      <div class="card-top-header">
+        <div class="card-header-left">
+          <div class="card-num-badge">05</div>
+          <div class="card-titles-group">
+            <h3>معركة الجلد والبلونة اللمفاوية (الحروق والليمفيديما) 🎈🩹</h3>
+            <p>مطابقة للحلقة 05: د. سالي — العلاج الطبيعي للأمراض الجلدية والتجميل والحروق</p>
+          </div>
+        </div>
+        <div class="card-header-actions">
+          <button class="btn-copy-card" onclick="copyCardText('reel-05-content')" title="نسخ نص السكريبت">
+            <i data-lucide="copy" style="width:14px; height:14px;"></i> نسخ السكريبت
+          </button>
+        </div>
+      </div>
+
+      <div class="card-meta-bar">
+        <span class="meta-chip"><i data-lucide="tag"></i> <strong>الموضوع:</strong> انكماش الجلد بعد الحروق (Contractures) والوذمة اللمفاوية</span>
+        <span class="meta-chip"><i data-lucide="heart-pulse"></i> <strong>التكنيك:</strong> التصريف اللمفاوي اليدوي (Manual Lymphatic Drainage)</span>
+        <span class="meta-chip"><i data-lucide="clock"></i> <strong>المدة:</strong> 2:20 دقيقة</span>
+      </div>
+
+      <div class="card-body-content" id="reel-05-content">
+        <!-- Scene 1: Sketch -->
+        <div class="scene-block scene-sketch">
+          <div class="scene-header-title">
+            <h4><i data-lucide="drama"></i> المشهد الأول: السكيتش التمثيلي 🎬</h4>
+            <span class="scene-badge-pill">سكيتش بلونة الماية والدبوس</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            إبراهيم ماسك بلونة ماية منفوخة على آخرها وخايف عليها جداً وبيحركها بلمسات خفيفة زي الريشة.. مؤمن يدخل ماسك دبوس كبير وعايز يفرقعها بتهور.
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم (يصرخ ويداري البلونة):</span>
+            <span class="dialogue-text">"إيدك لتوحشك سامع!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"وصلت تقولى كده!.. دى حتة بلونة مليانه ماية!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم (يبص للكاميرا بجدية):</span>
+            <span class="dialogue-text">"دراع مريض الليمفيديما بعد العمليات بيكون بالظبط زي البلونة دي.. سائل محبوس مبيستحملش غباوة ومحتاج لمسة علمية دقيقة جداً!"</span>
+          </div>
+        </div>
+
+        <!-- Scene 2: Intro -->
+        <div class="scene-block scene-intro">
+          <div class="scene-header-title">
+            <h4><i data-lucide="zap"></i> المشهد الثاني: الانترو ⚡</h4>
+            <span class="scene-badge-pill">انترو فيزيوهاية ع الماشي</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="sparkles" style="width:14px; height:14px;"></i>
+            انترو بتأثير تدفق قطرات الماء الصافية.
+          </div>
+        </div>
+
+        <!-- Scene 3: Core Story -->
+        <div class="scene-block scene-core">
+          <div class="scene-header-title">
+            <h4><i data-lucide="mic"></i> المشهد الثالث: صلب القصة 🎙️</h4>
+            <span class="scene-badge-pill">إنقاذ المفاصل بعد الحروق وتكنيك الـ MLD</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            شرح حركي دقيق لدور العلاج الطبيعي في الحروق والأورام.
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"أغلب الناس فاكرة إن العلاج الطبيعي عظام وعضلات بس.. لكن هل سمعت قبل كده عن دور العلاج الطبيعي في إنقاذ الجلد بعد الحروق؟"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"الشخص لما بيتعرض لحرق شديد، الجلد أثناء الالتئام بيكش ويتحول لـ <strong>Burn Scar Contracture</strong>.. تخيل إن الجلد المشدود ده ممكن يلزق الدقن في الصدر، أو يخلي كوع المريض متني وميقدرش يفرده بقية حياته!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"هنا بيتدخل دكتور العلاج الطبيعي بتكنيكات ومشدات ضاغطة وتمارين إطالة دقيقة عشان يحافظ على مرونة الأنسجة وميسمحش للندبة إنها تحد حركة البني آدم طول حياته!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"ونيجي بقى للغز التاني: <strong>الليمفيديما (Lymphedema)</strong>.. بعد بعض جراحات الأورام واستئصال الغدد اللمفاوية، الجهاز اللمفاوي مبيقدرش يصرف السوائل، فتلاقي إيد المريض أو رجله ورمت وتضاعف حجمها 3 أضعاف!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"العلاج هنا مش مساج عادي يفرقع الدنيا.. العلاج بيتعمل بتقنية اسمها <strong>Manual Lymphatic Drainage (MLD)</strong>.. حركات ميكرومترية وضغوط محسوبة بالمللي بتفتح مسارات بديلة عشان ترجع السائل لمجراه الطبيعي!"</span>
+          </div>
+        </div>
+
+        <!-- Scene 4: Outro -->
+        <div class="scene-block scene-outro">
+          <div class="scene-header-title">
+            <h4><i data-lucide="check-circle"></i> المشهد الرابع: الخاتمة 🎯</h4>
+            <span class="scene-badge-pill">Punchline & Call to Action</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"الجلد هو خط الدفاع الاول للجسم.. والعلاج الطبيعي هو الملازم الى بيحميه."</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-voiceover"><i data-lucide="sparkles"></i> مؤمن وإبراهيم معاً:</span>
+            <span class="dialogue-text" style="color:#B45309; font-weight:900; font-size:1.05rem;">"استنونا فى الحلقه الجايه من فيزيوهايه عالماشى.. وأوعى تنسى تسأل نفسك: ليه فيزيووووو؟!"</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- REEL 06: كاميرات الرادار والفيزيو-بوت الذكي (AI & Motion Tracking) -->
+    <article class="reel-script-card" data-category="part2" id="reel-06">
+      <div class="card-top-header">
+        <div class="card-header-left">
+          <div class="card-num-badge">06</div>
+          <div class="card-titles-group">
+            <h3>كاميرات الرادار.. والفيزيو-بوت الذكي 🤖📐</h3>
+            <p>مطابقة للحلقة 06: د. مي رمضان — الذكاء الاصطناعي في العلاج الطبيعي وتحليل الحركة</p>
+          </div>
+        </div>
+        <div class="card-header-actions">
+          <button class="btn-copy-card" onclick="copyCardText('reel-06-content')" title="نسخ نص السكريبت">
+            <i data-lucide="copy" style="width:14px; height:14px;"></i> نسخ السكريبت
+          </button>
+        </div>
+      </div>
+
+      <div class="card-meta-bar">
+        <span class="meta-chip"><i data-lucide="tag"></i> <strong>الموضوع:</strong> رؤية الحاسوب (Computer Vision) وتحليل زوايا المفاصل بالمللي</span>
+        <span class="meta-chip"><i data-lucide="bot"></i> <strong>السؤال الأكبر:</strong> هل الروبوت والذكاء الاصطناعي هيستبدل الدكتور؟</span>
+        <span class="meta-chip"><i data-lucide="clock"></i> <strong>المدة:</strong> 2:30 دقيقة</span>
+      </div>
+
+      <div class="card-body-content" id="reel-06-content">
+        <!-- Scene 1: Sketch -->
+        <div class="scene-block scene-sketch">
+          <div class="scene-header-title">
+            <h4><i data-lucide="drama"></i> المشهد الأول: السكيتش التمثيلي 🎬</h4>
+            <span class="scene-badge-pill">سكيتش فيزيو-بوت 3000</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            مؤمن لابس كرتونة على راسه وعليها لمبة حمراء، وماشي زي الروبوت بحركات ميكانيكية مضحكة في الاستوديو.
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="bot"></i> مؤمن (بصوت روبوت معدل):</span>
+            <span class="dialogue-text">"بيب بوب.. أنا المعالج الآلي 'فيزيو-بوت 3000'.. انزل 20 ضغط يا إبراهيم وإلا سأقوم بفرمتة ظهرك!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم (قاعد بيشرب شاي وباصص له بقرف):</span>
+            <span class="dialogue-text">"هو ده الذكاء الاصطناعي اللي معظمين فيه ؟! ده لو مريض قاله كتفي بيوجعني من الزعل هيقوله 'كله الا زعلك، نبتره ونركبلك غيره!'"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن (يقلع الكرتونة ويضحك):</span>
+            <span class="dialogue-text">"بس بجد يا هيما.. الـ AI في العلاج الطبيعي دخل في حتت إحنا مكناش نتخيلها!"</span>
+          </div>
+        </div>
+
+        <!-- Scene 2: Intro -->
+        <div class="scene-block scene-intro">
+          <div class="scene-header-title">
+            <h4><i data-lucide="zap"></i> المشهد الثاني: الانترو ⚡</h4>
+            <span class="scene-badge-pill">انترو فيزيوهاية ع الماشي</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="sparkles" style="width:14px; height:14px;"></i>
+            انترو تكنولوجي بجرافيك مسارات رقمية ونيون سايبر بانك.
+          </div>
+        </div>
+
+        <!-- Scene 3: Core Story -->
+        <div class="scene-block scene-core">
+          <div class="scene-header-title">
+            <h4><i data-lucide="mic"></i> المشهد الثالث: صلب القصة 🎙️</h4>
+            <span class="scene-badge-pill">تقنيات الـ Motion Tracking ولمسة الدكتور الإنسانية</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            جرافيك تتبع الهيكل العظمي (Skeleton tracking) على الشاشة خلفهم.
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"تخيل إنك بتعمل تمرين في بيتك قدام كاميرا الموبايل، والابلكيشن بالذكاء الاصطناعي (Computer Vision) بيحدد 33 نقطة على مفاصل جسمك في جزء من الثانية!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"يقيس زاوية ميل ضهرك، يقولك ركبتك دخلت لجوة بمقدار 5 درجات (Dynamic Knee Valgus)، ويحسبلك الـ Load والتكرارات ويديك تنبيه لحظي يصلح حركتك كأن الدكتور واقف فوق راسك!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"وفي أندية الدوري الإنجليزي، خوارزميات الـ AI بتحلل إجهاد العضلات ونمط الجري وتتوقع إصابة اللاعب قبل ما تحصل بأسابيع!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"بس السؤال الأهم: هل الـ AI هيقعد دكتور العلاج الطبيعي في البيت؟!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"مستحيل! الـ AI يجمع بيانات ويقيس زوايا.. لكن عمره ما هيحس بالألم في عيون المريض، ولا هيعرف يطبطب على كتفه ويقوله 'متخافش، أنت هتقف على رجلك تاني'.. التكنولوجيا بتديك أرقام، لكن دكتور العلاج الطبيعي هو اللي بيدي الأمل والحياه!"</span>
+          </div>
+        </div>
+
+        <!-- Scene 4: Outro -->
+        <div class="scene-block scene-outro">
+          <div class="scene-header-title">
+            <h4><i data-lucide="check-circle"></i> المشهد الرابع: الخاتمة 🎯</h4>
+            <span class="scene-badge-pill">Punchline & Call to Action</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"الذكاء الاصطناعي مش هيلغي الفيزيو.. لكن الفيزيو اللي بيستخدم الذكاء الاصطناعي هو اللي هيقود المستقبل!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-voiceover"><i data-lucide="sparkles"></i> مؤمن وإبراهيم معاً:</span>
+            <span class="dialogue-text" style="color:#B45309; font-weight:900; font-size:1.05rem;">"استنونا فى الحلقه الجايه من 'فيزيوهايه عالماشى'.. وأوعى تنسى تسأل نفسك: ليه فيزيووووو؟!"</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- REEL 07: سر الـ Direct Access والـ NPTE (السفر والمعادلات) -->
+    <article class="reel-script-card" data-category="part2" id="reel-07">
+      <div class="card-top-header">
+        <div class="card-header-left">
+          <div class="card-num-badge">07</div>
+          <div class="card-titles-group">
+            <h3>سر الـ Direct Access والـ NPTE (السفر والمعادلات) ✈️🌍</h3>
+            <p>مطابقة للحلقة 07: د. محمد حازم & د. أحمد شبلي — معادلات السفر والترخيص الدولي</p>
+          </div>
+        </div>
+        <div class="card-header-actions">
+          <button class="btn-copy-card" onclick="copyCardText('reel-07-content')" title="نسخ نص السكريبت">
+            <i data-lucide="copy" style="width:14px; height:14px;"></i> نسخ السكريبت
+          </button>
+        </div>
+      </div>
+
+      <div class="card-meta-bar">
+        <span class="meta-chip"><i data-lucide="tag"></i> <strong>الموضوع:</strong> امتحان الـ NPTE في أمريكا والترخيص الدولي</span>
+        <span class="meta-chip"><i data-lucide="globe"></i> <strong>المفهوم العالمي:</strong> الـ Direct Access ومكانة أخصائي العلاج الطبيعي دولياً</span>
+        <span class="meta-chip"><i data-lucide="clock"></i> <strong>المدة:</strong> 2:30 دقيقة</span>
+      </div>
+
+      <div class="card-body-content" id="reel-07-content">
+        <!-- Scene 1: Sketch -->
+        <div class="scene-block scene-sketch">
+          <div class="scene-header-title">
+            <h4><i data-lucide="drama"></i> المشهد الأول: السكيتش التمثيلي 🎬</h4>
+            <span class="scene-badge-pill">سكيتش ابن بطوطة ومطار نيويورك</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            مؤمن لابس نضارة شمس شيك وجاكت شتوي ومعاه شنطة سفر باسبورات خضراء وطالع يجري وهو بيغني إنجليزي مكسر: "Pack my bags, New York here I come وكده دولارات كده استرليني!".
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم (يوقفه ويمسك الشنطة):</span>
+            <span class="dialogue-text">"على فين يا ابن بطوطة على الصبح كده؟"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"رايح أفتح عيادتي في مانهاتن واقبض بالدولار ومش هعرفك تاني!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"يا سلام! طب حليت كام كيس في بنك أسئلة الـ <strong>NPTE</strong>؟ وخلصت تقييم الشهادة واللغة؟"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن (ينزل النضارة ويبلع ريقه):</span>
+            <span class="dialogue-text">"إيه الحروف الإنجليزية اللي ترعب دي؟! هو السفر مش بدعاء الوالدين وتذكرة الطيران؟!"</span>
+          </div>
+        </div>
+
+        <!-- Scene 2: Intro -->
+        <div class="scene-block scene-intro">
+          <div class="scene-header-title">
+            <h4><i data-lucide="zap"></i> المشهد الثاني: الانترو ⚡</h4>
+            <span class="scene-badge-pill">انترو فيزيوهاية ع الماشي</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="sparkles" style="width:14px; height:14px;"></i>
+            انترو بجرافيك طائرة سفر وخريطة العالم المتوهجة.
+          </div>
+        </div>
+
+        <!-- Scene 3: Core Story -->
+        <div class="scene-block scene-core">
+          <div class="scene-header-title">
+            <h4><i data-lucide="mic"></i> المشهد الثالث: صلب القصة 🎙️</h4>
+            <span class="scene-badge-pill">قوة المهنة عالمياً وتحدي الـ NPTE</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            شرح واقعي ومحفز للفرص العالمية وأهمية التحضير المبكر.
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"عارفين ليه مهنة العلاج الطبيعي مصنفة في أمريكا وكندا وإنجلترا ودول الخليج كواحدة من أعلى المهن دخلاً وأكترها طلباً في العالم؟"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"لأن في الدول دي المريض مبيحتاجش يروح لدكتور باطنة أو عظام عشان يحوله.. عندهم نظام قانوني اسمه <strong>Direct Access (الوصول المباشر)</strong>.. المريض بيدخل لدكتور العلاج الطبيعي كـ First-Contact Practitioner، هو اللي يفحص ويطلب أشعة ويشخص الحالة الحركية بالكامل!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"بس عشان توصل للمكانة دي، لازم تثبت جدارتك وذاتك.. على سبيل المثال عن طريق امتحان الـ <strong>NPTE</strong> في أمريكا: 225 سؤال في 5 ساعات، بيمتحنك في أدق تفاصيل التشريح، الباطنة، الأعصاب، الأدوية، وحتى الطوارئ والـ Red Flags!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"الشهادة المصرية قوية ومطلوبة برة، بس الفرق بين اللي بيسافر وينجح وبين اللي بيفضل مكانه.. هو التحضير الصح، اللغة، وفهم متطلبات البورد والمعادلة من وأنت طالب في الكلية!"</span>
+          </div>
+        </div>
+
+        <!-- Scene 4: Outro -->
+        <div class="scene-block scene-outro">
+          <div class="scene-header-title">
+            <h4><i data-lucide="check-circle"></i> المشهد الرابع: الخاتمة 🎯</h4>
+            <span class="scene-badge-pill">Punchline & Call to Action</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"خريطه العالم كبيره. والفيزيو الشاطر ملوش حدود جغرافية اخرها مصر !"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-voiceover"><i data-lucide="sparkles"></i> مؤمن وإبراهيم معاً:</span>
+            <span class="dialogue-text" style="color:#B45309; font-weight:900; font-size:1.05rem;">"استنونا فى الحلقه الجايه من فيزيوهايه عالماشى.. وأوعى تنسى تسأل نفسك: ليه فيزيووووو؟!"</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- REEL 08: صدمة أول مريض وسر العيادة المحجوزة (سوق العمل الميداني) -->
+    <article class="reel-script-card" data-category="part2" id="reel-08">
+      <div class="card-top-header">
+        <div class="card-header-left">
+          <div class="card-num-badge">08</div>
+          <div class="card-titles-group">
+            <h3>صدمة أول مريض وسر العيادة المحجوزة 💼🩺</h3>
+            <p>مطابقة للحلقة 08: د. يمنى، د. فاطمة، د. دنيا — ما بعد الدراسة والعمل الميداني</p>
+          </div>
+        </div>
+        <div class="card-header-actions">
+          <button class="btn-copy-card" onclick="copyCardText('reel-08-content')" title="نسخ نص السكريبت">
+            <i data-lucide="copy" style="width:14px; height:14px;"></i> نسخ السكريبت
+          </button>
+        </div>
+      </div>
+
+      <div class="card-meta-bar">
+        <span class="meta-chip"><i data-lucide="tag"></i> <strong>الموضوع:</strong> الصدمة بعد التخرج والانتقال من النظري للميداني</span>
+        <span class="meta-chip"><i data-lucide="sparkles"></i> <strong>السر المهني:</strong> التفكير السريري (Clinical Reasoning) ومهارات التواصل الإنساني</span>
+        <span class="meta-chip"><i data-lucide="clock"></i> <strong>المدة:</strong> 2:45 دقيقة</span>
+      </div>
+
+      <div class="card-body-content" id="reel-08-content">
+        <!-- Scene 1: Sketch -->
+        <div class="scene-block scene-sketch">
+          <div class="scene-header-title">
+            <h4><i data-lucide="drama"></i> المشهد الأول: السكيتش التمثيلي 🎬</h4>
+            <span class="scene-badge-pill">سكيتش جبال المذكرات وأول مريض</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            مؤمن قاعد على كرسي عيادة وحواليه جبال من المذكرات وكتب التشريح الضخمة (Snell و Magee) وعمال يعرق ومرعوب وصوت خبط قوي ع الباب.
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن (برعب وصوت واطي لإبراهيم):</span>
+            <span class="dialogue-text">"الحقني يا هيما.. فيه مريض برة بيقول ضهري واجعني.. أفتح شابتر الـ Lumbar Spine صفحة كام؟! العضله كانت ايه! انا مستقبلى بيضيع"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم (يضحك ويقفل له كل الكتب دي):</span>
+            <span class="dialogue-text">"اقفل كل المراجع دي يا مؤمن.. المريض مش جاي يمتحنك شفوي يا دكتور، المريض بني آدم بيتألم وجاي يدور على حد يسمعه!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن (يبص للكاميرا):</span>
+            <span class="dialogue-text">"ودي الصدمة اللي كلنا بنتصدمها أول ما بننزل سوق العمل!"</span>
+          </div>
+        </div>
+
+        <!-- Scene 2: Intro -->
+        <div class="scene-block scene-intro">
+          <div class="scene-header-title">
+            <h4><i data-lucide="zap"></i> المشهد الثاني: الانترو ⚡</h4>
+            <span class="scene-badge-pill">انترو فيزيوهاية ع الماشي</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="sparkles" style="width:14px; height:14px;"></i>
+            انترو الموسم الختامي بتأثير وميض احتفالي.
+          </div>
+        </div>
+
+        <!-- Scene 3: Core Story -->
+        <div class="scene-block scene-core">
+          <div class="scene-header-title">
+            <h4><i data-lucide="mic"></i> المشهد الثالث: صلب القصة 🎙️</h4>
+            <span class="scene-badge-pill">السر وراء ثقة المريض وبناء السمعة العيادية</span>
+          </div>
+          <div class="stage-direction">
+            <i data-lucide="camera" style="width:14px; height:14px;"></i>
+            نقاش عميق ومحفز للطلاب والخريجين الجدد.
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"كتير من الطلبة بيتخرجوا فاكرين إن التفوق والدرجات العالية في الكلية هي الضمان الوحيد للنجاح في العيادة.. لكن الواقع العملي بيقول حاجة تانية خالص!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"عارف ليه فيه دكتور عيادته محجوزة لـ 6 شهور قدام، ودكتور تاني جايب امتياز وقاعد في العيادة بيهش دبان؟ الفارق مش في حفظ الكتب.. الفارق في <strong>Clinical Reasoning & Soft Skills</strong>."</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"المريض ميعرفش اللاتيني المعقد بتاعك.. المريض محتاج دكتور يشرحله حالته ببساطة، يطمنه، ويسمع شكواه الحقيقية (Active Listening)، ويفهم إن ورا كل وجع في الظهر أو الرقبة ستريس وضغط حياة وخوف من المستقبل."</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"الكتب بتديك الأساس النظري، بس التدريب الميداني والنزول للعيادات من وأنت طالب هو اللي بيعلمك إزاي تلمس المريض صح، إزاي تبني ثقة، وإزاي تحول العلم لشفاء حقيقي على أرض الواقع!"</span>
+          </div>
+        </div>
+
+        <!-- Scene 4: Outro -->
+        <div class="scene-block scene-outro">
+          <div class="scene-header-title">
+            <h4><i data-lucide="check-circle"></i> المشهد الرابع: الخاتمة 🎯</h4>
+            <span class="scene-badge-pill">الختام الكبير لبرنامج فيزيوهاية ع الماشي</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-ibrahim"><i data-lucide="user"></i> إبراهيم:</span>
+            <span class="dialogue-text">"الشهادة بتدخلك المهنة.. بس إنسانيتك وشطارتك في الفهم هي اللي بتصنع اسمك."</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-moamen"><i data-lucide="user"></i> مؤمن:</span>
+            <span class="dialogue-text">"استنونا دايماً في حلقات جديدة ومواضيع تهمكم.. ومتنسوش تتابعوا الموسم الثاني الكامل من بودكاست ليه PHYSIO!"</span>
+          </div>
+          <div class="dialogue-item">
+            <span class="speaker-tag speaker-voiceover"><i data-lucide="sparkles"></i> مؤمن وإبراهيم معاً:</span>
+            <span class="dialogue-text" style="color:#B45309; font-weight:900; font-size:1.15rem;">"no more فيزيوهاية على الماشي in season 2 بس هل فى موسم جديد؟.. وأوعى تنسى تسأل نفسك: ليه فيزيوووووووو؟! 🔥✨"</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- Floating Copy Toast Notification -->
+  <div class="toast-msg" id="toastMsg">
+    <i data-lucide="check-circle-2" style="width:20px; height:20px; color:#F5D061;"></i>
+    <span id="toastText">تم نسخ السكريبت بنجاح!</span>
+  </div>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Scroll Progress Tracker
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const progressBar = document.getElementById('readingProgressBar');
+      if (progressBar) {
+        progressBar.style.width = scrolled + '%';
+      }
+    });
+
+    // Filter Scripts Function
+    function filterScripts(category, btn) {
+      // Update active button
+      document.querySelectorAll('.filter-pill').forEach(pill => pill.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const cards = document.querySelectorAll('.reel-script-card');
+      const headers = document.querySelectorAll('.section-category-header');
+
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-category');
+        if (category === 'all') {
+          card.style.display = 'block';
+        } else if (category === 'promos') {
+          card.style.display = (cardCat === 'promos') ? 'block' : 'none';
+        } else if (category === 'part1') {
+          card.style.display = (cardCat === 'part1') ? 'block' : 'none';
+        } else if (category === 'part2') {
+          card.style.display = (cardCat === 'part2') ? 'block' : 'none';
+        }
+      });
+
+      headers.forEach(header => {
+        const headerCat = header.getAttribute('data-category');
+        if (category === 'all') {
+          header.style.display = 'flex';
+        } else if (category === 'promos') {
+          header.style.display = (headerCat === 'promos') ? 'flex' : 'none';
+        } else if (category === 'part1' || category === 'part2') {
+          header.style.display = (headerCat === 'reels') ? 'flex' : 'none';
+        }
+      });
+    }
+
+    // Search Scripts Function
+    function searchScripts() {
+      const query = document.getElementById('scriptSearchInput').value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.reel-script-card');
+
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        if (text.includes(query)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Copy Card Text to Clipboard
+    function copyCardText(elementId) {
+      const element = document.getElementById(elementId);
+      if (!element) return;
+
+      const text = element.innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        showToast("تم نسخ نص السكريبت إلى الحافظة بنجاح! 📋✨");
+      }).catch(err => {
+        showToast("حدث خطأ أثناء النسخ!");
+      });
+    }
+
+    // Show Toast Function
+    function showToast(message) {
+      const toast = document.getElementById('toastMsg');
+      const toastText = document.getElementById('toastText');
+      if (toast && toastText) {
+        toastText.innerText = message;
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 3000);
+      }
+    }
+  </script>
+</body>
+
+</html>

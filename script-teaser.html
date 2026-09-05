@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>سكريبت إعلان الموسم الثاني | Time Line Destruction — بودكاست ليه PHYSIO</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="shortcut icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Google Fonts: Cairo & Tajawal & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap"
+    rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --primary-dark: #1A090D;
+      --primary-maroon: #3D1E24;
+      --accent-gold: #D4AF37;
+      --accent-gold-bright: #F5D061;
+      --accent-gold-glow: rgba(212, 175, 55, 0.35);
+      --accent-orange: #EA580C;
+      --accent-orange-bright: #FB923C;
+      --accent-orange-glow: rgba(234, 88, 12, 0.45);
+      --accent-teal: #0D9488;
+      --border-gold: rgba(212, 175, 55, 0.4);
+      --border-orange: rgba(234, 88, 12, 0.45);
+      --bg-dark: #0A0305;
+      --bg-card: rgba(255, 255, 255, 0.96);
+      --text-main: #2D1A1E;
+      --text-soft: #5C3A42;
+      --radius-sm: 10px;
+      --radius-md: 18px;
+      --radius-lg: 26px;
+      --radius-full: 9999px;
+      --shadow-gold-glow: 0 0 35px rgba(212, 175, 55, 0.3);
+      --shadow-orange-glow: 0 0 40px rgba(234, 88, 12, 0.4);
+      --shadow-lg: 0 16px 45px rgba(0, 0, 0, 0.4);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      font-family: 'Cairo', 'Tajawal', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: #FFFFFF;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      padding-bottom: 100px;
+    }
+
+    /* Fixed Parallax Background */
+    .fixed-bg-layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: url('assets/background1.webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      filter: brightness(0.25) contrast(1.2);
+      z-index: -2;
+    }
+
+    .fixed-bg-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at top center, rgba(61, 30, 36, 0.75) 0%, rgba(10, 3, 5, 0.97) 100%);
+      z-index: -1;
+    }
+
+    /* Top Reading Progress Bar */
+    .reading-progress-track {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 1001;
+    }
+
+    .reading-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #EA580C, #F5D061, #D4AF37);
+      box-shadow: 0 0 14px #FB923C;
+      transition: width 0.15s ease-out;
+    }
+
+    /* Sticky Navbar */
+    .top-navbar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: rgba(26, 9, 13, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1.5px solid var(--border-orange);
+      z-index: 1000;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .nav-left-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .btn-back-plan {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 18px;
+      background: linear-gradient(135deg, rgba(234, 88, 12, 0.2), rgba(212, 175, 55, 0.2));
+      border: 1.5px solid var(--accent-orange);
+      border-radius: var(--radius-full);
+      color: #FED7AA;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 800;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+
+    .btn-back-plan:hover {
+      background: linear-gradient(135deg, #EA580C, #D4AF37);
+      color: #1A090D;
+      transform: translateX(4px);
+      box-shadow: var(--shadow-orange-glow);
+    }
+
+    .brand-title-box h1 {
+      font-size: 1.08rem;
+      font-weight: 900;
+      color: #FED7AA;
+      line-height: 1.25;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-title-box p {
+      font-size: 0.78rem;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .nav-right-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #FFFFFF;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .nav-action-btn:hover {
+      background: rgba(234, 88, 12, 0.25);
+      border-color: var(--accent-orange);
+      color: #FED7AA;
+    }
+
+    /* Container */
+    .page-main-container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 16px;
+    }
+
+    /* Cinematic Hero Banner */
+    .cinematic-hero-card {
+      background: linear-gradient(135deg, rgba(42, 16, 22, 0.95) 0%, rgba(20, 7, 10, 0.98) 100%);
+      border: 2px solid var(--accent-orange);
+      border-radius: var(--radius-lg);
+      padding: 34px 28px;
+      box-shadow: var(--shadow-orange-glow);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    .cinematic-hero-card::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: -10%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(234, 88, 12, 0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-pills-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    .hero-pill-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.82rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #C2410C 0%, #7C2D12 100%);
+      color: #FED7AA;
+      border: 1px solid #EA580C;
+    }
+
+    .hero-pill-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero-title {
+      font-size: 2.3rem;
+      font-weight: 900;
+      color: #FFFFFF;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(90deg, #FED7AA 0%, #FB923C 50%, #D4AF37 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-description {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.88);
+      line-height: 1.7;
+      margin-bottom: 22px;
+    }
+
+    .cinematic-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px dashed rgba(234, 88, 12, 0.4);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+    }
+
+    .meta-box-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.88rem;
+      color: #FED7AA;
+      font-weight: 700;
+    }
+
+    .meta-box-item i {
+      color: var(--accent-orange-bright);
+    }
+
+    /* Script Container Card */
+    .teaser-script-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 2px solid var(--border-gold);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    .script-header-bar {
+      background: linear-gradient(135deg, #2D1418 0%, #1A090D 100%);
+      color: #FFFFFF;
+      padding: 22px 28px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      border-bottom: 2px solid var(--accent-orange);
+    }
+
+    .script-header-bar h2 {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: #FED7AA;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-copy-teaser {
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, #EA580C 0%, #C2410C 100%);
+      border: 1px solid #FB923C;
+      color: #FFFFFF;
+      font-size: 0.85rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(234, 88, 12, 0.4);
+    }
+
+    .btn-copy-teaser:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(234, 88, 12, 0.6);
+      background: linear-gradient(135deg, #FB923C 0%, #EA580C 100%);
+    }
+
+    .script-body-content {
+      padding: 28px;
+      color: var(--text-main);
+    }
+
+    /* Scene Block Container */
+    .scene-block {
+      background: #FFFFFF;
+      border: 1px solid rgba(61, 30, 36, 0.12);
+      border-radius: var(--radius-md);
+      margin-bottom: 24px;
+      padding: 22px 24px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+      border-right: 6px solid #EA580C;
+    }
+
+    .scene-block:nth-child(2) {
+      border-right-color: #D97706;
+    }
+
+    .scene-block:nth-child(3) {
+      border-right-color: #0D9488;
+    }
+
+    .scene-title-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed rgba(61, 30, 36, 0.18);
+    }
+
+    .scene-title-header h3 {
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: #9A3412;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .scene-lens-pill {
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      background: #FFEDD5;
+      color: #9A3412;
+      border: 1px solid #FDBA74;
+    }
+
+    .stage-instruction-box {
+      font-size: 0.95rem;
+      color: #374151;
+      line-height: 1.8;
+      background: #FFF7ED;
+      border: 1px solid #FFEDD5;
+      padding: 14px 16px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 14px;
+    }
+
+    .stage-instruction-box strong {
+      color: #9A3412;
+    }
+
+    .vfx-alert-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FCD34D;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 800;
+      margin-top: 8px;
+    }
+
+    .dialogue-voice-echo {
+      background: linear-gradient(135deg, #1A090D 0%, #2D1418 100%);
+      color: #FED7AA;
+      padding: 16px 20px;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--accent-orange);
+      margin-top: 14px;
+      text-align: center;
+      font-size: 1.1rem;
+      font-weight: 900;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Toast Notification */
+    .toast-msg {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: linear-gradient(135deg, #1A090D 0%, #3D1E24 100%);
+      color: #FED7AA;
+      border: 1.5px solid #EA580C;
+      padding: 12px 24px;
+      border-radius: var(--radius-full);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      font-weight: 800;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 2000;
+      opacity: 0;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+    }
+
+    .toast-msg.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 1.6rem;
+      }
+
+      .script-body-content {
+        padding: 16px 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Progress Bar -->
+  <div class="reading-progress-track">
+    <div class="reading-progress-bar" id="readingProgressBar"></div>
+  </div>
+
+  <!-- Background Layers -->
+  <div class="fixed-bg-layer"></div>
+  <div class="fixed-bg-overlay"></div>
+
+  <!-- Header Navbar -->
+  <header class="top-navbar">
+    <div class="nav-left-group">
+      <a href="index.html" class="btn-back-plan" title="الرجوع إلى صفحة الخطة الرئيسية">
+        <i data-lucide="arrow-right" style="width:16px; height:16px;"></i>
+        <span>الخطة الكاملة</span>
+      </a>
+      <div class="brand-title-box">
+        <h1>
+          <i data-lucide="sparkles" style="width:18px; height:18px; color:#FB923C;"></i>
+          إعلان الموسم الثاني | Time Line Destruction ⏳
+        </h1>
+        <p>بودكاست ليه PHYSIO — التيزر السينمائي الرسمي</p>
+      </div>
+    </div>
+
+    <div class="nav-right-actions">
+      <a href="script-reels.html" class="nav-action-btn" title="الانتقال إلى سكريبتات فيزيوهاية ع الماشي">
+        <i data-lucide="clapperboard" style="width:15px; height:15px; color:#F59E0B;"></i>
+        <span>فيزيوهاية ع الماشي</span>
+      </a>
+      <button class="nav-action-btn" onclick="window.print()" title="طباعة أو تصدير PDF">
+        <i data-lucide="printer" style="width:15px; height:15px;"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="page-main-container">
+
+    <!-- HERO BANNER -->
+    <section class="cinematic-hero-card">
+      <div class="hero-pills-row">
+        <span class="hero-pill-badge">
+          <i data-lucide="flame" style="width:14px; height:14px;"></i>
+          Official Teaser Trailer
+        </span>
+        <span class="hero-pill-tag">
+          <i data-lucide="film" style="width:14px; height:14px;"></i>
+          Cinematic VFX & Teleportation
+        </span>
+        <span class="hero-pill-tag">
+          <i data-lucide="calendar" style="width:14px; height:14px;"></i>
+          Season 2 Launch 2026
+        </span>
+      </div>
+
+      <h1 class="hero-title">
+        سكريبت إعلان الموسم الثاني <span>Time Line Destruction</span> ⏳⚡
+      </h1>
+
+      <p class="hero-description">
+        السيناريو الإخراجي والدرامي للتيزر التشويقي الرسمي للموسم الثاني من بودكاست <strong>ليه PHYSIO</strong>. فكرة قائمة
+        على تدمير الخط الزمني والانتقال الفضائي والزمني (Teleporting) للتيم نحو قلب كلية العلاج الطبيعي بجامعة كفر الشيخ،
+        ليكتشفوا اللوجو والهوية البصرية الجديدة واستديو الموسم الثاني.
+      </p>
+
+      <div class="cinematic-meta-grid">
+        <div class="meta-box-item">
+          <i data-lucide="camera"></i>
+          <span><strong>العدسات:</strong> 16mm Wide Angle & 50mm / 35mm Prime</span>
+        </div>
+        <div class="meta-box-item">
+          <i data-lucide="users"></i>
+          <span><strong>الأبطال:</strong> إبراهيم، مؤمن، د. يمنى، وفريق العمل كاملاً</span>
+        </div>
+        <div class="meta-box-item">
+          <i data-lucide="palette"></i>
+          <span><strong>لوحة الألوان:</strong> برتقالي متوهج (اللوجو الجديد) مع أخضر الكلية</span>
+        </div>
+        <div class="meta-box-item">
+          <i data-lucide="zap"></i>
+          <span><strong>المؤثرات:</strong> Teleporting Animation & Screen Glitch</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCRIPT CARD -->
+    <article class="teaser-script-card" id="teaserScript">
+      <div class="script-header-bar">
+        <h2>
+          <i data-lucide="scroll-text" style="width:22px; height:22px; color:#FB923C;"></i>
+          السيناريو الكامل والمشاهد الإخراجية 🎬
+        </h2>
+        <button class="btn-copy-teaser" onclick="copyTeaserText()" title="نسخ نص السيناريو الكامل">
+          <i data-lucide="copy" style="width:15px; height:15px;"></i>
+          <span>نسخ السكريبت</span>
+        </button>
+      </div>
+
+      <div class="script-body-content" id="teaserTextContent">
+
+        <!-- SCENE 1 -->
+        <div class="scene-block">
+          <div class="scene-title-header">
+            <h3><i data-lucide="monitor"></i> المشهد الأول 🎬</h3>
+            <span class="scene-lens-pill">Wide angle 16mm side view — 50mm Close on Face</span>
+          </div>
+
+          <div class="stage-instruction-box">
+            <strong>المكان والديكور:</strong> غرفة مكتب مغلقة، إضاءة هادئة ومركزة.
+            <br />
+            <strong>حركة الكاميرا والأداء:</strong> إبراهيم قاعد في الأوضة على المكتب، ماسك كرة تنس بيرميها ع الحيط وبترجعله بإيقاع منتظم وتفكير عميق.
+            <br />
+            فاتح قدامه لوجو <em>"ليه فيزيو؟"</em> الجديد على الشاشتين أمامه.
+          </div>
+
+          <div class="vfx-alert-pill">
+            <i data-lucide="sparkles" style="width:14px; height:14px;"></i>
+            <strong>VFX & Transition:</strong> فجأة اللوجو يتحول للوجو الجديد بدل القديم بشكل غريب مع تشويش كهرومغناطيسي مفاجئ.. وفجأة إبراهيم يختفي تماماً من على الكرسي! والكرة تقع على الأرض وترتد وحدها.
+          </div>
+        </div>
+
+        <!-- SCENE 2 -->
+        <div class="scene-block">
+          <div class="scene-title-header">
+            <h3><i data-lucide="activity"></i> المشهد الثاني 🎬</h3>
+            <span class="scene-lens-pill">Close over shoulder 50mm — Wide angle 16mm</span>
+          </div>
+
+          <div class="stage-instruction-box">
+            <strong>المكان والأداء:</strong> مؤمن في ملعب كرة قدم مفتوح بملابس رياضية، ماسك الموبايل في إيده وفاتح لوجو <em>"ليه فيزيو؟"</em>.
+          </div>
+
+          <div class="stage-instruction-box">
+            <strong>حركة الكاميرا والإضاءة:</strong> <em>(Wide angle 16mm)</em> مؤمن بيبص للموبايل، وفجأة إضاءة برتقالية شديدة متوهجة <strong>(لون اللوجو الجديد)</strong> بتظهر على وشه وتملأ الكادر بالكامل.
+          </div>
+
+          <div class="vfx-alert-pill">
+            <i data-lucide="sparkles" style="width:14px; height:14px;"></i>
+            <strong>VFX & Transition:</strong> فجأة مؤمن يختفي في لمح البصر والموبايل يقع على عشب الملعب وهو مفتوح ع اللوجو الجديد المتوهج!
+          </div>
+        </div>
+
+        <!-- SCENE 3 -->
+        <div class="scene-block">
+          <div class="scene-title-header">
+            <h3><i data-lucide="door-open"></i> المشهد الثالث 🎬</h3>
+            <span class="scene-lens-pill">ممر الكلية — Close 35mm on all team faces</span>
+          </div>
+
+          <div class="stage-instruction-box">
+            <strong>المكان:</strong> ممر في كلية العلاج الطبيعي (ثيم ألوان أخضر داكن خافت).
+            <br />
+            <strong>الظهور:</strong> إبراهيم يظهر فجأة بأنيميشن <em>Teleporting</em>، وبعده فوراً يظهر مؤمن!
+          </div>
+
+          <div class="stage-instruction-box">
+            <strong>الحركة والترقب:</strong> ظلال ناس مش واضحة في آخر الممر.. مؤمن وإبراهيم يبصوا لبعض بدهشة واستغراب، ويبدأوا يتحركوا براحة وهدوء ناحية النور.
+            <br />
+            يشوفوا <strong>التيم كله</strong> واقف قدام المكتب الوحيد اللي طالع منه نور دافئ ساطع.
+            <br />
+            <em>Close 35mm on all team faces</em>: تعابير ترقب وفضول على وجوه فريق العمل.
+          </div>
+
+          <div class="stage-instruction-box">
+            <strong>المفاجأة الكبرى:</strong> دكتورة <strong>يمنى</strong> تتقدم وتفتح الباب ببطء.. تلاقي نفسها قاعدة بتقدم حلقة البودكاست مع شخص مجهول مش باين في الكادر!
+            <br />
+            يرجع المشهد على وشها وهي مصدومة.. بعدين تبدأ تبتسم بثقة وفخر.
+          </div>
+
+          <div class="dialogue-voice-echo">
+            <i data-lucide="volume-2" style="width:20px; height:20px; vertical-align:middle; margin-left:6px; color:#FB923C;"></i>
+            صوت د. يمنى يتردد بصدى عميق (Echo) عدة مرات:
+            <br />
+            <span style="font-size:1.4rem; color:#FFFFFF; letter-spacing:1px;">"Season 2... Season 2... Season 2"</span>
+          </div>
+
+          <div class="stage-instruction-box" style="margin-top: 14px; text-align: center; background: #0A0305; color: #FED7AA; border-color: #EA580C;">
+            ثم <strong>Dip to Black</strong> مفاجئ، يليه ظهور لوجو الموسم الثاني المشع:
+            <br />
+            <strong style="font-size:1.5rem; color:#FB923C; display:inline-block; margin-top:8px;">&lt; ليه PHYSIO؟ — الموسم الثاني 2026 &gt;</strong>
+          </div>
+        </div>
+
+      </div>
+    </article>
+
+  </main>
+
+  <!-- Toast Notification -->
+  <div class="toast-msg" id="toastMsg">
+    <i data-lucide="check-circle-2" style="width:20px; height:20px; color:#FB923C;"></i>
+    <span>تم نسخ سيناريو الإعلان بنجاح! 📋🎬</span>
+  </div>
+
+  <script>
+    // Initialize Icons
+    lucide.createIcons();
+
+    // Scroll Progress Tracker
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const progressBar = document.getElementById('readingProgressBar');
+      if (progressBar) {
+        progressBar.style.width = scrolled + '%';
+      }
+    });
+
+    // Copy Script
+    function copyTeaserText() {
+      const text = document.getElementById('teaserTextContent').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('toastMsg');
+        toast.classList.add('show');
+        setTimeout(() => toast.classList.remove('show'), 3000);
+      });
+    }
+  </script>
+</body>
+
+</html>

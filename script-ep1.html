@@ -1,0 +1,2323 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>سكريبت الحلقة الأولى | وثائقي العنوان — ليه PHYSIO</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="shortcut icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Google Fonts: Cairo & Tajawal & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      /* Deep Warm Mahogany & Luxury Gold System (Matching index.html) */
+      --bg-dark: #1A090D;
+      --bg-card: rgba(255, 255, 255, 0.96);
+      
+      --primary-brown: #3D1E24;
+      --primary-dark: #1A090D;
+      --primary-deep: #14070A;
+
+      --accent-gold: #D4AF37;
+      --accent-gold-bright: #F5D061;
+      --accent-gold-glow: rgba(245, 208, 97, 0.35);
+
+      --accent-teal: #0D9488;
+      --accent-teal-light: #14B8A6;
+      --accent-teal-glow: rgba(20, 184, 166, 0.3);
+
+      --text-main: #2A1418;
+      --text-soft: #3D1E24;
+      --text-muted: #6B4E54;
+      --border-gold: rgba(212, 175, 55, 0.45);
+
+      --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.45);
+      --shadow-gold-glow: 0 0 35px rgba(212, 175, 55, 0.25);
+      --shadow-teal-glow: 0 0 30px rgba(13, 148, 136, 0.25);
+
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 28px;
+      --radius-full: 9999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', 'Tajawal', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.75;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Fixed Parallax Background (Matching index.html) */
+    .fixed-bg-layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: url('assets/background1.webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      z-index: -2;
+      transform: scale(1.02);
+    }
+
+    .fixed-bg-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at center, rgba(26, 9, 13, 0.45) 0%, rgba(15, 5, 8, 0.94) 100%);
+      z-index: -1;
+    }
+
+    /* Top Reading Progress Bar */
+    .progress-bar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 9999;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #0D9488, #F5D061);
+      box-shadow: 0 0 12px #F5D061;
+      transition: width 0.15s ease-out;
+    }
+
+    /* Top Sticky Header */
+    .top-navbar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: rgba(26, 9, 13, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-gold);
+      z-index: 1000;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-left-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .btn-back-plan {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 16px;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.18), rgba(13, 148, 136, 0.18));
+      border: 1.5px solid var(--border-gold);
+      border-radius: var(--radius-full);
+      color: var(--accent-gold-bright);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 800;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+
+    .btn-back-plan:hover {
+      background: linear-gradient(135deg, #D4AF37, #F5D061);
+      color: #1A090D;
+      transform: translateX(3px);
+      box-shadow: var(--shadow-gold-glow);
+    }
+
+    .brand-title-box {
+      min-width: 0;
+    }
+
+    .brand-title-box h1 {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: var(--accent-gold-bright);
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .brand-title-box p {
+      font-size: 0.72rem;
+      color: #E6D0D5;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav-actions-group {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .icon-action-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border-gold);
+      color: var(--accent-gold-bright);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.25s ease;
+    }
+
+    .icon-action-btn:hover {
+      background: linear-gradient(135deg, #D4AF37, #F5D061);
+      color: #1A090D;
+      transform: translateY(-2px);
+      box-shadow: 0 0 15px rgba(245, 208, 97, 0.4);
+    }
+
+    /* Mobile Responsive Polish for Top Header */
+    @media (max-width: 768px) {
+      .top-navbar {
+        padding: 8px 12px;
+        gap: 8px;
+      }
+      .nav-left-group {
+        gap: 8px;
+      }
+      .btn-back-plan {
+        padding: 6px 12px;
+        font-size: 0.78rem;
+        gap: 4px;
+      }
+      .brand-title-box h1 {
+        font-size: 0.9rem;
+      }
+      .brand-title-box p {
+        font-size: 0.65rem;
+      }
+      .icon-action-btn {
+        width: 32px;
+        height: 32px;
+      }
+      .icon-action-btn i, .icon-action-btn svg {
+        width: 15px !important;
+        height: 15px !important;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .btn-back-text {
+        display: none;
+      }
+      .btn-back-plan {
+        padding: 0;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .brand-title-box h1 {
+        font-size: 0.84rem;
+      }
+      .brand-title-box p {
+        font-size: 0.62rem;
+      }
+      .nav-actions-group {
+        gap: 4px;
+      }
+    }
+
+    /* Container */
+    .main-container {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 30px 20px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (max-width: 768px) {
+      .main-container {
+        padding: 16px 12px 75px;
+      }
+      .hero-script-card {
+        padding: 22px 16px;
+        margin-bottom: 24px;
+      }
+      .scene-card {
+        padding: 18px 14px;
+        margin-bottom: 18px;
+      }
+      .gear-section-college, .gear-section-director {
+        padding: 20px 14px;
+      }
+    }
+
+    /* Quick View Filters Bar */
+    .filter-tabs-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 6px 4px 18px;
+      margin-bottom: 25px;
+      scrollbar-width: none;
+    }
+
+    .filter-tabs-wrapper::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-pill-btn {
+      white-space: nowrap;
+      padding: 9px 20px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-gold);
+      background: rgba(255, 255, 255, 0.94);
+      color: var(--primary-brown);
+      font-size: 0.86rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(12px);
+      transition: all 0.3s ease;
+    }
+
+    .filter-pill-btn:hover {
+      background: #FFFFFF;
+      border-color: var(--accent-gold);
+      color: #1A090D;
+      transform: translateY(-2px);
+    }
+
+    .filter-pill-btn.active {
+      background: linear-gradient(135deg, #0D9488 0%, #042F2C 100%);
+      border-color: var(--accent-teal-light);
+      color: #FFFFFF;
+      box-shadow: 0 8px 25px rgba(13, 148, 136, 0.45);
+    }
+
+    .filter-pill-btn.gold-active.active {
+      background: linear-gradient(135deg, #3D1E24 0%, #1A090D 100%);
+      border-color: var(--accent-gold);
+      color: var(--accent-gold-bright);
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.35);
+    }
+
+    /* Hero Script Metadata Card */
+    .hero-script-card {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 250, 242, 0.95) 100%);
+      border: 2px solid var(--accent-gold);
+      border-radius: var(--radius-lg);
+      padding: 34px 28px;
+      box-shadow: var(--shadow-lg), var(--shadow-gold-glow);
+      margin-bottom: 35px;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(25px);
+    }
+
+    .hero-script-card::before {
+      content: '';
+      position: absolute;
+      top: -40px;
+      left: -40px;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, var(--accent-gold-glow) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .script-header-badges {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .ep-tag {
+      font-size: 0.82rem;
+      font-weight: 900;
+      padding: 5px 16px;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, #0D9488 0%, #042F2C 100%);
+      color: #FFFFFF;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 15px rgba(13, 148, 136, 0.4);
+    }
+
+    .ep-status-pill {
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      background: rgba(61, 30, 36, 0.08);
+      border: 1px solid var(--accent-gold);
+      color: var(--primary-brown);
+    }
+
+    .script-title {
+      font-size: 1.95rem;
+      font-weight: 900;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    @media (min-width: 768px) {
+      .script-title {
+        font-size: 2.35rem;
+      }
+    }
+
+    .script-subtitle {
+      font-size: 1.05rem;
+      color: var(--primary-brown);
+      font-weight: 700;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    /* Meta Attributes Grid */
+    .script-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    @media (min-width: 640px) {
+      .script-meta-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .meta-box-item {
+      background: rgba(61, 30, 36, 0.04);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      text-align: center;
+    }
+
+    .meta-box-item .meta-lbl {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .meta-box-item .meta-val {
+      font-size: 0.96rem;
+      font-weight: 800;
+      color: var(--text-main);
+    }
+
+    /* Core Directorial Vision Callout */
+    .vision-callout {
+      background: rgba(13, 148, 136, 0.08);
+      border-right: 4px solid var(--accent-teal);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-top: 15px;
+    }
+
+    .vision-callout-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #0F766E;
+      font-weight: 900;
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .vision-callout-p {
+      font-size: 0.95rem;
+      color: var(--text-main);
+      line-height: 1.8;
+    }
+
+    /* Permissions Section (Special Box) */
+    /* Permissions & Equipment Sections */
+    .gear-section-college {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 241, 242, 0.95) 100%);
+      border: 2px solid #E11D48;
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-lg), 0 10px 30px rgba(225, 29, 72, 0.12);
+      margin-bottom: 28px;
+      position: relative;
+      backdrop-filter: blur(25px);
+    }
+
+    .gear-section-director {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 253, 250, 0.95) 100%);
+      border: 2px solid var(--accent-teal);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-lg), 0 10px 30px rgba(13, 148, 136, 0.15);
+      margin-bottom: 40px;
+      position: relative;
+      backdrop-filter: blur(25px);
+    }
+
+    .perm-badge-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .perm-icon-box {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-md);
+      background: rgba(225, 29, 72, 0.12);
+      border: 1px solid #E11D48;
+      color: #E11D48;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .perm-icon-box.director-icon {
+      background: rgba(13, 148, 136, 0.12);
+      border-color: var(--accent-teal);
+      color: var(--accent-teal);
+    }
+
+    .perm-badge-title h3 {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: #9F1239;
+    }
+
+    .gear-section-director .perm-badge-title h3 {
+      color: #0F766E;
+    }
+
+    .perm-badge-title span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .perm-items-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .perm-items-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .perm-item-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(225, 29, 72, 0.22);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .gear-section-director .perm-item-card {
+      border-color: rgba(13, 148, 136, 0.25);
+    }
+
+    .perm-item-card i {
+      color: #E11D48;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    .gear-section-director .perm-item-card i {
+      color: #0D9488;
+    }
+
+    .perm-item-card strong {
+      display: block;
+      color: #881337;
+      font-size: 0.92rem;
+      margin-bottom: 3px;
+    }
+
+    .gear-section-director .perm-item-card strong {
+      color: #0F766E;
+    }
+
+    .perm-item-card p {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    .lens-grid-pills {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    @media (min-width: 600px) {
+      .lens-grid-pills {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .lens-pill {
+      background: rgba(13, 148, 136, 0.06);
+      border: 1px solid rgba(13, 148, 136, 0.25);
+      border-radius: var(--radius-sm);
+      padding: 6px 10px;
+      text-align: center;
+    }
+
+    .lens-pill strong {
+      display: block;
+      color: #0F766E !important;
+      font-size: 0.86rem !important;
+      margin-bottom: 2px !important;
+    }
+
+    .lens-pill span {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      display: block;
+      line-height: 1.3;
+    }
+
+    /* Section Separator Headers */
+    .section-timeline-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 45px 0 25px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border-gold);
+    }
+
+    .timeline-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .timeline-title-wrap h2 {
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--accent-gold-bright);
+    }
+
+    .timeline-count-badge {
+      font-size: 0.8rem;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid var(--border-gold);
+      color: var(--accent-gold-bright);
+      padding: 3px 14px;
+      border-radius: var(--radius-full);
+      font-weight: 800;
+    }
+
+    /* Scene Card (Timeline Screenplay Item) */
+    .scene-card {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 250, 245, 0.94) 100%);
+      border: 1.5px solid rgba(212, 175, 55, 0.35);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      margin-bottom: 26px;
+      box-shadow: var(--shadow-lg), 0 0 25px rgba(0, 0, 0, 0.2);
+      position: relative;
+      backdrop-filter: blur(25px);
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .scene-card:hover {
+      border-color: var(--accent-gold);
+      box-shadow: var(--shadow-lg), var(--shadow-gold-glow);
+      transform: translateY(-3px);
+    }
+
+    .scene-card.highlight-case {
+      border: 2px solid var(--accent-teal);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 253, 250, 0.95) 100%);
+    }
+
+    .scene-top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .timestamp-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.92rem;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, #3D1E24 0%, #1A090D 100%);
+      color: var(--accent-gold-bright);
+      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .scene-card.highlight-case .timestamp-badge {
+      background: linear-gradient(135deg, #0D9488 0%, #042F2C 100%);
+      color: #FFFFFF;
+    }
+
+    .scene-type-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .tag-shot-pov {
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      background: rgba(13, 148, 136, 0.12);
+      border: 1px solid #0D9488;
+      color: #0F766E;
+    }
+
+    .tag-shot-ext {
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid #F59E0B;
+      color: #B45309;
+    }
+
+    .tag-shot-audio {
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      background: rgba(168, 85, 247, 0.12);
+      border: 1px solid #A855F7;
+      color: #7E22CE;
+    }
+
+    .scene-title-h3 {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: var(--primary-dark);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Script Elements Boxes */
+    .script-block {
+      margin-bottom: 16px;
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+    }
+
+    /* Visual Shot Description */
+    .block-visual {
+      background: #F0F9FF;
+      border-right: 4px solid #0284C7;
+      color: #0C4A6E;
+    }
+
+    .block-label {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .block-visual .block-label { color: #0369A1; }
+
+    /* Audio / Foley */
+    .block-audio {
+      background: #FAF5FF;
+      border-right: 4px solid #9333EA;
+      color: #581C87;
+    }
+
+    .block-audio .block-label { color: #7E22CE; }
+
+    /* On Screen Text Display (HUD Style) */
+    .block-onscreen {
+      background: linear-gradient(135deg, #FEFCE8 0%, #FFFBEB 100%);
+      border: 1.5px dashed #D97706;
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .block-onscreen .hud-tag {
+      font-size: 0.72rem;
+      font-weight: 900;
+      color: #B45309;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-block;
+      margin-bottom: 4px;
+    }
+
+    .block-onscreen .hud-text {
+      font-family: 'Cairo', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: #451A03;
+      letter-spacing: 0.5px;
+    }
+
+    /* Dialogue Stream */
+    .dialogue-stream {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .dialogue-bubble {
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      position: relative;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    }
+
+    .dialogue-bubble.speaker-intern {
+      border-right: 4px solid var(--accent-gold);
+    }
+
+    .dialogue-bubble.speaker-supervisor {
+      border-right: 4px solid var(--accent-teal);
+    }
+
+    .dialogue-bubble.speaker-patient {
+      border-right: 4px solid #F97316;
+    }
+
+    .dialogue-bubble.speaker-doctor {
+      border-right: 4px solid #A855F7;
+    }
+
+    .dialogue-bubble.speaker-vo {
+      border-right: 4px solid #EC4899;
+      background: #FFF1F2;
+    }
+
+    .speaker-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .speaker-name {
+      font-size: 0.85rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .speaker-intern .speaker-name { color: #A16207; }
+    .speaker-supervisor .speaker-name { color: #0F766E; }
+    .speaker-patient .speaker-name { color: #C2410C; }
+    .speaker-doctor .speaker-name { color: #7E22CE; }
+    .speaker-vo .speaker-name { color: #BE185D; }
+
+    .speaker-action-note {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    .dialogue-line {
+      font-size: 0.98rem;
+      color: #1A090D;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    /* Directorial Subtext / Notes Card */
+    .directorial-subtext {
+      background: #FEF9C3;
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-size: 0.85rem;
+      color: #854D0E;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    /* Directorial Master Guidelines (10 Points) */
+    .guidelines-wrapper {
+      margin-top: 50px;
+    }
+
+    .guidelines-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-top: 25px;
+    }
+
+    @media (min-width: 768px) {
+      .guidelines-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .guide-card {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 250, 240, 0.93) 100%);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(20px);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .guide-card:hover {
+      border-color: var(--accent-gold-bright);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg), var(--shadow-gold-glow);
+    }
+
+    .guide-num-badge {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3D1E24 0%, #1A090D 100%);
+      color: var(--accent-gold-bright);
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+
+    .guide-card h4 {
+      font-size: 1.12rem;
+      font-weight: 900;
+      color: #78350F;
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .guide-card p {
+      font-size: 0.9rem;
+      color: var(--text-main);
+      line-height: 1.7;
+    }
+
+    /* Floating Scene Quick Jump (Bottom Action Bar) */
+    .floating-quick-dock {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(26, 9, 13, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1.5px solid var(--accent-gold);
+      border-radius: var(--radius-full);
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7), var(--shadow-gold-glow);
+      z-index: 999;
+      max-width: 90vw;
+    }
+
+    .dock-btn {
+      background: none;
+      border: none;
+      color: #F3E8E2;
+      font-size: 0.84rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .dock-btn:hover {
+      background: rgba(212, 175, 55, 0.2);
+      color: var(--accent-gold-bright);
+    }
+
+    .dock-btn.active {
+      background: linear-gradient(135deg, #D4AF37 0%, #8A6812 100%);
+      color: #1A090D;
+    }
+
+    /* Toast Notification */
+    .toast-popup {
+      position: fixed;
+      bottom: 90px;
+      left: 50%;
+      transform: translateX(-50%) translateY(30px);
+      background: linear-gradient(135deg, #3D1E24 0%, #1A090D 100%);
+      color: var(--accent-gold-bright);
+      border: 1px solid var(--accent-gold);
+      padding: 10px 24px;
+      border-radius: var(--radius-full);
+      font-weight: 900;
+      font-size: 0.9rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toast-popup.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Print Stylesheet */
+    @media print {
+      body {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+      }
+      .top-navbar, .floating-quick-dock, .filter-tabs-wrapper, .fixed-bg-layer, .fixed-bg-overlay, .progress-bar-container {
+        display: none !important;
+      }
+      .scene-card, .hero-script-card, .permissions-section, .guide-card {
+        border: 1px solid #CCCCCC !important;
+        box-shadow: none !important;
+        background: #FFFFFF !important;
+        page-break-inside: avoid;
+        color: #000000 !important;
+      }
+      .dialogue-line, .block-visual, .block-audio, .block-onscreen {
+        color: #000000 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Parallax Background Layers (Matching index.html) -->
+  <div class="fixed-bg-layer"></div>
+  <div class="fixed-bg-overlay"></div>
+
+  <!-- Top Progress Bar -->
+  <div class="progress-bar-container">
+    <div class="progress-bar-fill" id="readingProgress"></div>
+  </div>
+
+  <!-- Top Sticky Navigation -->
+  <header class="top-navbar">
+    <div class="nav-left-group">
+      <a href="index.html#sec-1" class="btn-back-plan" title="الرجوع إلى خطة الموسم الثاني">
+        <i data-lucide="arrow-right" style="width:16px; height:16px;"></i>
+        <span class="btn-back-text">خطة الموسم</span>
+      </a>
+      <div class="brand-title-box">
+        <h1>الحلقة الأولى: العنوان</h1>
+        <p>بودكاست ليه PHYSIO • الموسم الثاني 2026</p>
+      </div>
+    </div>
+
+    <div class="nav-actions-group">
+      <button class="icon-action-btn" onclick="adjustFontSize(1)" title="تكبير الخط">
+        <i data-lucide="zoom-in" style="width:18px; height:18px;"></i>
+      </button>
+      <button class="icon-action-btn" onclick="adjustFontSize(-1)" title="تصغير الخط">
+        <i data-lucide="zoom-out" style="width:18px; height:18px;"></i>
+      </button>
+      <button class="icon-action-btn" onclick="copyScriptLink()" title="نسخ رابط السكريبت المباشر">
+        <i data-lucide="link" style="width:18px; height:18px;"></i>
+      </button>
+      <button class="icon-action-btn" onclick="window.print()" title="طباعة أو تصدير PDF">
+        <i data-lucide="printer" style="width:18px; height:18px;"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-container" id="scriptContent">
+
+    <!-- Filter Quick Tabs -->
+    <div class="filter-tabs-wrapper">
+      <button class="filter-pill-btn active" onclick="filterScenes('all', this)">
+        <i data-lucide="film" style="width:15px; height:15px;"></i>
+        <span>السكريبت والتايم لاين كامل</span>
+      </button>
+      <button class="filter-pill-btn" onclick="filterScenes('case', this)">
+        <i data-lucide="stethoscope" style="width:15px; height:15px;"></i>
+        <span>الحالات السريرية الثلاث فقط</span>
+      </button>
+      <button class="filter-pill-btn" onclick="scrollToSection('permissionsSection', this)">
+        <i data-lucide="shield-alert" style="width:15px; height:15px; color:#E11D48;"></i>
+        <span>التصاريح والموافقات المطلوبة</span>
+      </button>
+      <button class="filter-pill-btn gold-active" onclick="scrollToSection('guidelinesSection', this)">
+        <i data-lucide="sparkles" style="width:15px; height:15px;"></i>
+        <span>رؤية ومنهجية المخرج</span>
+      </button>
+    </div>
+
+    <!-- HERO OVERVIEW & SCRIPT METADATA CARD -->
+    <section class="hero-script-card" id="heroOverview">
+      <div class="script-header-badges">
+        <span class="ep-tag"><i data-lucide="video" style="width:15px; height:15px;"></i> الحلقة 01 — وثائقي سينمائي POV</span>
+        <span class="ep-status-pill"><i data-lucide="clapperboard" style="width:13px; height:13px;"></i> سكريبت وسيناريو معتمد للتصوير</span>
+      </div>
+
+      <h1 class="script-title">الحلقة الأولى — الموسم الثاني | العنوان</h1>
+      <p class="script-subtitle">تجربة سينمائية تنقل تفاصيل يوم في حياة طالب امتياز العلاج الطبيعي من قاعة المحاضرات إلى مسؤولية علاج مريض حقيقي.</p>
+
+      <!-- Key Metadata Grid -->
+      <div class="script-meta-grid">
+        <div class="meta-box-item">
+          <div class="meta-lbl"><i data-lucide="clock" style="width:13px; height:13px;"></i> المدة المستهدفة</div>
+          <div class="meta-val">13 – 16 دقيقة</div>
+        </div>
+        <div class="meta-box-item">
+          <div class="meta-lbl"><i data-lucide="camera" style="width:13px; height:13px;"></i> الكادر الأساسي</div>
+          <div class="meta-val">GoPro POV مثبتة على الرأس 80–90%</div>
+        </div>
+        <div class="meta-box-item">
+          <div class="meta-lbl"><i data-lucide="aperture" style="width:13px; height:13px;"></i> الكادرات الإضافية</div>
+          <div class="meta-val">Cinematic B-Roll بنسبة 10–20%</div>
+        </div>
+        <div class="meta-box-item">
+          <div class="meta-lbl"><i data-lucide="users" style="width:13px; height:13px;"></i> عدد الحالات</div>
+          <div class="meta-val">3 حالات سريرية متنوعة</div>
+        </div>
+      </div>
+
+      <!-- Core Directorial Concept Box -->
+      <div class="vision-callout">
+        <div class="vision-callout-header">
+          <i data-lucide="sparkles" style="width:18px; height:18px;"></i>
+          <span>الفكرة الإخراجية الأساسية — Cold Open & In Media Res:</span>
+        </div>
+        <p class="vision-callout-p">
+          الحلقة لا تبدأ من الصفر أو بمقدمة رتيبة؛ نبدأ مباشرة من داخل العيادة وسط حركة المريض: <em>طب بصلي هنا كده… الوجع بيزيد لما تعمل الحركة دي؟</em>، ثم قطع مفاجئ إلى شاشة سوداء وصوت منبه <strong>06:37 AM</strong> حيث تبدأ الرحلة الحقيقية.
+          <br /><strong>طوال الحلقة:</strong> لا يوجد راوٍ يملأ الفراغ بالشرح المصطنع؛ القصة تتكشف ذاتياً من الحوار الطبيعي، أصوات المكان الواقعية Foley، تفاعل المشرف، وأسئلة طالب الامتياز. وفي النهاية يصل المشاهد لجوهر الرسالة: <strong>اللي كان من شوية مجرد معلومة في محاضرة… بقى دلوقتي مسؤولية قدام بني آدم حقيقي.</strong>
+      </div>
+    </section>
+
+    <!-- SECTION: PERMISSIONS & EQUIPMENT PREREQUISITES (التصاريح والمعدات مقسمة في صندوقين) -->
+    <div id="permissionsSection">
+      
+      <!-- BOX 1: COLLEGE ADMINISTRATION REQUIREMENTS (المطلوب توفيره من إدارة الكلية) -->
+      <section class="gear-section-college">
+        <div class="perm-badge-title">
+          <div class="perm-icon-box">
+            <i data-lucide="landmark" style="width:24px; height:24px;"></i>
+          </div>
+          <div>
+            <h3>متطلبات وتجهيزات مطلوبة من إدارة الكلية الموقرة</h3>
+            <span>College Administration Prerequisites & Approved Core Gear</span>
+          </div>
+        </div>
+
+        <div class="perm-items-list">
+          <!-- Item 1: Mic -->
+          <div class="perm-item-card" style="border-right: 4px solid #E11D48;">
+            <i data-lucide="mic-2"></i>
+            <div>
+              <div style="display:flex; align-items:center; gap:6px; margin-bottom:3px; flex-wrap:wrap;">
+                <strong>1. طقم المايك اللاسلكي الأساسي (المعتمد بالخطة):</strong>
+                <span style="font-size:0.72rem; font-weight:900; background:#E11D48; color:#FFFFFF; padding:2px 8px; border-radius:var(--radius-full);">Hollyland Lark Mark 2 (M2)</span>
+              </div>
+              <p>توفير جهاز المايك اللاسلكي الاحترافي المعتمد أصلاً في الميزانية التقديرية للخطة الأساسية لبودكاست ليه PHYSIO، لضمان تسجيل صوتي نقي وشديد الوضوح للشخصيات في الميدان.</p>
+            </div>
+          </div>
+
+          <!-- Item 2: Head Strap -->
+          <div class="perm-item-card" style="border-right: 4px solid #E11D48;">
+            <i data-lucide="headset"></i>
+            <div>
+              <div style="display:flex; align-items:center; gap:6px; margin-bottom:3px; flex-wrap:wrap;">
+                <strong>2. حامل ومثبت الرأس لكاميرا الـ POV:</strong>
+                <span style="font-size:0.72rem; font-weight:900; background:rgba(225, 29, 72, 0.12); color:#9F1239; border:1px solid #E11D48; padding:2px 8px; border-radius:var(--radius-full);">Head Strap Holder</span>
+              </div>
+              <p>توفير حزام الرأس المريح والمحكم لتثبيت كاميرا الـ POV طوال فترة تصوير طالب الامتياز ونقل معايشة اليوم الواقعي من منظور عينه مباشرة.</p>
+            </div>
+          </div>
+
+          <!-- Item 3: Pediatric Approval -->
+          <div class="perm-item-card">
+            <i data-lucide="file-check-2"></i>
+            <div>
+              <strong>3. موافقة خطية صريحة لـ حالة الأطفال Pediatric Case:</strong>
+              <p>أخذ إقرار خطي وموافقة تصوير واضحة من ولي أمر الطفل لعرض الوجه والتفاعل المباشر لضمان المصداقية وتأمين حقوق الخصوصية القانونية والأخلاقية.</p>
+            </div>
+          </div>
+
+          <!-- Item 4: Faculty & Clinics Facility Access -->
+          <div class="perm-item-card">
+            <i data-lucide="building-2"></i>
+            <div>
+              <strong>4. تصاريح التصوير الأكاديمي والعيادات الخارجية:</strong>
+              <p>موافقة إدارة الكلية لتصوير مدخل الكلية، الممرات، جهاز البصمة، ملعب السكواش (محاضرة الامتياز)، والعيادات الخارجية مع مرافقة عضو هيئة التدريس أو المشرف السريري.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BOX 2: DIRECTOR'S PERSONAL GEAR & RIG (تجهيزات ومعدات المخرج الشخصية ومسؤوليته بالكامل) -->
+      <section class="gear-section-director">
+        <div class="perm-badge-title">
+          <div class="perm-icon-box director-icon">
+            <i data-lucide="clapperboard" style="width:24px; height:24px;"></i>
+          </div>
+          <div>
+            <h3>معدات وتجهيزات المخرج الخاصة — مسؤولية المخرج بالكامل</h3>
+            <span>Director's Personal Cinema Package & Camera Rig (Zero Cost on Faculty)</span>
+          </div>
+        </div>
+
+        <div class="perm-items-list">
+          <!-- Director Item 1: 2 Video Cameras -->
+          <div class="perm-item-card" style="border-right: 4px solid var(--accent-teal);">
+            <i data-lucide="video"></i>
+            <div>
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:3px; flex-wrap:wrap;">
+                <strong>1. كاميرتان فيديو احترافيتان (2 Video Cameras):</strong>
+                <span style="font-size:0.72rem; font-weight:900; background:linear-gradient(135deg, #0D9488, #042F2C); color:#FFFFFF; padding:2px 8px; border-radius:var(--radius-full);">مسؤولية المخرج</span>
+              </div>
+              <p>توفير كاميرتين احترافيتين للتصوير الميداني المتزامن: كاميرا POV رئيسية مثبتة على الرأس + كاميرا سينمائية ثانية لتغطية اللقطات الخارجية والـ B-Roll التأسيسي.</p>
+            </div>
+          </div>
+
+          <!-- Director Item 2: 4 Cinema Lenses -->
+          <div class="perm-item-card" style="border-right: 4px solid var(--accent-teal);">
+            <i data-lucide="aperture"></i>
+            <div>
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:3px; flex-wrap:wrap;">
+                <strong>2. طقم 4 عدسات سينمائية شاملة لتغطية كل الزوايا:</strong>
+                <span style="font-size:0.72rem; font-weight:900; background:linear-gradient(135deg, #0D9488, #042F2C); color:#FFFFFF; padding:2px 8px; border-radius:var(--radius-full);">4 Prime Lenses</span>
+              </div>
+              <p>توفير طقم عدسات سينمائية متكامل بـ 4 أبعاد بؤرية لتغطية أدق تفاصيل المشاهد:</p>
+              
+              <div class="lens-grid-pills">
+                <div class="lens-pill">
+                  <strong>16mm</strong>
+                  <span>كادرات واسعة والبيئة</span>
+                </div>
+                <div class="lens-pill">
+                  <strong>35mm</strong>
+                  <span>كادرات متوسطة والتفاعل</span>
+                </div>
+                <div class="lens-pill">
+                  <strong>50mm</strong>
+                  <span>نظرة العين الطبيعية</span>
+                </div>
+                <div class="lens-pill">
+                  <strong>85mm</strong>
+                  <span>بورتريه وعزل المفاصل</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Director Item 3: Extra Matching Mics -->
+          <div class="perm-item-card" style="border-right: 4px solid var(--accent-teal);">
+            <i data-lucide="mic"></i>
+            <div>
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:3px; flex-wrap:wrap;">
+                <strong>3. مايكات لاسلكية إضافية لتغطية صوت المكان:</strong>
+                <span style="font-size:0.72rem; font-weight:900; background:linear-gradient(135deg, #0D9488, #042F2C); color:#FFFFFF; padding:2px 8px; border-radius:var(--radius-full);">Audio Matching</span>
+              </div>
+              <p>توفير مايكات لاسلكية إضافية من نفس الطراز المعتمد (Hollyland) لتغطية كل أطراف الحوار والمشرف والمريض في آن واحد، ولضمان تطابق البصمة الصوتية دون أي نشاز.</p>
+            </div>
+          </div>
+
+          <!-- Director Item 4: External Rigs & Lighting -->
+          <div class="perm-item-card" style="border-right: 4px solid var(--accent-teal);">
+            <i data-lucide="sun-medium"></i>
+            <div>
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:3px; flex-wrap:wrap;">
+                <strong>4. حوامل ستاند للكادرات الخارجية + إضاءات احترافية:</strong>
+                <span style="font-size:0.72rem; font-weight:900; background:linear-gradient(135deg, #0D9488, #042F2C); color:#FFFFFF; padding:2px 8px; border-radius:var(--radius-full);">Tripods & Lights</span>
+              </div>
+              <p>توفير حوامل تثبيت سينمائية (Tripods & Rigs) لتصوير المشاهد الخارجية خارج منظور الـ POV، بالإضافة لوحدات إضاءة استوديو متقدمة لضبط توازن الإضاءة عند الحاجة داخل العيادة والملعب.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- TIMELINE SCREENPLAY -->
+    <div class="section-timeline-header">
+      <div class="timeline-title-wrap">
+        <i data-lucide="clapperboard" style="color:var(--accent-gold-bright); width:26px; height:26px;"></i>
+        <h2>تتابع المشاهد والسيناريو التنفيذي</h2>
+      </div>
+      <span class="timeline-count-badge">18 مشهداً وتتابعاً زمنياً</span>
+    </div>
+
+    <!-- SCENE 00:00 — COLD OPEN -->
+    <article class="scene-card" data-category="general" id="scene-00-00">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge"><i data-lucide="play" style="width:12px; height:12px;"></i> 00:00 — COLD OPEN</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-pov">🎥 POV داخل العيادة</span>
+          <span class="tag-shot-audio">🔊 أصوات عيادة حقيقية</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">البداية الصادمة — بدون مقدمات</h3>
+
+      <div class="script-block block-visual">
+        <div class="block-label"><i data-lucide="eye" style="width:13px; height:13px;"></i> الصورة والكادر:</div>
+        <p>POV مباشر من داخل العيادة. المشهد يبدأ بالفعل بدون شارة ولا مقدمة. المريض يجلس أمام الكاميرا مباشرة في كادر مقرب وعفوي.</p>
+      </div>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-intern">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user-check" style="width:14px; height:14px;"></i> طالب الامتياز</span>
+            <span class="speaker-action-note">بهدوء وتركيز</span>
+          </div>
+          <p class="dialogue-line">طب جرب تعملها تاني كده… براحة.</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-patient">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user" style="width:14px; height:14px;"></i> المريض</span>
+            <span class="speaker-action-note">يحاول تحريك المفصل بألم خفيف</span>
+          </div>
+          <p class="dialogue-line">آه… هنا بالظبط.</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-intern">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user-check" style="width:14px; height:14px;"></i> طالب الامتياز</span>
+          </div>
+          <p class="dialogue-line">تمام. <span style="font-weight:500; font-size:0.85rem; color:var(--text-muted);">ثانية صمت وتفكير</span></p>
+        </div>
+
+        <div class="dialogue-bubble speaker-supervisor">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="stethoscope" style="width:14px; height:14px;"></i> المشرف الطبي</span>
+            <span class="speaker-action-note">يدخل الكادر من الجانب ويسأل بنبرة اختبار داعمة</span>
+          </div>
+          <p class="dialogue-line">طب إنت شايف إيه؟</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-intern">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user-check" style="width:14px; height:14px;"></i> طالب الامتياز</span>
+            <span class="speaker-action-note">يسكت ثانية لحظة تفكير سريري</span>
+          </div>
+          <p class="dialogue-line">حاسس إن الحركة دي هي اللي بتزود الأعراض… بس عايز أتأكد.</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-supervisor">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="stethoscope" style="width:14px; height:14px;"></i> المشرف الطبي</span>
+          </div>
+          <p class="dialogue-line">ماشي. جرّب.</p>
+        </div>
+      </div>
+
+      <div class="script-block block-audio">
+        <div class="block-label"><i data-lucide="volume-2" style="width:13px; height:13px;"></i> الصوت والمونتاج:</div>
+        <p><strong>CUT TO BLACK مفاجئ وسريع.</strong> صوت المنبه الإلكتروني يبدأ في الدخول بحدة وسط السكون التام.</p>
+      </div>
+    </article>
+
+    <!-- SCENE 00:20 — 06:30 AM -->
+    <article class="scene-card" data-category="general" id="scene-00-20">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">00:20 — 06:30 AM</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-pov">🎥 POV الاستيقاظ</span>
+          <span class="tag-shot-audio">🔊 صوت المنبه</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">الاستيقاظ وبداية اليوم</h3>
+
+      <div class="block-onscreen">
+        <span class="hud-tag">ON SCREEN OVERLAY</span>
+        <div class="hud-text">06:30 AM</div>
+      </div>
+
+      <div class="script-block block-visual">
+        <div class="block-label"><i data-lucide="eye" style="width:13px; height:13px;"></i> الصورة:</div>
+        <p>شاشة سوداء > POV يفتح تدريجياً ليرى سقف الغرفة > اليد تمتد للموبايل > المنبه يتقفل > ثانيتان صمت تام.</p>
+      </div>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-intern">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user-check" style="width:14px; height:14px;"></i> طالب الامتياز</span>
+            <span class="speaker-action-note">ضحكة بسيطة / حركة من الرأس وهو يقوم</span>
+          </div>
+          <p class="dialogue-line">صباح الخير يا امتياز.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- SCENE 00:45 — تجهيز اليوم -->
+    <article class="scene-card" data-category="general" id="scene-00-45">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">00:45 — تجهيز اليوم</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-pov">🎥 مونتاج Foley سريع</span>
+          <span class="tag-shot-audio">🔊 أصوات حقيقية 100%</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">مونتاج الصباح السريع — Foley Montage</h3>
+
+      <div class="script-block block-visual">
+        <div class="block-label"><i data-lucide="film" style="width:13px; height:13px;"></i> تتابع اللقطات:</div>
+        <p>مونتاج إيقاعي سريع جداً بدون موسيقى في البداية، مع التركيز التام على الأصوات الواقعية: فتح الدولاب • سحب الهدوم • فتح صنبور المياه • فرشة الأسنان • تجهيز الشنطة • وضع الـ ID • لبس البادج • فتح اللاب/التابلت • كوب قهوة • لبس الحذاء.</p>
+      </div>
+
+      <div class="block-onscreen">
+        <span class="hud-tag">ON SCREEN OVERLAY</span>
+        <div class="hud-text">يوم عادي في حياة طالب امتياز علاج طبيعي.</div>
+        <div style="font-size:0.85rem; color:var(--text-muted); margin-top:4px;">ثم تظهر جملة صغيرة تحتها: أو… المفروض إنه يوم عادي • تبدأ موسيقى هادئة جداً بالدخول</div>
+      </div>
+    </article>
+
+    <!-- SCENE 01:30 — الطريق للكلية -->
+    <article class="scene-card" data-category="general" id="scene-01-30">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">01:30 — الطريق للكلية</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-pov">🎥 POV الشارع والجامعة</span>
+          <span class="tag-shot-ext">🎬 Cinematic Transition</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">رحلة الطريق — Focus on the Destination</h3>
+
+      <div class="script-block block-visual">
+        <div class="block-label"><i data-lucide="eye" style="width:13px; height:13px;"></i> التوجيه البصري:</div>
+        <p>POV خارج البيت مع استمرار الموسيقى الخفيفة. مشاهد قصيرة وسريعة جداً: الشارع • المواصلات • بوابة الجامعة • خطوات واثقة وسريعة في ممرات الكلية.</p>
+      </div>
+
+      <div class="directorial-subtext">
+        <i data-lucide="info" style="width:14px; height:14px;"></i>
+        <span>توجيه إخراجي: الموضوع ليس فلوج يومي عادي؛ المشاهد سريعة ورشيقة لأن الهدف هو الوصول للحظة المهمة.</span>
+      </div>
+    </article>
+
+    <!-- SCENE 02:10 — البصمة -->
+    <article class="scene-card" data-category="general" id="scene-02-10">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">02:10 — البصمة</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-pov">🎥 POV جهاز الحضور</span>
+          <span class="tag-shot-audio">🔊 BEEP تسجيل البصمة</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">بدء اليوم رسمياً</h3>
+
+      <div class="script-block block-visual">
+        <div class="block-label"><i data-lucide="eye" style="width:13px; height:13px;"></i> الصورة:</div>
+        <p>POV أمام جهاز البصمة > وضع الإصبع > سماع صوت <strong>BEEP</strong> واضح وقوي > الشاشة تؤكد تسجيل الحضور > لقطة سريعة للساعة <strong>08:03 AM</strong>.</p>
+      </div>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-intern">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user-check" style="width:14px; height:14px;"></i> طالب الامتياز</span>
+          </div>
+          <p class="dialogue-line">كده رسميًا اليوم بدأ.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- SCENE 02:30 — محاضرة الامتياز -->
+    <article class="scene-card" data-category="general" id="scene-02-30">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">02:30 — محاضرة الامتياز</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-ext">🎬 موقع مميز: ملعب السكواش</span>
+          <span class="tag-shot-pov">🎥 POV وسط الطلاب</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">المحاضرة النظرية — المفهوم الجوهري</h3>
+
+      <div class="script-block block-visual">
+        <div class="block-label"><i data-lucide="map-pin" style="width:13px; height:13px;"></i> المكان والتكوين:</div>
+        <p><strong>المكان: ملعب السكواش</strong> كـ عنصر بصري معماري مهم ومميز. المشاهد يدخل مع الطالب POV من وسط زملائه. نسمع صوت الدكتور المحاضر من مسافة قريبة وهو يشرح بحماس.</p>
+      </div>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-doctor">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="graduation-cap" style="width:14px; height:14px;"></i> أستاذ المحاضرة</span>
+          </div>
+          <p class="dialogue-line">إنت لما تستقبل الحالة… مش أول حاجة تعملها إنك تبدأ تمرين.</p>
+        </div>
+      </div>
+
+      <div class="script-block block-visual">
+        <div class="block-label"><i data-lucide="camera" style="width:13px; height:13px;"></i> Cut سريع:</div>
+        <p>Cut على وجه طالب الامتياز وهو يصغي باهتمام > ثم لقطة على نوتة الملاحظات تظهر فيها كلمة مكتوبة بخط واضح: <strong>Assessment</strong>.</p>
+      </div>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-doctor">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="graduation-cap" style="width:14px; height:14px;"></i> أستاذ المحاضرة</span>
+            <span class="speaker-action-note">جملة مركزية في فلسفة الطب</span>
+          </div>
+          <p class="dialogue-line">إنت بتتعامل مع بني آدم… مش مع Diagnosis مكتوب على ورقة.</p>
+        </div>
+      </div>
+
+      <div class="script-block block-audio">
+        <div class="block-label"><i data-lucide="volume-2" style="width:13px; height:13px;"></i> الانتقال:</div>
+        <p><strong>CUT حاسم.</strong> صوت باب حديدي أو زجاجي يفتح بقوة.</p>
+      </div>
+    </article>
+
+    <!-- SCENE 03:20 — مشهد الانتقال للعيادات -->
+    <article class="scene-card" data-category="general" id="scene-03-20">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">03:20 — الانتقال للعيادات</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-ext">🎬 Soundscape Shift</span>
+          <span class="tag-shot-pov">🎥 الدخول للعيادات الخارجية</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">التحول الصوتي والبيئي — Entering the Clinic</h3>
+
+      <div class="block-onscreen">
+        <span class="hud-tag">ON SCREEN OVERLAY</span>
+        <div class="hud-text">بعد المحاضرة بـ 12 دقيقة…</div>
+      </div>
+
+      <div class="script-block block-audio">
+        <div class="block-label"><i data-lucide="headphones" style="width:13px; height:13px;"></i> هندسة الصوت — Soundscape Change:</div>
+        <p>الموسيقى تختفي تدريجياً تماماً. نسمع أصوات خطوات على السيراميك • نزول السلم • فتح باب مركز العيادات • طنين الأجهزة الطبية • أصوات حركة المرضى والأطباء.</p>
+      </div>
+
+      <div class="script-block block-visual">
+        <div class="block-label"><i data-lucide="eye" style="width:13px; height:13px;"></i> المشاهد التأسيسية — B-Roll:</div>
+        <p>لأول مرة المشاهد يرى المكان بالكامل: لقطة واسعة سينمائية للمركز • الأجهزة الحديثة • منطقة العلاج • المعالجين والمرضى • تفاصيل بسيطة للأجهزة أثناء العمل الفعلي دون استعراض إعلاني مصطنع.</p>
+      </div>
+    </article>
+
+    <!-- SCENE 04:00 — قبل أول حالة -->
+    <article class="scene-card" data-category="general" id="scene-04-00">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">04:00 — قبل أول حالة</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-pov">🎥 حوار الطالب والمشرف</span>
+          <span class="tag-shot-audio">🔊 توتر البداية</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">لقاء المشرف وتوزيع الحالات</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-intern">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user-check" style="width:14px; height:14px;"></i> طالب الامتياز</span>
+          </div>
+          <p class="dialogue-line">صباح الخير يا دكتور.</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-supervisor">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="stethoscope" style="width:14px; height:14px;"></i> المشرف الطبي</span>
+          </div>
+          <p class="dialogue-line">صباح النور.</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-intern">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user-check" style="width:14px; height:14px;"></i> طالب الامتياز</span>
+          </div>
+          <p class="dialogue-line">عندنا كام حالة النهارده؟</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-supervisor">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="stethoscope" style="width:14px; height:14px;"></i> المشرف الطبي</span>
+            <span class="speaker-action-note">يبتسم بثقة</span>
+          </div>
+          <p class="dialogue-line">تلاتة… كفاية عليك.</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-supervisor">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="stethoscope" style="width:14px; height:14px;"></i> المشرف الطبي</span>
+          </div>
+          <p class="dialogue-line">بس النهارده هتشتغل إنت أكتر.</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-intern">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user-check" style="width:14px; height:14px;"></i> طالب الامتياز</span>
+            <span class="speaker-action-note">ثانية صمت مع إبراز توتر وتحدي حقيقي</span>
+          </div>
+          <p class="dialogue-line">حاضر.</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-supervisor">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="stethoscope" style="width:14px; height:14px;"></i> المشرف الطبي</span>
+          </div>
+          <p class="dialogue-line">وأنا موجود طبعًا.</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-intern">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user-check" style="width:14px; height:14px;"></i> طالب الامتياز</span>
+            <span class="speaker-action-note">ابتسامة ارتياح خفيفة</span>
+          </div>
+          <p class="dialogue-line">دي أهم جملة.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- CASE 01: 04:30 — Pediatric Case -->
+    <article class="scene-card highlight-case" data-category="case" id="case-01">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge"><i data-lucide="baby" style="width:14px; height:14px;"></i> CASE 01 — 04:30 | حالة الأطفال — Pediatric Case</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-pov">🎥 POV تفاعلي على مستوى الطفل</span>
+          <span class="tag-shot-audio">👶 كسر الحاجز النفسي</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">الحالة الأولى: بناء الثقة قبل البدء في العلاج</h3>
+
+      <div class="directorial-subtext" style="border-right: 3px solid #E11D48;">
+        <i data-lucide="alert-circle" style="width:15px; height:15px; color:#E11D48;"></i>
+        <span>تنبيه إنتاجي: تم تأمين موافقة ولي الأمر مسبقاً وتواجد الأم في المشهد لواقعية الحوار.</span>
+      </div>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-intern">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user-check" style="width:14px; height:14px;"></i> طالب الامتياز</span>
+          </div>
+          <p class="dialogue-line">صباح الخير يا بطل، عامل إيه؟</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-patient">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="users" style="width:14px; height:14px;"></i> والدة الطفل</span>
+            <span class="speaker-action-note">الطفل يخجل ولا يرد • الأم تبتسم</span>
+          </div>
+          <p class="dialogue-line">لسه مش عايز يتعامل مع حد.</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-intern">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user-check" style="width:14px; height:14px;"></i> طالب الامتياز</span>
+            <span class="speaker-action-note">ينزل بجسده لمستوى عين الطفل ويخرج كرة صغيرة ملونة</span>
+          </div>
+          <p class="dialogue-line">طب نستنى عليه… إيه رأيك نلعب دي الأول؟</p>
+        </div>
+      </div>
+
+      <div class="script-block block-visual">
+        <div class="block-label"><i data-lucide="sparkles" style="width:13px; height:13px;"></i> المعنى الدرامي البصري:</div>
+        <p>المشاهد لا يحتاج شرحاً طبياً؛ يرى بعينه طالباً يتعلم أن العلاج لا يبدأ بالحركة الميكانيكية بل بكسب ثقة الإنسان الصغير الذي أمامه.</p>
+      </div>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-intern">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user-check" style="width:14px; height:14px;"></i> طالب الامتياز</span>
+            <span class="speaker-action-note">يهمس للمشرف بهدوء</span>
+          </div>
+          <p class="dialogue-line">أبدأ من هنا؟</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-supervisor">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="stethoscope" style="width:14px; height:14px;"></i> المشرف الطبي</span>
+          </div>
+          <p class="dialogue-line">آه، بس خليك هادي.</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-intern">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user-check" style="width:14px; height:14px;"></i> طالب الامتياز للطفل</span>
+          </div>
+          <p class="dialogue-line">يلا… وريني كده… برافو يا بطل!</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-patient">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="users" style="width:14px; height:14px;"></i> والدة الطفل</span>
+          </div>
+          <p class="dialogue-line">هو في البيت مش بيعملها كده!</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-intern">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user-check" style="width:14px; height:14px;"></i> طالب الامتياز</span>
+          </div>
+          <p class="dialogue-line">أول مرة النهارده، بس هيعرف يعملها بعد كده إن شاء الله.</p>
+        </div>
+      </div>
+
+      <div class="script-block block-visual">
+        <div class="block-label"><i data-lucide="eye" style="width:13px; height:13px;"></i> إظهار الأجهزة الذكي:</div>
+        <p>الجهاز التأهيلي يظهر في الخلفية أثناء الاستخدام الطبيعي. المشرف يقول: <em>خليه هنا شوية</em> والكاميرا تركز مع التمرين؛ لا أحد يشرح إعلانياً عن الجهاز، بل وجوده عضوي وواقعي.</p>
+      </div>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-intern">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user-check" style="width:14px; height:14px;"></i> طالب الامتياز للأم</span>
+            <span class="speaker-action-note">بعد نظرة تشجيع من المشرف</span>
+          </div>
+          <p class="dialogue-line">هقول لحضرتك التمرينات اللي نعملها في البيت… بس أهم حاجة ما نضغطش عليه لو تعب.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- SCENE 06:50 — Transition -->
+    <article class="scene-card" data-category="general" id="scene-06-50">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">06:50 — Transition</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-pov">🎥 استراحة قصيرة</span>
+          <span class="tag-shot-audio">🔊 شرب مياه وساعة</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">التقاط الأنفاس والتحضير للحالة الثانية</h3>
+
+      <div class="block-onscreen">
+        <span class="hud-tag">ON SCREEN OVERLAY</span>
+        <div class="hud-text">10:17 AM</div>
+      </div>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-supervisor">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="stethoscope" style="width:14px; height:14px;"></i> المشرف من بعيد</span>
+          </div>
+          <p class="dialogue-line">جاهز للتانية؟</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-intern">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user-check" style="width:14px; height:14px;"></i> طالب الامتياز</span>
+          </div>
+          <p class="dialogue-line">جاهز… <span style="font-size:0.85rem; color:var(--text-muted);">المشرف: متأكد؟ > الطالب: لا! وضحكة عفوية</span></p>
+        </div>
+      </div>
+    </article>
+
+    <!-- CASE 02: 07:10 — Young Adult / Sports Injury -->
+    <article class="scene-card highlight-case" data-category="case" id="case-02">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge"><i data-lucide="activity" style="width:14px; height:14px;"></i> CASE 02 — 07:10 | إصابة رياضية وشاب — Sports Injury</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-pov">🎥 حوار شبابي تلقائي</span>
+          <span class="tag-shot-ext">🏃 أجهزة التوازن والمقاومة</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">الحالة الثانية: حوار الأقران وتعديل التحميل الحركي</h3>
+
+      <div class="script-block block-visual">
+        <div class="block-label"><i data-lucide="info" style="width:13px; height:13px;"></i> التوصيف الدرامي:</div>
+        <p>المريض شاب في نفس المرحلة العمرية تقريباً لطالب الامتياز، يعاني من إصابة ركبة وتأهيل بعد جراحة. هذا التقارب يخلق ديناميكية حوارية سريعة ومرحة وعفوية.</p>
+      </div>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-intern">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user-check" style="width:14px; height:14px;"></i> طالب الامتياز</span>
+          </div>
+          <p class="dialogue-line">أهلاً، عامل إيه؟</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-patient">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user" style="width:14px; height:14px;"></i> المريض الشاب</span>
+          </div>
+          <p class="dialogue-line">تمام… بس زهقت من إني كل ما أتحسن حاجة، ألاقي حاجة تانية بتوجعني.</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-intern">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user-check" style="width:14px; height:14px;"></i> طالب الامتياز</span>
+          </div>
+          <p class="dialogue-line">ماشي… دي جملة هنختلف عليها بعد شوية! الوجع من صفر لعشرة كام دلوقتي؟</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-patient">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user" style="width:14px; height:14px;"></i> المريض الشاب</span>
+          </div>
+          <p class="dialogue-line">دلوقتي تلاتة… والتمرين اللي فات خمسة تقريباً.</p>
+        </div>
+      </div>
+
+      <div class="script-block block-visual">
+        <div class="block-label"><i data-lucide="activity" style="width:13px; height:13px;"></i> التقييم والتعويض الحركي — Compensation:</div>
+        <p>المريض يقوم بالحركة > الطالب يلاحظ: <em>دكتور، حاسس إن هنا في Compensation</em> > المشرف: <em>عايز تعمل إيه؟</em> > الطالب: <em>أقلل الـ Load وأشوف الحركة تاني</em> > المشرف: <em>جرّب</em>.</p>
+      </div>
+
+      <div class="script-block block-visual">
+        <div class="block-label"><i data-lucide="eye" style="width:13px; height:13px;"></i> استعراض إمكانيات العيادات المتقدمة:</div>
+        <p>المريض ينتقل لأجهزة التوازن Balance Boards، أجهزة المقاومة، الـ Treadmill والـ Bike، والأوزان الطبية. كلها تظهر في سياق الاستخدام الحقيقي دون أدنى تصنع.</p>
+      </div>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-intern">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user-check" style="width:14px; height:14px;"></i> طالب الامتياز</span>
+            <span class="speaker-action-note">لحظة نجاح المريض في الحركة الصعبة</span>
+          </div>
+          <p class="dialogue-line">آه! أهو… شوفت؟ عملتها أحسن من أول مرة بكتير! <span style="color:var(--text-muted); font-size:0.85rem;">المريض يبتسم بارتياح • تدخل الموسيقى بإيقاع متفائل</span></p>
+        </div>
+      </div>
+    </article>
+
+    <!-- SCENE 09:20 — منتصف الحلقة (Voice Over) -->
+    <article class="scene-card" data-category="general" id="scene-09-20">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">09:20 — منتصف الحلقة</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-pov">🎥 POV الممر والعيادات</span>
+          <span class="tag-shot-audio">🎙️ الـ Voice Over الوحيد</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">وقفة تأملية — الـ Voice Over الأول</h3>
+
+      <div class="script-block block-visual">
+        <div class="block-label"><i data-lucide="eye" style="width:13px; height:13px;"></i> الكادر:</div>
+        <p>POV الطالب وهو يسير في الممر بهدوء > لقطة خارجية سينمائية سريعة للمركز > صوت الطالب الداخلي يبدأ بنبرة هادئة وصادقة.</p>
+      </div>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-vo">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="mic" style="width:14px; height:14px;"></i> صوت الطالب — Voice Over</span>
+          </div>
+          <p class="dialogue-line">الغريب إنك طول سنين الدراسة بتذاكر عشان تعرف الإجابة… ولما تيجي هنا، تكتشف إن السؤال نفسه أهم.</p>
+        </div>
+      </div>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-supervisor">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="stethoscope" style="width:14px; height:14px;"></i> المشرف قاطعاً الصمت</span>
+          </div>
+          <p class="dialogue-line">يا دكتور! الحالة التالتة وصلت.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- CASE 03: 09:50 — Older Adult -->
+    <article class="scene-card highlight-case" data-category="case" id="case-03">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge"><i data-lucide="heart-handshake" style="width:14px; height:14px;"></i> CASE 03 — 09:50 | حالة كبار السن — Geriatric / Older Adult</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-pov">🎥 اللحظة الأكثر إنسانية</span>
+          <span class="tag-shot-audio">🔇 هدوء تام وبدون موسيقى</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">الحالة الثالثة: الإنسانية والمسؤولية قبل التكنيك</h3>
+
+      <div class="script-block block-visual">
+        <div class="block-label"><i data-lucide="heart" style="width:13px; height:13px;"></i> البعد الإنساني:</div>
+        <p>مريض مسن وقور يعاني من خشونة ركبة ومحدودية وظيفية في المشي والحركة. هذا المشهد هو قلب الحلقة العاطفي.</p>
+      </div>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-intern">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user-check" style="width:14px; height:14px;"></i> طالب الامتياز</span>
+          </div>
+          <p class="dialogue-line">صباح الخير يا حاج، عامل إيه النهارده؟</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-patient">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user" style="width:14px; height:14px;"></i> المريض الحاج</span>
+          </div>
+          <p class="dialogue-line">والله… على الله.</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-intern">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user-check" style="width:14px; height:14px;"></i> طالب الامتياز</span>
+          </div>
+          <p class="dialogue-line">الوجع أكتر وإنت واقف ولا وإنت قاعد؟ طب قوم كده براحتك… <span style="font-size:0.85rem; color:var(--text-muted);">بدل ما يتصرف كخبير، يبادل المشرف نظرة استئذان وتوجيه</span></p>
+        </div>
+      </div>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-patient">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user" style="width:14px; height:14px;"></i> المريض المسن</span>
+            <span class="speaker-action-note">سؤال ينبض بالرجاء والصدق</span>
+          </div>
+          <p class="dialogue-line">هو أنا هخف يا ابني؟ يعني هعرف أمشي أحسن؟</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-intern">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user-check" style="width:14px; height:14px;"></i> طالب الامتياز</span>
+            <span class="speaker-action-note">يتوقف ثانية.. لا يتسرع بالإجابة.. يدرك حجم الأمل</span>
+          </div>
+          <p class="dialogue-line">إن شاء الله هتتحسن… ده هدفنا أصلاً، وهنشتغل على الموضوع خطوة خطوة مع بعض.</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-patient">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user" style="width:14px; height:14px;"></i> المريض المسن</span>
+          </div>
+          <p class="dialogue-line">ربنا يكرمك ويجبر بخاطرك يا ابني.</p>
+        </div>
+      </div>
+
+      <div class="directorial-subtext">
+        <i data-lucide="volume-x" style="width:14px; height:14px;"></i>
+        <span>توجيه إخراجي: هذه اللحظة لا تحتاج أي موسيقى على الإطلاق؛ صدق الصمت وأصوات الدعاء الطبيعية تكفي تماماً.</span>
+      </div>
+    </article>
+
+    <!-- SCENE 11:40 — آخر جزء من اليوم -->
+    <article class="scene-card" data-category="general" id="scene-11-40">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">11:40 — نهاية العيادات</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-pov">🎥 ترتيب المكان وكتابة الملاحظات</span>
+          <span class="tag-shot-audio">🔊 حوار ختامي مع المشرف</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">الدرس الأكبر في اليوم</h3>
+
+      <div class="script-block block-visual">
+        <div class="block-label"><i data-lucide="eye" style="width:13px; height:13px;"></i> الصورة:</div>
+        <p>الحالة انتهت. الطالب يعيد الأدوات مكانها بعناية، يرتب السرير الطبي، ويكتب ملاحظات التقييم في ملف الحالة، والمشرف يقف بجانبه.</p>
+      </div>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-supervisor">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="stethoscope" style="width:14px; height:14px;"></i> المشرف الطبي</span>
+          </div>
+          <p class="dialogue-line">إيه أكتر حالة حسيت إنك استفدت منها النهارده؟</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-intern">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="user-check" style="width:14px; height:14px;"></i> طالب الامتياز</span>
+          </div>
+          <p class="dialogue-line">الطفل… حسيت إني كنت محتاج أتعلم أتعامل معاه كإنسان قبل ما أتعلم أعالجه.</p>
+        </div>
+
+        <div class="dialogue-bubble speaker-supervisor">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="stethoscope" style="width:14px; height:14px;"></i> المشرف الطبي</span>
+            <span class="speaker-action-note">يبتسم بتقدير</span>
+          </div>
+          <p class="dialogue-line">وده بالظبط جوهر الشغلانة.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- SCENE 12:20 & 12:50 — نهاية العيادات والعودة -->
+    <article class="scene-card" data-category="general" id="scene-12-20">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">12:20 — 12:50 | العودة</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-pov">🎥 POV الخروج ومونتاج عكسي</span>
+          <span class="tag-shot-audio">🔊 صوت الباب يغلق</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">الخروج والرحلة المعاكسة</h3>
+
+      <div class="block-onscreen">
+        <span class="hud-tag">ON SCREEN OVERLAY</span>
+        <div class="hud-text">12:46 PM — End of Clinical Day</div>
+      </div>
+
+      <div class="script-block block-visual">
+        <div class="block-label"><i data-lucide="film" style="width:13px; height:13px;"></i> التتابع البصري:</div>
+        <p>الطالب يخرج من مركز العيادات POV > الباب يُغلق خلفه > لقطة خارجية للطالب يمشي في ممر الكلية > مونتاج سريع لنفس رحلة الصباح ولكن بالعكس: الممر • السلم • بوابة الجامعة • الشارع • المواصلات. لكن الفرق واضح: في الصباح كان اليوم يبدأ، والآن تشعر بامتلاء التجربة والإنجاز.</p>
+      </div>
+    </article>
+
+    <!-- SCENE 13:20 — النهاية والرسالة الختامية -->
+    <article class="scene-card" data-category="general" id="scene-13-20">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">13:20 — النهاية</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-pov">🎥 POV البيت والنوتة</span>
+          <span class="tag-shot-audio">🎙️ Voice Over ختامي</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">الخاتمة: حين تتحول الورقة لمسؤولية</h3>
+
+      <div class="script-block block-visual">
+        <div class="block-label"><i data-lucide="eye" style="width:13px; height:13px;"></i> المشهد الختامي:</div>
+        <p>POV داخل البيت. الشنطة توضع جانباً • الـ ID ينزع • اللاب توب والنوتة تفتح على نفس الورقة المكتوب عليها من الصباح: <strong>Assessment</strong>. الطالب ينظر إليها لثانيتين، ثم يغلق النوتة بهدوء وابتسامة نضج.</p>
+      </div>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-vo">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="mic" style="width:14px; height:14px;"></i> صوت الطالب — Voice Over الختامي</span>
+          </div>
+          <p class="dialogue-line">يمكن دي أكتر حاجة مختلفة في الامتياز… إن اللي كنت بتذاكره على الورق، فجأة بيبقى قدامك بني آدم… وساعتها، بتبدأ تفهم يعني إيه تبقى دكتور.</p>
+        </div>
+      </div>
+
+      <div class="script-block block-audio">
+        <div class="block-label"><i data-lucide="volume-2" style="width:13px; height:13px;"></i> CUT TO BLACK:</div>
+        <p>قطع مفاجئ للشاشة السوداء وصمت تام.</p>
+      </div>
+    </article>
+
+    <!-- SCENE 13:50 — END CARD & NEXT EPISODE TEASER -->
+    <article class="scene-card" data-category="general" id="scene-13-50" style="border-color: var(--accent-gold);">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge" style="background:linear-gradient(135deg, #F5D061, #D4AF37); color:#1A090D;">13:50 — END CARD & TEASER</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-ext">🎬 ربط الحلقات</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">شارة النهاية والتشويقة — Seamless Season Flow</h3>
+
+      <div class="block-onscreen" style="border-color:var(--accent-gold);">
+        <span class="hud-tag">END CARD GRAPHICS</span>
+        <div class="hud-text" style="color:var(--primary-dark);">بودكاست ليه PHYSIO — الموسم الثاني</div>
+        <div style="font-size:0.95rem; color:var(--text-main); font-weight:800; margin-top:4px;">الحلقة الأولى: العنوان</div>
+      </div>
+
+      <div class="script-block block-visual">
+        <div class="block-label"><i data-lucide="sparkles" style="width:13px; height:13px;"></i> لقطة التشويق بعد الـ End Card:</div>
+        <p>5 ثوانٍ شاشة سوداء بعد الشارة، ثم نسمع صوتاً واقعياً من كواليس الحلقة القادمة: <em>يا دكتور… أيوه؟… الضيف وصل!</em> > CUT وتظهر عبارة: <strong>NEXT EPISODE</strong> لخلق تدفق درامي ممتع بين حلقات الموسم.</p>
+      </div>
+    </article>
+
+    <!-- SECTION: DIRECTORIAL TREATMENT & EXECUTIVE NOTES (رؤية ومنهجية المخرج التنفيذية) -->
+    <section class="guidelines-wrapper" id="guidelinesSection">
+      <div class="section-timeline-header">
+        <div class="timeline-title-wrap">
+          <i data-lucide="clapperboard" style="color:var(--accent-gold-bright); width:26px; height:26px;"></i>
+          <h2>الرؤية والمنهجية الإخراجية — مذكرة المخرج التنفيذية للتصوير</h2>
+        </div>
+        <span class="timeline-count-badge" style="background:linear-gradient(135deg, #0D9488, #042F2C); color:#FFFFFF; border-color:var(--accent-teal-light);">Director's Treatment & Vision</span>
+      </div>
+
+      <!-- Statement Box for the Dean & Production Review -->
+      <div style="background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 250, 240, 0.95) 100%); border: 1.5px solid var(--accent-gold); border-radius: var(--radius-md); padding: 22px; margin-bottom: 24px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);">
+        <div style="display:flex; align-items:center; gap:10px; color:#78350F; font-weight:900; font-size:1.05rem; margin-bottom:8px;">
+          <i data-lucide="bookmark" style="width:20px; height:20px; color:var(--accent-gold-bright);"></i>
+          <span>مذكرة توضيحية من مخرج العمل (مرفوعة لسيادة عميد الكلية وإدارة الإنتاج):</span>
+        </div>
+        <p style="font-size:0.94rem; color:var(--text-main); line-height:1.75;">
+          وضعتُ هذه المحددات والمعايير الإخراجية العشرة كمرجع تنفيذي حاسم ألتزم به شخصياً أثناء إدارة أيام التصوير، ولتوضيح الرؤية الفنية والدرامية المعتمدة لسيادة عميد الكلية والقيادات الأكاديمية؛ لضمان خروج العمل الوثائقي بأعلى مقاييس الصدق والاحتراف السينمائي، والابتعاد التام عن النمطية الترويجية المباشرة أو فخ الفلوجات اليومية السطحية.
+        </p>
+      </div>
+
+      <div class="guidelines-grid">
+        <!-- 1 -->
+        <div class="guide-card">
+          <div class="guide-num-badge">01</div>
+          <h4>ضبط كادر الـ POV — تجنب فخ الـ Vlog العشوائي</h4>
+          <p>أتعامل مع كاميرا الـ POV المثبتة على الرأس كعين واعية لطالب الامتياز وليست مجرد كاميرا مفتوحة تسجل المشهد دون هدف؛ حركتها مرتبطة بحركة الرأس ومبرر درامي (تلتفت مع الصوت، وتركز على يد المريض والمفصل أثناء الفحص) لنقل المشاهد إلى معايشة حقيقية لما يراه الطالب في لحظتها.</p>
+        </div>
+
+        <!-- 2 -->
+        <div class="guide-card">
+          <div class="guide-num-badge">02</div>
+          <h4>استخدام لقطات الـ B-Roll كعلامات ترقيم سينمائية</h4>
+          <p>اعتمدت توزيع الكادرات الخارجية بنسبة محسوبة (85% POV و 15% B-Roll سينمائي) كفواصل ترقيم مشهدية فقط: تأسيس مدخل الكلية، لقطة ملعب السكواش الواسعة، لقطة الممر، ومشهد النهاية بالمنزل؛ لمنح الفيلم نفساً سينمائياً فخماً دون كسر الارتباط الحميمي بمنظور الـ POV.</p>
+        </div>
+
+        <!-- 3 -->
+        <div class="guide-card">
+          <div class="guide-num-badge">03</div>
+          <h4>فلسفة هندسة الصوت الواقعي Foley كعمود فقري للعمل</h4>
+          <p>أعتبر الصوت الواقعي نصف التجربة الوثائقية بالكامل: رنين جهاز البصمة، دوران المشاية، طنين أجهزة التحفيز الكهربائي، صرير الكراسي، واحتكاك القلم بالنوتة. الصوت الطبيعي للمكان يمنح العمل مصداقية سريرية قوية تفوق الاعتماد على المؤثرات الموسيقية المصطنعة.</p>
+        </div>
+
+        <!-- 4 -->
+        <div class="guide-card">
+          <div class="guide-num-badge">04</div>
+          <h4>استراتيجية التوزيع والتصاعد الموسيقي الديناميكي</h4>
+          <p>صممت التوزيع الموسيقي ليبدأ بصمت واقعي في أول 20 ثانية، ثم موسيقى خفيفة أثناء الطريق، وتختفي تماماً الآلات الموسيقية داخل غرف الكشف والتقييم احتراماً لجدية التشخيص والحوار الإنساني، لتعود بنبض دافئ متفائل مع تحسن الحالة وشارة الختام.</p>
+        </div>
+
+        <!-- 5 -->
+        <div class="guide-card">
+          <div class="guide-num-badge">05</div>
+          <h4>الاقتصاد الصارم في التعليق الصوتي Voice Over</h4>
+          <p>حددت مدة الـ Voice Over بألا تتجاوز 30 إلى 45 ثانية طوال الـ 15 دقيقة كاملة؛ وقاعدتي الأساسية هي: "لا أشرح ما تراه عين المشاهد بالفعل". أترك حركة الصورة تنطق بالمعنى، وأخصص الصوت الداخلي فقط للخواطر الفلسفية ولحظات النضج الشخصي للطالب.</p>
+        </div>
+
+        <!-- 6 -->
+        <div class="guide-card">
+          <div class="guide-num-badge">06</div>
+          <h4>التعبير بالنصوص البصرية Graphic Overlays بدلاً من السرد</h4>
+          <p>اعتمدت نصوص الشاشة الرشيقة والسريعة (مثل توقيت الساعة 06:37 AM، تصنيف الحالات Case 01، ومصطلحات التقييم) لضبط الإيقاع الزمني للعمل، لتعمل كبوصلة إرشادية ذكية للمشاهد دون الحاجة لمقاطعة المشهد بالشرح الصوتي المباشر.</p>
+        </div>
+
+        <!-- 7 -->
+        <div class="guide-card">
+          <div class="guide-num-badge">07</div>
+          <h4>إبراز جاهزية الكلية وأجهزتها بالتطبيق العضوي دون إعلان مباشر</h4>
+          <p>قررت منع أي أسلوب إعلاني مباشر؛ بل نبرز قوة الكلية وجاهزية مرافقها من خلال استخدام الجهاز عملياً في علاج الحالة، يضبطه الطالب ويوجهه المشرف، فيستنتج المشاهد تلقائياً تفوق وجاهزية الكلية التعليمية والعلاجية دون نبرة دعائية مصطنعة.</p>
+        </div>
+
+        <!-- 8 -->
+        <div class="guide-card">
+          <div class="guide-num-badge">08</div>
+          <h4>إدارة الحوارات بعفوية وتلقائية واقعية Natural Speech</h4>
+          <p>أتعامل مع السكريبت كهيكل توجيهي وسياق عام، وليس كنص يُحفظ ويُلقى حرفياً؛ سأدير المشاهد ليتحرك المريض والمشرف بطبيعتهم الصادقة من تلعثم أو ضحك أو تردد عفوي، لأن تلك التفاصيل الحية هي سر الجاذبية والمصداقية الوثائقية.</p>
+        </div>
+
+        <!-- 9 -->
+        <div class="guide-card">
+          <div class="guide-num-badge">09</div>
+          <h4>مشهد الماستر شوت الموازي Parallel Cut — جوهر رسالة العمل</h4>
+          <p>بنيت الذروة الفكرية للعمل على لقطة الماستر شوت الموازية بين كلمة Assessment المكتوبة في نوتة المحاضرة صباحاً، وتكرارها عيانياً أمام أول مريض حقيقي بالعيادة، لتحقيق الرسالة المحورية: التحول من معلومة نظرية في مدرج إلى مسؤولية حقيقية أمام إنسان.</p>
+        </div>
+
+        <!-- 10 -->
+        <div class="guide-card">
+          <div class="guide-num-badge">10</div>
+          <h4>المشهد التشويقي لما بعد شارة النهاية Post-Credit Teaser</h4>
+          <p>حرصت على ألا ينتهي الفيلم بانتهاء شارة النهاية مباشرة؛ بل وضعت شاشة سوداء لمدة 5 ثوانٍ يعقبها صوت عابر من كواليس الحلقة القادمة، لخلق ترابط درامي مشوق وتدفق حماسي يربط حلقات الموسم الثاني كعمل فني متكامل.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Floating Quick Dock (Mobile & Desktop) -->
+  <aside class="floating-quick-dock">
+    <button class="dock-btn" onclick="scrollToTop()">
+      <i data-lucide="arrow-up" style="width:14px; height:14px;"></i>
+      <span>الأعلى</span>
+    </button>
+    <button class="dock-btn" onclick="scrollToSection('permissionsSection')">
+      <i data-lucide="shield-check" style="width:14px; height:14px; color:#FB7185;"></i>
+      <span>التصاريح</span>
+    </button>
+    <button class="dock-btn" onclick="scrollToSection('case-01')">
+      <i data-lucide="stethoscope" style="width:14px; height:14px; color:var(--accent-teal-light);"></i>
+      <span>الحالات 1-2-3</span>
+    </button>
+    <button class="dock-btn" onclick="scrollToSection('guidelinesSection')">
+      <i data-lucide="sparkles" style="width:14px; height:14px; color:var(--accent-gold-bright);"></i>
+      <span>رؤية المخرج</span>
+    </button>
+    <a href="index.html" class="dock-btn" style="color:var(--accent-gold-bright); text-decoration:none;">
+      <i data-lucide="home" style="width:14px; height:14px;"></i>
+      <span>الرئيسية</span>
+    </a>
+  </aside>
+
+  <!-- Toast Notification -->
+  <div class="toast-popup" id="toastBox">
+    <i data-lucide="check-circle" style="width:18px; height:18px;"></i>
+    <span id="toastMsg">تم نسخ الرابط المباشر للسكريبت بنجاح!</span>
+  </div>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Reading Progress Indicator
+    window.addEventListener('scroll', () => {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const bar = document.getElementById('readingProgress');
+      if (bar) {
+        bar.style.width = scrolled + '%';
+      }
+    });
+
+    // Font Size Adjuster
+    let currentScale = 1;
+    function adjustFontSize(delta) {
+      currentScale += delta * 0.08;
+      if (currentScale < 0.85) currentScale = 0.85;
+      if (currentScale > 1.35) currentScale = 1.35;
+      document.getElementById('scriptContent').style.fontSize = `${currentScale}rem`;
+      showToast(`حجم الخط: ${Math.round(currentScale * 100)}%`);
+    }
+
+    // Copy Direct Link to Clipboard
+    function copyScriptLink() {
+      const url = window.location.href;
+      navigator.clipboard.writeText(url).then(() => {
+        showToast('تم نسخ الرابط المباشر للسكريبت بنجاح! 📋✨');
+      }).catch(() => {
+        showToast('تم نسخ الرابط!');
+      });
+    }
+
+    // Show Toast
+    function showToast(msg) {
+      const toast = document.getElementById('toastBox');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    // Smooth Scroll Helper
+    function scrollToSection(id, btnElement) {
+      const target = document.getElementById(id);
+      if (target) {
+        const topOffset = 80;
+        const elementPosition = target.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - topOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+      if (btnElement) {
+        document.querySelectorAll('.filter-pill-btn').forEach(btn => btn.classList.remove('active'));
+        btnElement.classList.add('active');
+      }
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Filter Scenes
+    function filterScenes(category, btnElement) {
+      const scenes = document.querySelectorAll('.scene-card');
+      scenes.forEach(scene => {
+        if (category === 'all') {
+          scene.style.display = 'block';
+        } else if (category === 'case') {
+          if (scene.getAttribute('data-category') === 'case') {
+            scene.style.display = 'block';
+          } else {
+            scene.style.display = 'none';
+          }
+        }
+      });
+
+      document.querySelectorAll('.filter-pill-btn').forEach(btn => btn.classList.remove('active'));
+      if (btnElement) btnElement.classList.add('active');
+      showToast(category === 'all' ? 'عرض السكريبت الكامل 📜' : 'عرض الحالات السريرية الثلاث 🩺');
+    }
+  </script>
+</body>
+</html>

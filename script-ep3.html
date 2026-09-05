@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>سكريبت الحلقة الثالثة | لقاء أ.د. إبراهيم حمودة — تأهيل الحالات العصبية (Neurology) — ليه PHYSIO</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="shortcut icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Google Fonts: Cairo & Tajawal & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --primary-dark: #1A090D;
+      --primary-maroon: #3D1E24;
+      --accent-gold: #D4AF37;
+      --accent-gold-bright: #F5D061;
+      --accent-gold-glow: rgba(212, 175, 55, 0.35);
+      --accent-teal: #0D9488;
+      --accent-cyan: #0284C7;
+      --border-gold: rgba(212, 175, 55, 0.4);
+      --bg-dark: #0D0406;
+      --text-main: #2D1A1E;
+      --text-soft: #5C3A42;
+      --text-muted: #806068;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-full: 9999px;
+      --shadow-gold-glow: 0 0 30px rgba(212, 175, 55, 0.25);
+      --shadow-lg: 0 14px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+      font-family: 'Cairo', 'Tajawal', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: #FFFFFF;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      padding-bottom: 90px;
+    }
+
+    /* Fixed Parallax Background Layers */
+    .fixed-bg-layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: url('assets/background2.webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      filter: brightness(0.28) contrast(1.15);
+      z-index: -2;
+      transform: scale(1.02);
+    }
+
+    .fixed-bg-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at top center, rgba(61, 30, 36, 0.6) 0%, rgba(13, 4, 6, 0.95) 100%);
+      z-index: -1;
+    }
+
+    /* Top Reading Progress Bar */
+    .progress-bar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 1001;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #D4AF37, #F5D061);
+      box-shadow: 0 0 10px #F5D061;
+      transition: width 0.15s ease-out;
+    }
+
+    /* Sticky Header Navbar */
+    .top-navbar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(26, 9, 13, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1.5px solid var(--border-gold);
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-left-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn-back-plan {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 16px;
+      border-radius: var(--radius-full);
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid var(--accent-gold);
+      color: var(--accent-gold-bright);
+      text-decoration: none;
+      font-size: 0.84rem;
+      font-weight: 800;
+      transition: all 0.3s ease;
+    }
+
+    .btn-back-plan:hover {
+      background: var(--accent-gold);
+      color: var(--primary-dark);
+      transform: translateX(4px);
+      box-shadow: 0 0 15px var(--accent-gold-glow);
+    }
+
+    .brand-title-box h1 {
+      font-size: 0.98rem;
+      font-weight: 900;
+      color: #FFFFFF;
+      line-height: 1.2;
+    }
+
+    .brand-title-box span {
+      font-size: 0.76rem;
+      color: var(--accent-gold-bright);
+      font-weight: 700;
+    }
+
+    .nav-actions-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-act-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      color: var(--accent-gold-bright);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .nav-act-btn:hover {
+      background: var(--accent-gold);
+      color: var(--primary-dark);
+      transform: scale(1.08);
+    }
+
+    /* Container */
+    .script-container {
+      max-width: 960px;
+      margin: 24px auto 0;
+      padding: 0 16px;
+    }
+
+    /* Filter & Quick Navigation Bar */
+    .filter-sticky-bar {
+      position: sticky;
+      top: 60px;
+      z-index: 990;
+      background: rgba(26, 9, 13, 0.92);
+      backdrop-filter: blur(15px);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-full);
+      padding: 6px 14px;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+      overflow-x: auto;
+    }
+
+    .filter-chips {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: nowrap;
+    }
+
+    .filter-chip {
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(212, 175, 55, 0.25);
+      color: #E6D0D5;
+      font-size: 0.78rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .filter-chip.active, .filter-chip:hover {
+      background: var(--accent-gold);
+      color: var(--primary-dark);
+      border-color: var(--accent-gold);
+    }
+
+    .scene-counter-badge {
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: var(--accent-gold-bright);
+      background: rgba(212, 175, 55, 0.12);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      white-space: nowrap;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    /* Hero Overview Card */
+    .script-hero-card {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 248, 235, 0.95) 100%);
+      border: 2px solid var(--accent-gold);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-lg), var(--shadow-gold-glow);
+      position: relative;
+      color: var(--text-main);
+    }
+
+    .ep-badge-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .ep-number-pill {
+      font-size: 0.8rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #1A090D 0%, #3D1E24 100%);
+      color: var(--accent-gold-bright);
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--accent-gold);
+    }
+
+    .ep-status-pill {
+      font-size: 0.76rem;
+      font-weight: 800;
+      color: #0369A1;
+      background: rgba(2, 132, 199, 0.1);
+      border: 1px solid rgba(2, 132, 199, 0.3);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+    }
+
+    .script-title {
+      font-size: 1.65rem;
+      font-weight: 900;
+      color: var(--primary-dark);
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .script-subtitle {
+      font-size: 0.92rem;
+      color: var(--text-soft);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .script-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    @media (min-width: 640px) {
+      .script-meta-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .meta-box-item {
+      background: rgba(61, 30, 36, 0.04);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: var(--radius-md);
+      padding: 10px;
+      text-align: center;
+    }
+
+    .meta-box-item .meta-lbl {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .meta-box-item .meta-val {
+      font-size: 0.92rem;
+      color: var(--primary-dark);
+      font-weight: 900;
+    }
+
+    /* Permissions & Equipment Sections (Dual Box Architecture) */
+    .gear-section-college {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 241, 242, 0.95) 100%);
+      border: 2px solid #E11D48;
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-lg), 0 10px 30px rgba(225, 29, 72, 0.12);
+      margin-bottom: 28px;
+      position: relative;
+      backdrop-filter: blur(25px);
+    }
+
+    .gear-section-director {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 253, 250, 0.95) 100%);
+      border: 2px solid var(--accent-teal);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-lg), 0 10px 30px rgba(13, 148, 136, 0.15);
+      margin-bottom: 40px;
+      position: relative;
+      backdrop-filter: blur(25px);
+    }
+
+    .perm-badge-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .perm-icon-box {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-md);
+      background: rgba(225, 29, 72, 0.12);
+      border: 1px solid #E11D48;
+      color: #E11D48;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .perm-icon-box.director-icon {
+      background: rgba(13, 148, 136, 0.12);
+      border-color: var(--accent-teal);
+      color: var(--accent-teal);
+    }
+
+    .perm-badge-title h3 {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: #9F1239;
+    }
+
+    .gear-section-director .perm-badge-title h3 {
+      color: #0F766E;
+    }
+
+    .perm-badge-title span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .perm-items-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .perm-items-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .perm-item-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+    }
+
+    .perm-item-card i {
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .gear-section-college .perm-item-card i { color: #E11D48; }
+    .gear-section-director .perm-item-card i { color: var(--accent-teal); }
+
+    .perm-item-card strong {
+      display: block;
+      color: var(--primary-dark);
+      font-weight: 800;
+      margin-bottom: 2px;
+    }
+
+    .perm-item-card p {
+      color: var(--text-soft);
+      font-size: 0.82rem;
+      line-height: 1.55;
+    }
+
+    .lens-grid-pills {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .lens-pill {
+      background: rgba(13, 148, 136, 0.08);
+      border: 1px solid var(--accent-teal);
+      border-radius: 6px;
+      padding: 4px;
+      text-align: center;
+    }
+
+    .lens-pill strong {
+      display: block;
+      color: #0F766E !important;
+      font-size: 0.78rem !important;
+    }
+
+    .lens-pill span {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      display: block;
+    }
+
+    /* Section Timeline Header */
+    .section-timeline-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border-gold);
+    }
+
+    .timeline-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .timeline-title-wrap h2 {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: #FFFFFF;
+    }
+
+    .timeline-count-badge {
+      font-size: 0.82rem;
+      font-weight: 800;
+      background: var(--accent-gold-bright);
+      color: var(--primary-dark);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+    }
+
+    /* Scene / Question Cards */
+    .scene-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      margin-bottom: 22px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .scene-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .scene-card.highlight-case {
+      border-left: 6px solid #0284C7;
+    }
+
+    .scene-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .timestamp-badge {
+      font-size: 0.78rem;
+      font-weight: 900;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      background: var(--primary-dark);
+      color: var(--accent-gold-bright);
+      border: 1px solid var(--accent-gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .scene-type-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tag-shot-cam {
+      font-size: 0.74rem;
+      font-weight: 800;
+      background: rgba(13, 148, 136, 0.1);
+      color: #0F766E;
+      border: 1px solid rgba(13, 148, 136, 0.3);
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+    }
+
+    .tag-shot-ext {
+      font-size: 0.74rem;
+      font-weight: 800;
+      background: rgba(2, 132, 199, 0.1);
+      color: #0369A1;
+      border: 1px solid rgba(2, 132, 199, 0.3);
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+    }
+
+    .tag-shot-audio {
+      font-size: 0.74rem;
+      font-weight: 800;
+      background: rgba(180, 83, 9, 0.1);
+      color: #B45309;
+      border: 1px solid rgba(180, 83, 9, 0.3);
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+    }
+
+    .scene-title-h3 {
+      font-size: 1.18rem;
+      font-weight: 900;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+
+    /* Script Blocks: Visual & Dialogue */
+    .script-block {
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      margin-bottom: 12px;
+      font-size: 0.88rem;
+      line-height: 1.65;
+    }
+
+    .block-visual {
+      background: #F8FAFC;
+      border-right: 3px solid #64748B;
+      color: #334155;
+    }
+
+    .block-visual .block-label {
+      font-weight: 800;
+      color: #475569;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+      font-size: 0.8rem;
+    }
+
+    /* Dialogue Bubbles */
+    .dialogue-stream {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .dialogue-bubble {
+      padding: 14px 18px;
+      border-radius: var(--radius-md);
+      position: relative;
+    }
+
+    .speaker-host {
+      background: linear-gradient(135deg, rgba(61, 30, 36, 0.05) 0%, rgba(212, 175, 55, 0.06) 100%);
+      border-right: 4px solid var(--accent-gold);
+      border-left: 1px solid rgba(0, 0, 0, 0.05);
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .speaker-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .speaker-name {
+      font-size: 0.86rem;
+      font-weight: 900;
+      color: #854D0E;
+    }
+
+    .speaker-action-note {
+      font-size: 0.74rem;
+      color: var(--text-muted);
+      font-style: italic;
+    }
+
+    .dialogue-line {
+      font-size: 0.98rem;
+      color: #1A090D;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    /* Spontaneous Live Podcast Discussion Box */
+    .podcast-live-flow-card {
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.05) 0%, rgba(212, 175, 55, 0.05) 100%);
+      border: 1.5px dashed rgba(2, 132, 199, 0.4);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      margin-top: 10px;
+    }
+
+    .flow-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #0369A1;
+      font-size: 0.92rem;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .flow-desc {
+      font-size: 0.9rem;
+      color: var(--text-main);
+      line-height: 1.7;
+      font-weight: 600;
+    }
+
+    /* "صح ولا غلط" Interactive Cards */
+    .myth-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    @media (min-width: 768px) {
+      .myth-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .myth-interactive-card {
+      background: linear-gradient(145deg, #FFFFFF 0%, #F0F9FF 100%);
+      border: 1.5px solid #7DD3FC;
+      border-radius: var(--radius-md);
+      padding: 18px;
+      box-shadow: 0 4px 18px rgba(2, 132, 199, 0.08);
+      position: relative;
+    }
+
+    .myth-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .myth-badge-title {
+      font-size: 0.8rem;
+      font-weight: 900;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      background: #E0F2FE;
+      color: #0369A1;
+      border: 1px solid #7DD3FC;
+    }
+
+    .myth-text-quote {
+      font-size: 0.96rem;
+      font-weight: 800;
+      color: #0C4A6E;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .myth-answer-box {
+      background: #FFFFFF;
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      border-right: 3.5px solid var(--accent-gold);
+      font-size: 0.88rem;
+      color: var(--text-soft);
+      line-height: 1.6;
+    }
+
+    /* Directorial Master Guidelines */
+    .guidelines-wrapper {
+      margin-top: 50px;
+    }
+
+    .guidelines-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-top: 25px;
+    }
+
+    @media (min-width: 768px) {
+      .guidelines-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .guide-card {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 250, 240, 0.93) 100%);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(20px);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .guide-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 45px rgba(212, 175, 55, 0.3);
+      border-color: var(--accent-gold-bright);
+    }
+
+    .guide-num-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      font-size: 0.78rem;
+      font-weight: 900;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent-gold-bright);
+      background: var(--primary-dark);
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--accent-gold);
+    }
+
+    .guide-card h4 {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      padding-left: 50px;
+    }
+
+    .guide-card p {
+      font-size: 0.88rem;
+      color: var(--text-soft);
+      line-height: 1.65;
+    }
+
+    /* Bottom Floating Quick-Jump Dock */
+    .floating-dock {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(26, 9, 13, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1.5px solid var(--border-gold);
+      border-radius: var(--radius-full);
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px var(--accent-gold-glow);
+      z-index: 1000;
+    }
+
+    .dock-link {
+      color: #FFFFFF;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .dock-link:hover, .dock-link.active {
+      background: var(--accent-gold);
+      color: var(--primary-dark);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Parallax Layers -->
+  <div class="fixed-bg-layer"></div>
+  <div class="fixed-bg-overlay"></div>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar-container">
+    <div class="progress-bar-fill" id="progressBar"></div>
+  </div>
+
+  <!-- Sticky Header Navbar -->
+  <header class="top-navbar">
+    <div class="nav-left-group">
+      <a href="index.html#sec-3" class="btn-back-plan" title="الرجوع إلى الخطة الرئيسية">
+        <i data-lucide="arrow-right"></i>
+        <span>الخطة الرئيسية</span>
+      </a>
+      <div class="brand-title-box">
+        <h1>بودكاست ليه PHYSIO — الحلقة الثالثة</h1>
+        <span>لقاء أ.د. إبراهيم حمودة • تأهيل الحالات العصبية (Neurology)</span>
+      </div>
+    </div>
+
+    <div class="nav-actions-group">
+      <button class="nav-act-btn" onclick="window.print()" title="طباعة السكريبت">
+        <i data-lucide="printer" style="width:16px; height:16px;"></i>
+      </button>
+      <button class="nav-act-btn" onclick="toggleFontSize()" title="تكبير الخط">
+        <i data-lucide="type" style="width:16px; height:16px;"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="script-container">
+
+    <!-- Sticky Filter & Quick Navigation Bar -->
+    <div class="filter-sticky-bar">
+      <div class="filter-chips">
+        <button class="filter-chip active" onclick="filterScenes('all')">
+          <i data-lucide="layers" style="width:13px; height:13px;"></i> الكل
+        </button>
+        <button class="filter-chip" onclick="filterScenes('question')">
+          <i data-lucide="help-circle" style="width:13px; height:13px;"></i> المحاور والأسئلة (8)
+        </button>
+        <button class="filter-chip" onclick="filterScenes('interactive')">
+          <i data-lucide="check-square" style="width:13px; height:13px;"></i> فقرة صح ولا غلط (4)
+        </button>
+        <button class="filter-chip" onclick="scrollToGuidelines()">
+          <i data-lucide="clapperboard" style="width:13px; height:13px;"></i> التوجيه الإخراجي
+        </button>
+      </div>
+
+      <span class="scene-counter-badge" id="sceneCounterBadge">8 محاور سريرية + فقرة صح ولا غلط</span>
+    </div>
+
+    <!-- SCRIPT HERO OVERVIEW CARD -->
+    <section class="script-hero-card">
+      <div class="ep-badge-row">
+        <span class="ep-number-pill">الحلقة 03 — لقاء أ.د. إبراهيم حمودة</span>
+        <span class="ep-status-pill"><i data-lucide="brain" style="width:13px; height:13px; display:inline;"></i> حلقة تأهيل أمراض وجراحة المخ والأعصاب</span>
+      </div>
+
+      <h2 class="script-title">المرونة العصبية والتأهيل العصبي: هل يتعلم المخ من جديد؟</h2>
+      <p class="script-subtitle">حوار علمي وسريري دقيق يفكك أسرار الـ Neuroplasticity، التقييم العصبي الفارق، التحفيز العصبي، التكنولوجيا وتوقيت التدخل الحاسم مع أ.د. إبراهيم حمودة.</p>
+
+      <div class="script-meta-grid">
+        <div class="meta-box-item">
+          <div class="meta-lbl"><i data-lucide="user" style="width:12px; height:12px;"></i> ضيف الحلقة</div>
+          <div class="meta-val">أ.د. إبراهيم حمودة</div>
+        </div>
+        <div class="meta-box-item">
+          <div class="meta-lbl"><i data-lucide="briefcase" style="width:12px; height:12px;"></i> الصفة الأكاديمية</div>
+          <div class="meta-val">أستاذ دكتور بقسم الأعصاب</div>
+        </div>
+        <div class="meta-box-item">
+          <div class="meta-lbl"><i data-lucide="map-pin" style="width:12px; height:12px;"></i> موقع التصوير</div>
+          <div class="meta-val">مكتب أ.د. محمود عويضة القديم</div>
+        </div>
+        <div class="meta-box-item">
+          <div class="meta-lbl"><i data-lucide="clock" style="width:12px; height:12px;"></i> المدة المقدرة</div>
+          <div class="meta-val">30 – 45 دقيقة</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: PERMISSIONS & EQUIPMENT PREREQUISITES (التصاريح والمعدات مقسمة في صندوقين فوق بعض) -->
+    <div id="permissionsSection">
+      
+      <!-- BOX 1: COLLEGE ADMINISTRATION REQUIREMENTS (المطلوب توفيره من إدارة الكلية) -->
+      <section class="gear-section-college">
+        <div class="perm-badge-title">
+          <div class="perm-icon-box">
+            <i data-lucide="landmark" style="width:24px; height:24px;"></i>
+          </div>
+          <div>
+            <h3>متطلبات وتجهيزات مطلوبة من إدارة الكلية الموقرة</h3>
+            <span>College Administration Prerequisites & Approved Core Gear</span>
+          </div>
+        </div>
+
+        <div class="perm-items-list">
+          <!-- Item 1: Location Permission -->
+          <div class="perm-item-card" style="border-right: 4px solid #E11D48;">
+            <i data-lucide="door-open"></i>
+            <div>
+              <div style="display:flex; align-items:center; gap:6px; margin-bottom:3px; flex-wrap:wrap;">
+                <strong>1. إذن تصوير في مكتب أ.د. محمود عويضة القديم:</strong>
+                <span style="font-size:0.72rem; font-weight:900; background:#E11D48; color:#FFFFFF; padding:2px 8px; border-radius:var(--radius-full);">أمام غرفة اتحاد الطلاب</span>
+              </div>
+              <p>استخراج تصريح رسمي لفتح واستخدام مكتب الأستاذ الدكتور محمود عويضة القديم (استوديو الكلية المعتمد لتصوير البودكاست) لتجهيز الاستوديو الحواري واستضافة أ.د. إبراهيم حمودة في بيئة أكاديمية وتاريخية راقية.</p>
+            </div>
+          </div>
+
+          <!-- Item 2: Core Mic -->
+          <div class="perm-item-card" style="border-right: 4px solid #E11D48;">
+            <i data-lucide="mic-2"></i>
+            <div>
+              <div style="display:flex; align-items:center; gap:6px; margin-bottom:3px; flex-wrap:wrap;">
+                <strong>2. طقم المايك اللاسلكي الأساسي (المعتمد بالخطة):</strong>
+                <span style="font-size:0.72rem; font-weight:900; background:rgba(225, 29, 72, 0.12); color:#9F1239; border:1px solid #E11D48; padding:2px 8px; border-radius:var(--radius-full);">Hollyland Lark Mark 2 (M2)</span>
+              </div>
+              <p>توفير جهاز المايك اللاسلكي الاحترافي المعتمد في ميزانية الخطة لتسجيل الصوت الصافي والنقي للحوار بين المقدم والضيف.</p>
+            </div>
+          </div>
+
+          <!-- Item 3: Academic Coordination -->
+          <div class="perm-item-card">
+            <i data-lucide="calendar-check"></i>
+            <div>
+              <strong>3. التنسيق والموافقة الأكاديمية:</strong>
+              <p>التنسيق الإداري والمسبق مع الضيف أ.د. إبراهيم حمودة، وتسهيل دخول فريق الإنتاج ومعدات التصوير للحرم الجامعي وقاعة التسجيل.</p>
+            </div>
+          </div>
+
+          <!-- Item 4: Logistics & Quietness -->
+          <div class="perm-item-card">
+            <i data-lucide="shield-check"></i>
+            <div>
+              <strong>4. التنسيق اللوجستي مع اتحاد الطلاب وتوفير الهدوء:</strong>
+              <p>التعاون مع اتحاد طلاب الكلية لتأمين الهدوء بمحيط المكتب أثناء ساعات التسجيل لمنع أي ضوضاء قد تؤثر على نقاء الصوت.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BOX 2: DIRECTOR'S PERSONAL GEAR & RIG (تجهيزات ومعدات المخرج الشخصية ومسؤوليته بالكامل) -->
+      <section class="gear-section-director">
+        <div class="perm-badge-title">
+          <div class="perm-icon-box director-icon">
+            <i data-lucide="clapperboard" style="width:24px; height:24px;"></i>
+          </div>
+          <div>
+            <h3>معدات وتجهيزات المخرج الخاصة — مسؤولية المخرج بالكامل</h3>
+            <span>Director's Personal Cinema Package & Camera Rig (Zero Cost on Faculty)</span>
+          </div>
+        </div>
+
+        <div class="perm-items-list">
+          <!-- Director Item 1: 2 Cameras -->
+          <div class="perm-item-card" style="border-right: 4px solid var(--accent-teal);">
+            <i data-lucide="video"></i>
+            <div>
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:3px; flex-wrap:wrap;">
+                <strong>1. كاميرتان فيديو احترافيتان (2 Video Cameras):</strong>
+                <span style="font-size:0.72rem; font-weight:900; background:linear-gradient(135deg, #0D9488, #042F2C); color:#FFFFFF; padding:2px 8px; border-radius:var(--radius-full);">Multi-Cam Setup</span>
+              </div>
+              <p>كاميرا رئيسية للكادر المقرب للضيف أ.د. إبراهيم + كاميرا ثانية للقطة المشتركة الواسعة (2-Shot) وكادر المقدم لضمان تقطيع بصري سلس ومتناسق.</p>
+            </div>
+          </div>
+
+          <!-- Director Item 2: 4 Cinema Lenses -->
+          <div class="perm-item-card" style="border-right: 4px solid var(--accent-teal);">
+            <i data-lucide="aperture"></i>
+            <div>
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:3px; flex-wrap:wrap;">
+                <strong>2. طقم 4 عدسات سينمائية شاملة (16mm, 35mm, 50mm, 85mm):</strong>
+                <span style="font-size:0.72rem; font-weight:900; background:linear-gradient(135deg, #0D9488, #042F2C); color:#FFFFFF; padding:2px 8px; border-radius:var(--radius-full);">4 Prime Lenses</span>
+              </div>
+              <p>طقم عدسات سينمائية شامل لتغطية الزوايا والبورتريه وإبراز التفاعل الحي:</p>
+              
+              <div class="lens-grid-pills">
+                <div class="lens-pill">
+                  <strong>16mm</strong>
+                  <span>تأسيس الاستوديو</span>
+                </div>
+                <div class="lens-pill">
+                  <strong>35mm</strong>
+                  <span>كادر ثنائي مشترك</span>
+                </div>
+                <div class="lens-pill">
+                  <strong>50mm</strong>
+                  <span>كادر متوسط طبيعي</span>
+                </div>
+                <div class="lens-pill">
+                  <strong>85mm</strong>
+                  <span>بورتريه وعزل الضيف</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- TIMELINE & SCREENPLAY SECTION -->
+    <div class="section-timeline-header">
+      <div class="timeline-title-wrap">
+        <i data-lucide="clapperboard" style="color:var(--accent-gold-bright); width:26px; height:26px;"></i>
+        <h2>تتابع محاور الحوار والسيناريو التنفيذي</h2>
+      </div>
+      <span class="timeline-count-badge">المقدمة + 8 محاور سريرية + فقرة صح ولا غلط + الخاتمة</span>
+    </div>
+
+    <!-- SCENE 00:00 — COLD OPEN & INTRO -->
+    <article class="scene-card" data-category="general" id="scene-00-00">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge"><i data-lucide="play" style="width:12px; height:12px;"></i> 00:00 — COLD OPEN & HOOK</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-ext">🎬 هوك تشويقي معرفي</span>
+          <span class="tag-shot-audio">🔊 موسيقى وثائقية هادئة</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">الافتتاحية — هل المخ والأعصاب ممكن يتعلموا من جديد؟</h3>
+
+      <div class="script-block block-visual">
+        <div class="block-label"><i data-lucide="eye" style="width:13px; height:13px;"></i> الصورة والكادر:</div>
+        <p>كادر افتتاحي سينمائي هادئ للمقدم في الاستوديو، مع إضاءة دافئة وانتقال سلس بالعدسة 50mm، ونبرة صوتية مشوقة تلامس مشاعر فقدان الحركة واستعادة الأمل.</p>
+      </div>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="mic" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+            <span class="speaker-action-note">نبرة مشوقة وتأملية عميقة</span>
+          </div>
+          <p class="dialogue-line">تخيل إنك صحيت في يوم من الأيام، واكتشفت إن إيدك اللي كنت بتستخدمها في كل حاجة… مش بتتحرك زي الأول.
+          <br /><br />
+          أو إن رجلك مش قادرة تشيلك.
+          <br /><br />
+          أو إن أبسط حركة كنت بتعملها من غير ما تفكر، بقت محتاجة مجهود وتدريب.
+          <br /><br />
+          هنا بييجي السؤال الأهم:
+          <br />
+          <strong>هل المخ والأعصاب ممكن يتعلموا من جديد؟</strong>
+          <br /><br />
+          والأهم…
+          <br />
+          <strong>هل العلاج الطبيعي العصبي النهارده لسه مجرد تمارين وحركة؟</strong>
+          <br />
+          ولا إحنا دخلنا عصر جديد من التأهيل، فيه Neuroplasticity، وتكنولوجيا، وتحفيز عصبي، وبروتوكولات علاجية أكثر دقة؟
+          <br /><br />
+          النهارده هنتكلم عن كل ده وأكثر مع واحد من أهم المتخصصين في المجال:
+          <br />
+          <strong>أ.د. إبراهيم حمودة</strong>، أستاذ دكتور في قسم الأعصاب بكلية العلاج الطبيعي جامعة كفر الشيخ.. أهلًا بحضرتك يا دكتور.</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="sparkles" style="width:17px; height:17px;"></i>
+            <strong>ترحيب الضيف والتفاعل الافتتاحي:</strong>
+          </div>
+          <p class="flow-desc">ترحيب أ.د. إبراهيم حمودة بالمشاهدين وطلاب الكلية، وتأكيده على أن التأهيل العصبي يمر بطفرة علمية تعيد صياغة مفهوم التعافي والأمل للمرضى.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- QUESTION 01 -->
+    <article class="scene-card highlight-case" data-category="question" id="q-01">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">المحور 01</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">🎥 كادر مقرب أ.د. إبراهيم 85mm</span>
+          <span class="tag-shot-ext">🧠 المفهوم الجوهري</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">1. يعني إيه تأهيل عصبي؟ والفرق الجوهري عن العلاج الطبيعي التقليدي</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="mic" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+          </div>
+          <p class="dialogue-line">"خلينا نبدأ من الأساس… لما نقول "تأهيل عصبي"، إحنا بنتكلم عن إيه بالضبط؟
+          <br /><br />
+          لأن ناس كتير ممكن تتخيل إن الموضوع مجرد إن المريض يحرك إيده ورجله وخلاص.
+          <br /><br />
+          إيه الفرق بين العلاج الطبيعي التقليدي والتأهيل العصبي؟ وإيه اللي بيخلي حالة المريض العصبي محتاجة تقييم وخطة مختلفة تمامًا؟"</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="message-square" style="width:17px; height:17px;"></i>
+            <strong>إجابة أ.د. إبراهيم حمودة والحوار التفاعلي:</strong>
+          </div>
+          <p class="flow-desc">يوضح أ.د. إبراهيم أن التأهيل العصبي يستهدف إعادة برمجة الجهاز العصبي المركزي (Motor Re-learning) والتحكم الحركي، وليس مجرد تقوية عضلات معزولة كما في التأهيل العضلي الهيكلي.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- QUESTION 02 -->
+    <article class="scene-card" data-category="question" id="q-02">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">المحور 02</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">🎥 كادر متوسط 50mm</span>
+          <span class="tag-shot-ext">🔍 التقييم قبل العلاج</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">2. التقييم العصبي الدقيق: قبل ما نعالج… لازم نفهم</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="mic" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+          </div>
+          <p class="dialogue-line">"وأنا شايف إن أول نقطة مهمة جدًا في الحلقة هي: التقييم. لأن قبل ما نعالج… لازم نفهم.
+          <br /><br />
+          إحنا مش عايزين نقول للمريض "حرّك إيدك" وخلاص.. إحنا عايزين نعرف: فين المشكلة؟
+          <br /><br />
+          هل المشكلة في القوة؟ ولا الإحساس؟ ولا التوازن؟ ولا التحكم الحركي؟ ولا في المخ نفسه؟ ولا في الأعصاب الطرفية؟ ولا في الحبل الشوكي؟
+          <br /><br />
+          إزاي بيتم التقييم العصبي الدقيق للمريض؟ وإيه أهم الحاجات اللي المعالج لازم يلاحظها من أول جلسة؟"</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="message-square" style="width:17px; height:17px;"></i>
+            <strong>إجابة أ.د. إبراهيم حمودة والحوار التفاعلي:</strong>
+          </div>
+          <p class="flow-desc">استعراض خطوات الفحص الإكلينيكي الشامل (Sensory, Motor, Tone, Coordination, Reflexes, Functional Independence) وكيف يبني المعالج خريطة التقييم السريرية الدقيقة.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- QUESTION 03 -->
+    <article class="scene-card highlight-case" data-category="question" id="q-03">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">المحور 03</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">🎥 كادر ثنائي 35mm</span>
+          <span class="tag-shot-ext">🧠 المرونة العصبية Neuroplasticity</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">3. المخ… هل فعلًا ممكن يتعلم من جديد؟ (المرونة العصبية Neuroplasticity)</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="mic" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+          </div>
+          <p class="dialogue-line">"وهنا نوصل لمصطلح مهم جدًا: <strong>Neuroplasticity – المرونة العصبية</strong>. المصطلح ده بقى بيتكرر كتير جدًا.
+          <br /><br />
+          يعني إيه إن المخ عنده قدرة على التغيير وإعادة تنظيم نفسه؟ وهل فعلًا ممكن جزء من المخ يتأذى، وأجزاء تانية تساعد في استعادة بعض الوظائف؟
+          <br /><br />
+          طيب يا دكتور، في مرضى كتير بعد الجلطة مثلًا يقولوا: <em>"أنا بقالي سنة… خلاص كده مفيش فايدة."</em>
+          <br /><br />
+          هل فعلًا في وقت معين نقول فيه إن التأهيل انتهى؟ ولا المخ ممكن يفضل يستجيب للتدريب حتى بعد فترة طويلة؟"</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="message-square" style="width:17px; height:17px;"></i>
+            <strong>إجابة أ.د. إبراهيم حمودة والحوار التفاعلي:</strong>
+          </div>
+          <p class="flow-desc">شرح علمي مبسط لظاهرة الـ Neuroplasticity وكيف تبني التمارين الموجهة مسارات عصبية بديلة، وتأكيد على أن فرصة التحسن لا تنتهي بمرور الشهور طالما توافر التدريب المناسب.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- QUESTION 04 -->
+    <article class="scene-card" data-category="question" id="q-04">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">المحور 04</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">🎥 كادر مقرب أ.د. إبراهيم 85mm</span>
+          <span class="tag-shot-ext">🤖 التكنولوجيا والذكاء الاصطناعي</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">4. التكنولوجيا في التأهيل العصبي: هل تستبدل دكتور العلاج الطبيعي؟</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="mic" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+          </div>
+          <p class="dialogue-line">"دلوقتي التكنولوجيا بقت موجودة تقريبًا في كل مجال. لكن لما نتكلم عن العلاج الطبيعي العصبي…
+          <br /><br />
+          إيه اللي التكنولوجيا أضافته؟ وإيه أحدث التقنيات المستخدمة حاليًا في إعادة التأهيل الحركي والعصبي؟
+          <br /><br />
+          وسؤال شاغلنا كلنا يا دكتور: <strong>هل التكنولوجيا ممكن تستبدل دكتور العلاج الطبيعي؟</strong> ولا هي أداة بتخلي شغل المعالج أكثر دقة وفعالية؟"</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="message-square" style="width:17px; height:17px;"></i>
+            <strong>إجابة أ.د. إبراهيم حمودة والحوار التفاعلي:</strong>
+          </div>
+          <p class="flow-desc">تحليل واقعي لأجهزة الروبوتات والواقع الافتراضي (VR)، والتأكيد على حتمية اللمسة والقرار السريري البشري للمعالج الذي يوجه التكنولوجيا ولا تستبدله.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- QUESTION 05 -->
+    <article class="scene-card highlight-case" data-category="question" id="q-05">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">المحور 05</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">🎥 كادر متوسط 50mm</span>
+          <span class="tag-shot-ext">⚡ التحفيز العصبي Neural Stimulation</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">5. التحفيز العصبي (Neural Stimulation) وأهداف تتجاوز مجرد الحركة</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="mic" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+          </div>
+          <p class="dialogue-line">"من الحاجات اللي بقت مثيرة للاهتمام جدًا: <strong>Neural Stimulation – التحفيز العصبي</strong>، سواء باستخدام تقنيات كهربائية أو وسائل أخرى حسب حالة المريض.
+          <br /><br />
+          لكن هنا بييجي سؤال مهم: هل إحنا فعلًا بنحفز العصب علشان الحركة تتحسن؟ ولا الموضوع أكبر من كده؟
+          <br /><br />
+          هل الهدف في كل الحالات هو استعادة الحركة فقط؟ ولا عندنا أهداف تانية أهم، زي الاستقلالية والقدرة على أداء الأنشطة اليومية وجودة الحياة؟"</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="message-square" style="width:17px; height:17px;"></i>
+            <strong>إجابة أ.د. إبراهيم حمودة والحوار التفاعلي:</strong>
+          </div>
+          <p class="flow-desc">توضيح آليات التحفيز العصبي (FES / NMES)، وإبراز مفهوم جودة الحياة (Quality of Life) والاستقلالية الوظيفية كهدف أسمى يتجاوز مجرد انقباض العضلة المعزول.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- QUESTION 06 -->
+    <article class="scene-card" data-category="question" id="q-06">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">المحور 06</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">🎥 كادر ثنائي 35mm</span>
+          <span class="tag-shot-ext">⏱️ التوقيت الذهبي للبدء</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">6. إمتى التأهيل يبدأ؟ (التوقيت الذهبي الحاسم)</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="mic" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+          </div>
+          <p class="dialogue-line">"ودي نقطة أعتقد إنها مهمة جدًا لأهل المرضى.
+          <br /><br />
+          أحيانًا الأسرة بتكون مستنية المريض "يفوق" أو حالته تستقر تمامًا، وبعدها تبدأ التأهيل.
+          <br /><br />
+          هل ده صح؟ ولا التأهيل له توقيت معين، وكل ما بدأنا بشكل مناسب بدري كان أفضل؟"</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="message-square" style="width:17px; height:17px;"></i>
+            <strong>إجابة أ.د. إبراهيم حمودة والحوار التفاعلي:</strong>
+          </div>
+          <p class="flow-desc">رسالة توعوية حاسمة للأسر حول أهمية التدخل المبكر (Early Mobilization) بمجرد الاستقرار الطبي للعلامات الحيوية، لمنع المضاعفات وتيبس المفاصل واستثمار النافذة الذهبية.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- QUESTION 07 -->
+    <article class="scene-card highlight-case" data-category="question" id="q-07">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">المحور 07</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">🎥 كادر مقرب أ.د. إبراهيم 85mm</span>
+          <span class="tag-shot-ext">🛤️ قياس التحسن الحقيقي</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">7. رحلة المريض مش جلسة أو اتنين (الاستمرارية وقياس التحسن الحقيقي)</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="mic" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+          </div>
+          <p class="dialogue-line">"فيه مفهوم محتاج يتغير عند ناس كتير: إن العلاج الطبيعي عبارة عن كام جلسة والمريض يخلص.
+          <br /><br />
+          لكن في الحالات العصبية الموضوع مختلف.. إحنا بنتكلم عن رحلة طويلة أحيانًا.
+          <br /><br />
+          إزاي نعرف إن المريض بيتحسن فعلًا؟ وهل التحسن بيتقاس فقط بإنه يمشي؟"</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="message-square" style="width:17px; height:17px;"></i>
+            <strong>إجابة أ.د. إبراهيم حمودة والحوار التفاعلي:</strong>
+          </div>
+          <p class="flow-desc">إعادة تعريف مقاييس التحسن: التوازن، سهولة الحركة، الاستقلالية في تناول الطعام وارتداء الملابس، جودة النوم، وتقليل الاعتماد على الآخرين.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- QUESTION 08 -->
+    <article class="scene-card" data-category="question" id="q-08">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">المحور 08</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">🎥 كادر متوسط 50mm</span>
+          <span class="tag-shot-ext">🎓 خارطة طريق الطلاب</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">8. خارطة طريق طالب العلاج الطبيعي للتخصص في الـ Neurorehabilitation</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="mic" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+          </div>
+          <p class="dialogue-line">"لأن مجال الأعصاب بيتطور بسرعة، والطبيب أو المعالج اللي هيقف مكانه… معلوماته هتتقادم.
+          <br /><br />
+          لو طالب علاج طبيعي أو طبيب شاب عايز يتخصص في الـ <strong>Neurorehabilitation</strong>…
+          <br /><br />
+          يبدأ منين؟ وإيه أهم المهارات اللي لازم يركز عليها؟
+          <br /><br />
+          وهل الدراسة الأكاديمية وحدها كفاية؟ ولا لازم يكون عنده Exposure للحالات الحقيقية والبحث العلمي والتقنيات الحديثة؟"</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="message-square" style="width:17px; height:17px;"></i>
+            <strong>إجابة أ.د. إبراهيم حمودة والحوار التفاعلي:</strong>
+          </div>
+          <p class="flow-desc">نصائح وإرشادات ملهمة لطلاب الكلية حول فهم التشريح العصبي الوظيفي، النزول السريري المبكر، التدريب على التفكير النقدي وقراءة الأبحاث العالمية المحدثة.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- INTERACTIVE SECTION: صح ولا غلط -->
+    <article class="scene-card highlight-case" data-category="interactive" id="sec-myths">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge" style="background:#0284C7; border-color:#38BDF8; color:#FFFFFF;">فقرة تفاعلية خاصة</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">⚡ اختبار المفاهيم السريرية</span>
+          <span class="tag-shot-ext">🩺 فقرة صح ولا غلط؟</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">فقرة "صح ولا غلط" — 4 مواقف سريرية سريعة مع أ.د. إبراهيم حمودة</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="mic" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+            <span class="speaker-action-note">تمهيد للفقرة التفاعلية السريعة</span>
+          </div>
+          <p class="dialogue-line">هنعمل مع حضرتك فقرة سريعة ومباشرة: <strong>صح ولا غلط؟</strong></p>
+        </div>
+      </div>
+
+      <div class="myth-cards-grid">
+        <!-- Item 1 -->
+        <div class="myth-interactive-card">
+          <div class="myth-card-header">
+            <span class="myth-badge-title">السؤال الأول 👴</span>
+            <span style="font-size:0.75rem; font-weight:800; color:#0284C7;">عامل السن</span>
+          </div>
+          <p class="myth-text-quote">1- السن عائق أمام التأهيل؟</p>
+          <div class="myth-answer-box">
+            <strong>رد أ.د. إبراهيم حمودة:</strong> <span style="color:#DC2626; font-weight:900;">غلط.</span> السن ليس عائقاً مطلقاً؛ المرونة العصبية موجودة في كل الأعمار، والأهداف تُفصّل حسب قدرة كل مريض واحتياجه.
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="myth-interactive-card">
+          <div class="myth-card-header">
+            <span class="myth-badge-title">السؤال الثاني ⏳</span>
+            <span style="font-size:0.75rem; font-weight:800; color:#0284C7;">سرعة الاستجابة</span>
+          </div>
+          <p class="myth-text-quote">2- بعد الجلطة، لو المريض متـحسنش من أول كام جلسة، يبقى مفيش أمل؟</p>
+          <div class="myth-answer-box">
+            <strong>رد أ.د. إبراهيم حمودة:</strong> <span style="color:#DC2626; font-weight:900;">غلط تماماً.</span> التعافي العصبي تراكمي وتدريجي، وإعادة بناء المسارات العصبية تحتاج تكراراً ووقتاً واستمرارية.
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="myth-interactive-card">
+          <div class="myth-card-header">
+            <span class="myth-badge-title">السؤال الثالث 🚶‍♂️</span>
+            <span style="font-size:0.75rem; font-weight:800; color:#0284C7;">مفهوم النجاح</span>
+          </div>
+          <p class="myth-text-quote">3- نجاح التأهيل العصبي معناه بس إن المريض قدر يمشي من تاني؟</p>
+          <div class="myth-answer-box">
+            <strong>رد أ.د. إبراهيم حمودة:</strong> <span style="color:#DC2626; font-weight:900;">غلط.</span> النجاح يشمل الاستقلالية، الاتزان، حركة الذراع واليد، التحكم، وجودة حياة المريض في بيته.
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="myth-interactive-card">
+          <div class="myth-card-header">
+            <span class="myth-badge-title">السؤال الرابع 🧠</span>
+            <span style="font-size:0.75rem; font-weight:800; color:#0284C7;">العامل النفسي</span>
+          </div>
+          <p class="myth-text-quote">4- الحالة النفسية للمريض بتأثر على سرعة خطة التأهيل؟</p>
+          <div class="myth-answer-box">
+            <strong>رد أ.د. إبراهيم حمودة:</strong> <span style="color:#16A34A; font-weight:900;">صح ومؤكدة 100%.</span> الدافع النفسي ودعم الأسرة يحفزان إفراز النواقل العصبية التي تسرع التعافي والتعلم الحركي.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- SCENE OUTRO -->
+    <article class="scene-card" data-category="general" id="scene-outro">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge"><i data-lucide="flag" style="width:12px; height:12px;"></i> ختام الحلقة — OUTRO</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">🎥 كادر المقدم 50mm ثم كادر ثنائي 35mm</span>
+          <span class="tag-shot-audio">🔊 شارة النهاية الملهمة</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">الختام — إصابة الجهاز العصبي ليست نهاية القصة</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="mic" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+            <span class="speaker-action-note">نبرة ملهمة ومؤثرة تودع الجمهور</span>
+          </div>
+          <p class="dialogue-line">يمكن أهم رسالة نخرج بيها من الحلقة دي…
+          <br /><br />
+          إن إصابة الجهاز العصبي مش معناها بالضرورة إن القصة انتهت.
+          <br /><br />
+          أحيانًا الطريق بيكون طويل.
+          <br />
+          وأحيانًا التحسن بيكون بسيط جدًا في البداية.
+          <br /><br />
+          شكرًا جدًا لحضرتك يا دكتور إبراهيم على الحلقة الممتعة دي، وشكرًا لكل حد تابعنا.
+          <br /><br />
+          نشوفكم في حلقة جديدة وتخصص جديد، واوعى تنسى تسأل نفسك: <strong>ليه فيزيووو؟</strong></p>
+        </div>
+      </div>
+    </article>
+
+    <!-- DIRECTORIAL GUIDELINES SECTION -->
+    <div class="guidelines-wrapper" id="guidelinesSection">
+      <div class="section-timeline-header">
+        <div class="timeline-title-wrap">
+          <i data-lucide="clapperboard" style="color:var(--accent-gold-bright); width:26px; height:26px;"></i>
+          <h2>التوجيه والمعالجة الإخراجية للحلقة الثالثة</h2>
+        </div>
+        <span class="timeline-count-badge">المخرج السينمائي</span>
+      </div>
+
+      <div class="guidelines-grid">
+        <div class="guide-card">
+          <span class="guide-num-badge">01</span>
+          <h4>توزيع وتوجيه الكاميرات المتعددة (Multi-Cam Setup)</h4>
+          <p>تثبيت كاميرا رئيسية بعدسة 85mm f/1.8 على أ.د. إبراهيم لعزل ملامح التركيز والانفعال العلمي، مع كاميرا ثانية 35mm للقطة الواسعة المشتركة لتوثيق التفاعل السلس بين المقدم والضيف.</p>
+        </div>
+
+        <div class="guide-card">
+          <span class="guide-num-badge">02</span>
+          <h4>هندسة الإضاءة والجمالية البصرية الدقيقة</h4>
+          <p>الاعتماد على الإضاءة الطبيعية الموزعة بنعومة في الاستوديو مع لمسات خفيفة من إضاءة الـ Rim Light لفصل الضيف عن خلفية المكتبة الأكاديمية وإضفاء هيبة ووقار للمشهد.</p>
+        </div>
+
+        <div class="guide-card">
+          <span class="guide-num-badge">03</span>
+          <h4>المسار الصوتي الصافي والتحكم في البيئة</h4>
+          <p>استخدام مايكات Hollyland Lark Mark 2 (M2) مع تفعيل مسارات التسجيل الاحتياطية (Safety Track) وتأمين الهدوء التام في الممر لمنع أي تشويش خارجي على نقاء الصوت.</p>
+        </div>
+
+        <div class="guide-card">
+          <span class="guide-num-badge">04</span>
+          <h4>ريتم الحوار والتدفق التفاعلي العفوي</h4>
+          <p>الحفاظ على حوار حي وعفوي دون مقاطعة متكلفة، مع إبراز نبرة المذيع التفاعلية لتسهيل المفاهيم المعقدة (كالمرونة العصبية والتحفيز العصبي) وتقديمها بقالب ممتع للمشاهد.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Bottom Floating Navigation Dock -->
+  <nav class="floating-dock">
+    <a href="index.html#sec-3" class="dock-link" title="الرجوع إلى الخطة">
+      <i data-lucide="arrow-right" style="width:14px; height:14px;"></i>
+      <span>الخطة</span>
+    </a>
+    <a href="#permissionsSection" class="dock-link" title="المتطلبات">
+      <i data-lucide="shield-check" style="width:14px; height:14px;"></i>
+      <span>المتطلبات</span>
+    </a>
+    <a href="#q-01" class="dock-link" title="المحاور">
+      <i data-lucide="help-circle" style="width:14px; height:14px;"></i>
+      <span>المحاور (8)</span>
+    </a>
+    <a href="#sec-myths" class="dock-link" title="صح ولا غلط">
+      <i data-lucide="check-square" style="width:14px; height:14px;"></i>
+      <span>صح ولا غلط</span>
+    </a>
+    <a href="#guidelinesSection" class="dock-link" title="التوجيه الإخراجي">
+      <i data-lucide="clapperboard" style="width:14px; height:14px;"></i>
+      <span>الإخراج</span>
+    </a>
+    <a href="#" class="dock-link" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" title="أعلى الصفحة">
+      <i data-lucide="arrow-up" style="width:14px; height:14px;"></i>
+      <span>للأعلى</span>
+    </a>
+  </nav>
+
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Reading Progress Bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      const progressBar = document.getElementById('progressBar');
+      if (progressBar) {
+        progressBar.style.width = scrolled + '%';
+      }
+    });
+
+    // Filter Scenes
+    function filterScenes(category) {
+      const cards = document.querySelectorAll('.scene-card');
+      const chips = document.querySelectorAll('.filter-chip');
+
+      chips.forEach(chip => chip.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+
+      let visibleCount = 0;
+      cards.forEach(card => {
+        if (category === 'all') {
+          card.style.display = 'block';
+          visibleCount++;
+        } else if (category === 'question') {
+          if (card.dataset.category === 'question') {
+            card.style.display = 'block';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        } else if (category === 'interactive') {
+          if (card.dataset.category === 'interactive') {
+            card.style.display = 'block';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        }
+      });
+
+      const badge = document.getElementById('sceneCounterBadge');
+      if (badge) {
+        if (category === 'question') {
+          badge.textContent = '8 محاور سريرية رئيسية';
+        } else if (category === 'interactive') {
+          badge.textContent = 'فقرة صح ولا غلط (4 مواقف سريرية)';
+        } else {
+          badge.textContent = '8 محاور سريرية + فقرة صح ولا غلط';
+        }
+      }
+    }
+
+    // Scroll to Guidelines
+    function scrollToGuidelines() {
+      const section = document.getElementById('guidelinesSection');
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Toggle Font Size for Readability
+    let isLargeFont = false;
+    function toggleFontSize() {
+      isLargeFont = !isLargeFont;
+      const lines = document.querySelectorAll('.dialogue-line, .flow-desc, .guide-card p');
+      lines.forEach(el => {
+        if (isLargeFont) {
+          el.style.fontSize = '1.12rem';
+          el.style.lineHeight = '1.85';
+        } else {
+          el.style.fontSize = '';
+          el.style.lineHeight = '';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

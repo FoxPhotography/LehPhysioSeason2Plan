@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>سكريبت الحلقة الرابعة | أ.د. نسمة — العلاج الطبيعي للأطفال Pediatrics — ليه PHYSIO</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="shortcut icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Google Fonts: Cairo & Tajawal & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      /* Deep Warm Mahogany & Luxury Gold System (Matching index.html) */
+      --bg-dark: #1A090D;
+      --bg-card: rgba(255, 255, 255, 0.96);
+      
+      --primary-brown: #3D1E24;
+      --primary-dark: #1A090D;
+      --primary-deep: #14070A;
+
+      --accent-gold: #D4AF37;
+      --accent-gold-bright: #F5D061;
+      --accent-gold-glow: rgba(245, 208, 97, 0.35);
+
+      --accent-teal: #0D9488;
+      --accent-teal-light: #14B8A6;
+      --accent-teal-glow: rgba(20, 184, 166, 0.3);
+
+      --accent-rose: #E11D48;
+      --accent-amber: #D97706;
+      --accent-coral: #EA580C;
+
+      --text-main: #2A1418;
+      --text-soft: #3D1E24;
+      --text-muted: #6B4E54;
+      --border-gold: rgba(212, 175, 55, 0.45);
+
+      --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.45);
+      --shadow-gold-glow: 0 0 35px rgba(212, 175, 55, 0.25);
+      --shadow-teal-glow: 0 0 30px rgba(13, 148, 136, 0.25);
+
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 28px;
+      --radius-full: 9999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', 'Tajawal', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.75;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Fixed Parallax Background (Matching index.html) */
+    .fixed-bg-layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: url('assets/background1.webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      z-index: -2;
+      transform: scale(1.02);
+    }
+
+    .fixed-bg-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at center, rgba(26, 9, 13, 0.45) 0%, rgba(15, 5, 8, 0.94) 100%);
+      z-index: -1;
+    }
+
+    /* Top Reading Progress Bar */
+    .progress-bar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 9999;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #D4AF37, #EA580C, #F5D061);
+      box-shadow: 0 0 12px #F5D061;
+      transition: width 0.15s ease-out;
+    }
+
+    /* Top Sticky Header */
+    .top-navbar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: rgba(26, 9, 13, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-gold);
+      z-index: 1000;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-left-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .btn-back-plan {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 16px;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.18), rgba(234, 88, 12, 0.18));
+      color: var(--accent-gold-bright);
+      border: 1px solid var(--accent-gold);
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .btn-back-plan:hover {
+      background: var(--accent-gold);
+      color: var(--primary-dark);
+      box-shadow: 0 0 18px var(--accent-gold-glow);
+      transform: scale(1.03);
+    }
+
+    .brand-title-box {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .brand-title-box h1 {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: #FFFFFF;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .brand-title-box span {
+      font-size: 0.72rem;
+      color: var(--accent-gold-bright);
+      font-weight: 700;
+    }
+
+    .nav-actions-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-act-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nav-act-btn:hover {
+      background: var(--accent-gold);
+      color: var(--primary-dark);
+      border-color: var(--accent-gold);
+      transform: scale(1.08);
+    }
+
+    @media (max-width: 520px) {
+      .top-navbar {
+        padding: 8px 10px;
+        gap: 6px;
+      }
+      .nav-left-group {
+        gap: 6px;
+      }
+      .btn-back-plan {
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        justify-content: center;
+      }
+      .btn-back-plan span {
+        display: none;
+      }
+      .btn-back-plan i {
+        margin: 0;
+        width: 16px;
+        height: 16px;
+      }
+      .brand-title-box h1 {
+        font-size: 0.88rem;
+      }
+      .brand-title-box span {
+        font-size: 0.65rem;
+      }
+      .nav-act-btn {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    /* Main Content Container */
+    .script-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px 16px 120px 16px;
+      position: relative;
+      z-index: 10;
+    }
+
+    @media (min-width: 768px) {
+      .script-container {
+        padding: 40px 24px 140px 24px;
+      }
+    }
+
+    /* Filter & Quick Jump Bar */
+    .filter-sticky-bar {
+      position: sticky;
+      top: 60px;
+      z-index: 900;
+      background: rgba(26, 9, 13, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: var(--radius-md);
+      padding: 8px 14px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      overflow-x: auto;
+    }
+
+    .filter-chips {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .filter-chip {
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.76rem;
+      font-weight: 800;
+      background: rgba(255, 255, 255, 0.08);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .filter-chip.active, .filter-chip:hover {
+      background: linear-gradient(135deg, #F5D061, #D4AF37);
+      color: var(--primary-dark);
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 14px var(--accent-gold-glow);
+    }
+
+    .scene-counter-badge {
+      font-size: 0.75rem;
+      color: var(--accent-gold-bright);
+      font-weight: 800;
+      white-space: nowrap;
+      background: rgba(212, 175, 55, 0.15);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-gold);
+    }
+
+    /* Screenplay Header Card */
+    .script-hero-card {
+      background: #FFFFFF;
+      border: 2px solid var(--accent-gold);
+      border-radius: var(--radius-lg);
+      padding: 26px 20px;
+      box-shadow: var(--shadow-lg), var(--shadow-gold-glow);
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+      .script-hero-card {
+        padding: 36px 32px;
+      }
+    }
+
+    .script-hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #D4AF37, #EA580C, #0D9488, #D4AF37);
+    }
+
+    .ep-badge-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .ep-number-pill {
+      font-size: 0.85rem;
+      font-weight: 900;
+      padding: 5px 16px;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, #3D1E24, #1A090D);
+      color: var(--accent-gold-bright);
+      border: 1px solid var(--accent-gold);
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+    }
+
+    .ep-status-pill {
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      background: rgba(61, 30, 36, 0.08);
+      border: 1px solid var(--accent-gold);
+      color: var(--primary-brown);
+    }
+
+    .script-title {
+      font-size: 1.95rem;
+      font-weight: 900;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    @media (min-width: 768px) {
+      .script-title {
+        font-size: 2.35rem;
+      }
+    }
+
+    .script-subtitle {
+      font-size: 1.05rem;
+      color: var(--primary-brown);
+      font-weight: 700;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    /* Meta Attributes Grid */
+    .script-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    @media (min-width: 640px) {
+      .script-meta-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .meta-box-item {
+      background: rgba(61, 30, 36, 0.04);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      text-align: center;
+    }
+
+    .meta-box-item .meta-lbl {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .meta-box-item .meta-val {
+      font-size: 0.95rem;
+      color: var(--primary-dark);
+      font-weight: 900;
+    }
+
+    /* Permissions & Equipment Sections (Dual Box Architecture) */
+    .gear-section-college {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 241, 242, 0.95) 100%);
+      border: 2px solid #E11D48;
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-lg), 0 10px 30px rgba(225, 29, 72, 0.12);
+      margin-bottom: 28px;
+      position: relative;
+      backdrop-filter: blur(25px);
+    }
+
+    .gear-section-director {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 253, 250, 0.95) 100%);
+      border: 2px solid var(--accent-teal);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-lg), 0 10px 30px rgba(13, 148, 136, 0.15);
+      margin-bottom: 40px;
+      position: relative;
+      backdrop-filter: blur(25px);
+    }
+
+    .perm-badge-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .perm-icon-box {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-md);
+      background: rgba(225, 29, 72, 0.12);
+      border: 1px solid #E11D48;
+      color: #E11D48;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .perm-icon-box.director-icon {
+      background: rgba(13, 148, 136, 0.12);
+      border-color: var(--accent-teal);
+      color: var(--accent-teal);
+    }
+
+    .perm-badge-title h3 {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: #9F1239;
+    }
+
+    .gear-section-director .perm-badge-title h3 {
+      color: #0F766E;
+    }
+
+    .perm-badge-title span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .perm-items-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .perm-items-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .perm-item-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+    }
+
+    .perm-item-card i {
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .gear-section-college .perm-item-card i { color: #E11D48; }
+    .gear-section-director .perm-item-card i { color: var(--accent-teal); }
+
+    .perm-item-card strong {
+      display: block;
+      color: var(--primary-dark);
+      font-weight: 800;
+      margin-bottom: 2px;
+    }
+
+    .perm-item-card p {
+      color: var(--text-soft);
+      font-size: 0.82rem;
+      line-height: 1.55;
+    }
+
+    .lens-grid-pills {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .lens-pill {
+      background: rgba(13, 148, 136, 0.08);
+      border: 1px solid var(--accent-teal);
+      border-radius: 6px;
+      padding: 4px;
+      text-align: center;
+    }
+
+    .lens-pill strong {
+      font-size: 0.78rem;
+      color: #0F766E;
+      display: block;
+      line-height: 1;
+    }
+
+    .lens-pill span {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    /* Timeline Section Header */
+    .section-timeline-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 32px 0 20px 0;
+      padding-bottom: 12px;
+      border-bottom: 1.5px solid var(--border-gold);
+    }
+
+    .timeline-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .timeline-title-wrap h2 {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: #FFFFFF;
+    }
+
+    .timeline-count-badge {
+      font-size: 0.82rem;
+      font-weight: 800;
+      background: var(--accent-gold-bright);
+      color: var(--primary-dark);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+    }
+
+    /* Scene / Question Cards */
+    .scene-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      margin-bottom: 22px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .scene-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .scene-card.highlight-case {
+      border-left: 6px solid var(--accent-coral);
+    }
+
+    .scene-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .timestamp-badge {
+      font-size: 0.78rem;
+      font-weight: 900;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      background: var(--primary-dark);
+      color: var(--accent-gold-bright);
+      border: 1px solid var(--accent-gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .scene-type-tags {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tag-shot-cam {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: #E0F2FE;
+      color: #0369A1;
+      border: 1px solid #BAE6FD;
+    }
+
+    .tag-shot-audio {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FDE68A;
+    }
+
+    .tag-shot-ext {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: #FFF1F2;
+      color: #BE123C;
+      border: 1px solid #FECDD3;
+    }
+
+    .scene-title-h3 {
+      font-size: 1.22rem;
+      font-weight: 900;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Script Blocks: Visual, Audio, Action, HUD */
+    .script-block {
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    .block-visual {
+      background: #F8FAFC;
+      border-right: 3.5px solid #0284C7;
+      color: #1E293B;
+    }
+
+    .block-audio {
+      background: #FFFBEB;
+      border-right: 3.5px solid #D97706;
+      color: #78350F;
+    }
+
+    .block-onscreen {
+      background: #FFF7ED;
+      border: 1px dashed #FB923C;
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .hud-tag {
+      font-size: 0.72rem;
+      font-weight: 900;
+      color: #EA580C;
+      letter-spacing: 1px;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .hud-text {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: #7C2D12;
+    }
+
+    /* Dialogue Stream */
+    .dialogue-stream {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .dialogue-bubble {
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      position: relative;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    }
+
+    .dialogue-bubble.speaker-host {
+      border-right: 4px solid var(--accent-gold);
+    }
+
+    .speaker-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .speaker-name {
+      font-size: 0.85rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #A16207;
+    }
+
+    .speaker-action-note {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    .dialogue-line {
+      font-size: 0.98rem;
+      color: #1A090D;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    /* Spontaneous Live Podcast Discussion Box */
+    .podcast-live-flow-card {
+      background: linear-gradient(135deg, rgba(234, 88, 12, 0.05) 0%, rgba(212, 175, 55, 0.05) 100%);
+      border: 1.5px dashed rgba(234, 88, 12, 0.4);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      margin-top: 10px;
+    }
+
+    .flow-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #C2410C;
+      font-size: 0.92rem;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .flow-desc {
+      font-size: 0.9rem;
+      color: var(--text-main);
+      line-height: 1.7;
+      font-weight: 600;
+    }
+
+    /* "اطمن ولا أقلق؟" Interactive Myth-Buster Cards */
+    .myth-cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      margin: 16px 0;
+    }
+
+    @media (min-width: 768px) {
+      .myth-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .myth-interactive-card {
+      background: linear-gradient(145deg, #FFFFFF 0%, #FFF7ED 100%);
+      border: 1.5px solid #FDBA74;
+      border-radius: var(--radius-md);
+      padding: 18px;
+      box-shadow: 0 4px 18px rgba(234, 88, 12, 0.08);
+      position: relative;
+    }
+
+    .myth-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .myth-badge-title {
+      font-size: 0.8rem;
+      font-weight: 900;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      background: #FFEDD5;
+      color: #9A3412;
+      border: 1px solid #FDBA74;
+    }
+
+    .myth-text-quote {
+      font-size: 0.96rem;
+      font-weight: 800;
+      color: #7C2D12;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .myth-answer-box {
+      background: #FFFFFF;
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      border-right: 3.5px solid var(--accent-teal);
+      font-size: 0.88rem;
+      color: var(--text-soft);
+      line-height: 1.6;
+    }
+
+    /* Rapid-Fire Grid */
+    .rapid-fire-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    @media (min-width: 640px) {
+      .rapid-fire-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .rapid-q-item {
+      background: #FFFFFF;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .rapid-q-num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--primary-dark);
+      color: var(--accent-gold-bright);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 900;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .rapid-q-text {
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      line-height: 1.5;
+    }
+
+    /* Directorial Master Guidelines */
+    .guidelines-wrapper {
+      margin-top: 50px;
+    }
+
+    .guidelines-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-top: 25px;
+    }
+
+    @media (min-width: 768px) {
+      .guidelines-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .guide-card {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 250, 240, 0.93) 100%);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(20px);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .guide-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 45px rgba(212, 175, 55, 0.3);
+      border-color: var(--accent-gold-bright);
+    }
+
+    .guide-num-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      font-size: 0.78rem;
+      font-weight: 900;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent-gold-bright);
+      background: var(--primary-dark);
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--accent-gold);
+    }
+
+    .guide-card h4 {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      padding-left: 50px;
+    }
+
+    .guide-card p {
+      font-size: 0.88rem;
+      color: var(--text-soft);
+      line-height: 1.65;
+    }
+
+    /* Bottom Floating Quick-Jump Dock */
+    .floating-dock {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(26, 9, 13, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1.5px solid var(--border-gold);
+      border-radius: var(--radius-full);
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px var(--accent-gold-glow);
+      z-index: 1000;
+    }
+
+    .dock-link {
+      color: #FFFFFF;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .dock-link:hover, .dock-link.active {
+      background: var(--accent-gold);
+      color: var(--primary-dark);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Parallax Layers -->
+  <div class="fixed-bg-layer"></div>
+  <div class="fixed-bg-overlay"></div>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar-container">
+    <div class="progress-bar-fill" id="progressBar"></div>
+  </div>
+
+  <!-- Sticky Header Navbar -->
+  <header class="top-navbar">
+    <div class="nav-left-group">
+      <a href="index.html#sec-4" class="btn-back-plan" title="الرجوع إلى الخطة الرئيسية">
+        <i data-lucide="arrow-right"></i>
+        <span>الخطة الرئيسية</span>
+      </a>
+      <div class="brand-title-box">
+        <h1>بودكاست ليه PHYSIO — الحلقة الرابعة</h1>
+        <span>أ.د. نسمة • العلاج الطبيعي للأطفال Pediatrics</span>
+      </div>
+    </div>
+
+    <div class="nav-actions-group">
+      <button class="nav-act-btn" onclick="window.print()" title="طباعة السكريبت">
+        <i data-lucide="printer" style="width:16px; height:16px;"></i>
+      </button>
+      <button class="nav-act-btn" onclick="toggleFontSize()" title="تكبير الخط">
+        <i data-lucide="type" style="width:16px; height:16px;"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="script-container">
+
+    <!-- Sticky Filter & Quick Navigation Bar -->
+    <div class="filter-sticky-bar">
+      <div class="filter-chips">
+        <button class="filter-chip active" onclick="filterScenes('all')">
+          <i data-lucide="layers" style="width:13px; height:13px;"></i> الكل
+        </button>
+        <button class="filter-chip" onclick="filterScenes('interactive')">
+          <i data-lucide="help-circle" style="width:13px; height:13px;"></i> اطمن ولا أقلق؟ (04)
+        </button>
+        <button class="filter-chip" onclick="filterScenes('question')">
+          <i data-lucide="message-square" style="width:13px; height:13px;"></i> محاور النقاش
+        </button>
+        <button class="filter-chip" onclick="scrollToGuidelines()">
+          <i data-lucide="clapperboard" style="width:13px; height:13px;"></i> التوجيه الإخراجي
+        </button>
+      </div>
+
+      <span class="scene-counter-badge" id="sceneCounterBadge">شامل: المقدمة + 8 محاور + الخاتمة</span>
+    </div>
+
+    <!-- SCRIPT HERO OVERVIEW CARD -->
+    <section class="script-hero-card">
+      <div class="ep-badge-row">
+        <span class="ep-number-pill">EPISODE 04 — PEDIATRIC PHYSIOTHERAPY</span>
+        <span class="ep-status-pill"><i data-lucide="baby" style="width:13px; height:13px; display:inline;"></i> حلقة طب وتأهيل الأطفال</span>
+      </div>
+
+      <h2 class="script-title">هو طفلي متأخر؟ ولا أنا اللي مستعجل؟</h2>
+      <p class="script-subtitle">حوار شامل واستثنائي عن التطور الحركي للطفل، التدخل المبكر، دور الأسرة، وفك شفرة القلق الوالدي مع أستاذة طب وتأهيل الأطفال بكلية العلاج الطبيعي.</p>
+
+      <div class="script-meta-grid">
+        <div class="meta-box-item">
+          <div class="meta-lbl"><i data-lucide="user" style="width:12px; height:12px;"></i> ضيفة الحلقة</div>
+          <div class="meta-val">أ.د. نسمة</div>
+        </div>
+        <div class="meta-box-item">
+          <div class="meta-lbl"><i data-lucide="briefcase" style="width:12px; height:12px;"></i> الصفة الأكاديمية</div>
+          <div class="meta-val">أستاذ دكتور بقسم الأطفال</div>
+        </div>
+        <div class="meta-box-item">
+          <div class="meta-lbl"><i data-lucide="map-pin" style="width:12px; height:12px;"></i> موقع التصوير</div>
+          <div class="meta-val">مكتب أ.د. محمود عويضة القديم</div>
+        </div>
+        <div class="meta-box-item">
+          <div class="meta-lbl"><i data-lucide="clock" style="width:12px; height:12px;"></i> المدة المقدرة</div>
+          <div class="meta-val">30 – 45 دقيقة</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: PERMISSIONS & EQUIPMENT PREREQUISITES (التصاريح والمعدات مقسمة في صندوقين فوق بعض) -->
+    <div id="permissionsSection">
+      
+      <!-- BOX 1: COLLEGE ADMINISTRATION REQUIREMENTS (المطلوب توفيره من إدارة الكلية) -->
+      <section class="gear-section-college">
+        <div class="perm-badge-title">
+          <div class="perm-icon-box">
+            <i data-lucide="landmark" style="width:24px; height:24px;"></i>
+          </div>
+          <div>
+            <h3>متطلبات وتجهيزات مطلوبة من إدارة الكلية الموقرة</h3>
+            <span>College Administration Prerequisites & Approved Core Gear</span>
+          </div>
+        </div>
+
+        <div class="perm-items-list">
+          <!-- Item 1: Location Permission -->
+          <div class="perm-item-card" style="border-right: 4px solid #E11D48;">
+            <i data-lucide="door-open"></i>
+            <div>
+              <div style="display:flex; align-items:center; gap:6px; margin-bottom:3px; flex-wrap:wrap;">
+                <strong>1. إذن تصوير في مكتب أ.د. محمود عويضة القديم:</strong>
+                <span style="font-size:0.72rem; font-weight:900; background:#E11D48; color:#FFFFFF; padding:2px 8px; border-radius:var(--radius-full);">أمام غرفة اتحاد الطلاب</span>
+              </div>
+              <p>استخراج تصريح رسمي لفتح واستخدام مكتب الأستاذ الدكتور محمود عويضة القديم (استوديو الكلية المعتمد لتصوير البودكاست) لتجهيز الاستوديو الحواري واستضافة أ.د. نسمة في بيئة أكاديمية وتاريخية راقية.</p>
+            </div>
+          </div>
+
+          <!-- Item 2: Core Mic -->
+          <div class="perm-item-card" style="border-right: 4px solid #E11D48;">
+            <i data-lucide="mic-2"></i>
+            <div>
+              <div style="display:flex; align-items:center; gap:6px; margin-bottom:3px; flex-wrap:wrap;">
+                <strong>2. طقم المايك اللاسلكي الأساسي (المعتمد بالخطة):</strong>
+                <span style="font-size:0.72rem; font-weight:900; background:rgba(225, 29, 72, 0.12); color:#9F1239; border:1px solid #E11D48; padding:2px 8px; border-radius:var(--radius-full);">Hollyland Lark Mark 2 (M2)</span>
+              </div>
+              <p>توفير جهاز المايك اللاسلكي الاحترافي المعتمد في ميزانية الخطة لتسجيل الصوت الصافي والنقي للحوار بين المقدم والضيفة.</p>
+            </div>
+          </div>
+
+          <!-- Item 3: Academic Coordination -->
+          <div class="perm-item-card">
+            <i data-lucide="calendar-check"></i>
+            <div>
+              <strong>3. التنسيق والموافقة الأكاديمية:</strong>
+              <p>التنسيق الإداري والمسبق مع الضيفة أ.د. نسمة، وتسهيل دخول فريق الإنتاج ومعدات التصوير للحرم الجامعي وقاعة التسجيل.</p>
+            </div>
+          </div>
+
+          <!-- Item 4: Logistics & Quietness -->
+          <div class="perm-item-card">
+            <i data-lucide="shield-check"></i>
+            <div>
+              <strong>4. التنسيق اللوجستي مع اتحاد الطلاب وتوفير الهدوء:</strong>
+              <p>التعاون مع اتحاد طلاب الكلية لتأمين الهدوء بمحيط المكتب أثناء ساعات التسجيل لمنع أي ضوضاء قد تؤثر على نقاء الصوت.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BOX 2: DIRECTOR'S PERSONAL GEAR & RIG (تجهيزات ومعدات المخرج الشخصية ومسؤوليته بالكامل) -->
+      <section class="gear-section-director">
+        <div class="perm-badge-title">
+          <div class="perm-icon-box director-icon">
+            <i data-lucide="clapperboard" style="width:24px; height:24px;"></i>
+          </div>
+          <div>
+            <h3>معدات وتجهيزات المخرج الخاصة — مسؤولية المخرج بالكامل</h3>
+            <span>Director's Personal Cinema Package & Camera Rig (Zero Cost on Faculty)</span>
+          </div>
+        </div>
+
+        <div class="perm-items-list">
+          <!-- Director Item 1: 2 Cameras -->
+          <div class="perm-item-card" style="border-right: 4px solid var(--accent-teal);">
+            <i data-lucide="video"></i>
+            <div>
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:3px; flex-wrap:wrap;">
+                <strong>1. كاميرتان فيديو احترافيتان (2 Video Cameras):</strong>
+                <span style="font-size:0.72rem; font-weight:900; background:linear-gradient(135deg, #0D9488, #042F2C); color:#FFFFFF; padding:2px 8px; border-radius:var(--radius-full);">Multi-Cam Setup</span>
+              </div>
+              <p>كاميرا رئيسية A مخصصة لبورتريه أ.د. نسمة + كاميرا B للقطة الثنائية المشتركة والمقدم لتنويع الإيقاع البصري.</p>
+            </div>
+          </div>
+
+          <!-- Director Item 2: 4 Cinema Lenses -->
+          <div class="perm-item-card" style="border-right: 4px solid var(--accent-teal);">
+            <i data-lucide="aperture"></i>
+            <div>
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:3px; flex-wrap:wrap;">
+                <strong>2. طقم 4 عدسات سينمائية شاملة (16mm, 35mm, 50mm, 85mm):</strong>
+                <span style="font-size:0.72rem; font-weight:900; background:linear-gradient(135deg, #0D9488, #042F2C); color:#FFFFFF; padding:2px 8px; border-radius:var(--radius-full);">4 Prime Lenses</span>
+              </div>
+              <p>طقم عدسات سينمائية يغطي كافة الأبعاد البصرية بدقة متناهية:</p>
+              
+              <div class="lens-grid-pills">
+                <div class="lens-pill">
+                  <strong>16mm</strong>
+                  <span>كادر تأسيسي واسع</span>
+                </div>
+                <div class="lens-pill">
+                  <strong>35mm</strong>
+                  <span>كادر ثنائي تفاعلي</span>
+                </div>
+                <div class="lens-pill">
+                  <strong>50mm</strong>
+                  <span>كادر متوسط طبيعي</span>
+                </div>
+                <div class="lens-pill">
+                  <strong>85mm</strong>
+                  <span>بورتريه وعزل الخلفية</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- TIMELINE & SCREENPLAY SECTION -->
+    <div class="section-timeline-header">
+      <div class="timeline-title-wrap">
+        <i data-lucide="clapperboard" style="color:var(--accent-gold-bright); width:26px; height:26px;"></i>
+        <h2>تتابع محاور الحوار والسيناريو التنفيذي</h2>
+      </div>
+      <span class="timeline-count-badge">المقدمة + فقرة اطمن ولا أقلق + 7 محاور + الخاتمة</span>
+    </div>
+
+    <!-- SCENE 00:00 — COLD OPEN & INTRO -->
+    <article class="scene-card" data-category="general" id="scene-00-00">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge"><i data-lucide="play" style="width:12px; height:12px;"></i> 00:00 — COLD OPEN & HOOK</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-ext">🎬 هوك تشويقي وجداني</span>
+          <span class="tag-shot-audio">🔊 مؤثر صوتي دافئ</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">الافتتاحية — هل طفلي متأخر أم أنا المستعجل؟</h3>
+
+      <div class="script-block block-visual">
+        <div class="block-label"><i data-lucide="eye" style="width:13px; height:13px;"></i> الصورة والكادر:</div>
+        <p>لقطة مقربة على خطوات طفل صغير يتعلم المشي، ثم انتقال سلس لكادر المقدم بنبرة تلامس مشاعر وقلق كل أسرة.</p>
+      </div>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="mic" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+            <span class="speaker-action-note">نبرة تساؤلية دافئة تمس قلوب الآباء والأمهات</span>
+          </div>
+          <p class="dialogue-line">لو ابنك عنده سنة ولسه ممشيش... تقلق؟
+          <br /><br />
+          لو طفل عنده سنتين ولسه كلامه قليل... تستنى؟
+          <br /><br />
+          ولو دكتور الأطفال قالك: <em>"استنى لما يكبر شوية"</em>... تستنى فعلًا؟
+          <br /><br />
+          يمكن أهم سؤال في علاج وتأهيل الأطفال مش: <strong>إيه المشكلة؟</strong> لكن: <strong>إمتى اكتشفناها؟ وإمتى بدأنا نتحرك؟</strong>
+          <br /><br />
+          أهلاً بيكم في حلقة جديدة من بودكاست ليه PHYSIO.. والنهارده معانا <strong>أ.د. نسمة</strong>، أستاذ دكتور في قسم الأطفال بكلية العلاج الطبيعي جامعة كفر الشيخ.. أهلاً بحضرتك يا دكتور.</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="sparkles" style="width:17px; height:17px;"></i>
+            <strong>ترحيب الضيفة والتفاعل الافتتاحي:</strong>
+          </div>
+          <p class="flow-desc">ترحيب أ.د. نسمة بالمشاهدين وطلاب الكلية، والتأكيد على أن رحلة تأهيل الأطفال هي رحلة أمل وتدخل مبكر تصنع الفارق في حياة الأسرة كلها.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- QUESTION 01: OPENING DILEMMA -->
+    <article class="scene-card highlight-case" data-category="question" id="q-01">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">المحور 01</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">🎥 كادر مقرب أ.د. نسمة 85mm</span>
+          <span class="tag-shot-ext">⏱️ إهدار الوقت الثمين</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">1. أكثر خطأ يرتكبه الأهل بحسن نية ويضيع وقتاً ثميناً على الطفل</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="help-circle" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+            <span class="speaker-action-note">طرح السؤال الافتتاحي المباشر</span>
+          </div>
+          <p class="dialogue-line">دكتورة نسمة، خلينا نبدأ بسؤال ينهي شوية جدالات: إيه أكتر حاجة الأهل بيعملوها بحسن نية... لكنها ممكن تضيع وقت مهم جداً على الطفل؟</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="sparkles" style="width:17px; height:17px;"></i>
+            <strong>مساحة الحوار والنقاش العفوي المفتوح (Live Podcast Discussion):</strong>
+          </div>
+          <p class="flow-desc">تستعرض أ.د. نسمة ظاهرة الانتظار السلبي ("بكرة هيكبر ويمشي لوحده") وكيف أن الأشهر الأولى من عمر الطفل تمثل النافذة الذهبية (Golden Window) لمرونة الجهاز العصبي (Neuroplasticity).</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- INTERACTIVE SECTION: اطمن ولا أقلق؟ -->
+    <article class="scene-card highlight-case" data-category="interactive" id="sec-cases">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge" style="background:#EA580C; border-color:#FDBA74; color:#FFFFFF;">فقرة تفاعلية خاصة</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">⚡ اختبار الحالات السريعة</span>
+          <span class="tag-shot-ext">🩺 اطمن ولا أقلق؟</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">فقرة "اطمن ولا أقلق؟" — مواقف سريعة وحاسمة للآباء والأمهات</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="mic" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+            <span class="speaker-action-note">تمهيد للفقرة السريعة</span>
+          </div>
+          <p class="dialogue-line">هعرض على حضرتك دلوقتي مواقف سريعة وشائعة جداً، وتقوليلنا رد حاسم: <strong>أطمن ولا أقلق؟</strong></p>
+        </div>
+      </div>
+
+      <div class="myth-cards-grid">
+        <!-- Case 1 -->
+        <div class="myth-interactive-card">
+          <div class="myth-card-header">
+            <span class="myth-badge-title">الحالة الأولى 👶</span>
+            <span style="font-size:0.75rem; font-weight:800; color:#EA580C;">تأخر المشي</span>
+          </div>
+          <p class="myth-text-quote">"طفلي عمره سنة ولسه ممشيش.. أقلق؟ ولا أديله وقت؟"</p>
+          <div class="myth-answer-box">
+            <strong>مساحة رد أ.د. نسمة:</strong> توضيح المدى الطبيعي للمشي (بين 11 إلى 15-18 شهراً) والفارق بين التطور الحركي السليم والتأخر الذي يستدعي فحصاً.
+          </div>
+        </div>
+
+        <!-- Case 2 -->
+        <div class="myth-interactive-card">
+          <div class="myth-card-header">
+            <span class="myth-badge-title">الحالة الثانية 🚶‍♂️</span>
+            <span style="font-size:0.75rem; font-weight:800; color:#EA580C;">تكرار السقوط</span>
+          </div>
+          <p class="myth-text-quote">"طفلي بيقع كتير جداً وهو بيتعلم المشي.. طبيعي؟ ولا محتاج تقييم؟"</p>
+          <div class="myth-answer-box">
+            <strong>مساحة رد أ.د. نسمة:</strong> التمييز بين عثرات التعلم الطبيعية وضعف التوازن أو مشاكل القدمين (Flatfoot / Toe Walking).
+          </div>
+        </div>
+
+        <!-- Case 3 -->
+        <div class="myth-interactive-card">
+          <div class="myth-card-header">
+            <span class="myth-badge-title">الحالة الثالثة 🚩</span>
+            <span style="font-size:0.75rem; font-weight:800; color:#EA580C;">الجلوس والـ Red Flags</span>
+          </div>
+          <p class="myth-text-quote">"طفلي بيتأخر في الجلوس مقارنة بالأطفال اللي في سنه.. هل كل طفل له Timeline مختلف؟ وإمتى الاختلاف يتحول لـ Red Flag؟"</p>
+          <div class="myth-answer-box">
+            <strong>مساحة رد أ.د. نسمة:</strong> علامات الخطر (Red Flags) في التحكم بالرأس والجلوس المستقل وضرورة عدم تجاهلها.
+          </div>
+        </div>
+
+        <!-- Case 4 -->
+        <div class="myth-interactive-card">
+          <div class="myth-card-header">
+            <span class="myth-badge-title">الحالة الرابعة ⏳</span>
+            <span style="font-size:0.75rem; font-weight:800; color:#EA580C;">فخ كلمة "استنى"</span>
+          </div>
+          <p class="myth-text-quote">"الدكتور قال لي: هو لسه صغير، استنى.. إمتى كلمة 'استنى' تكون منطقية... وإمتى تكون سبب في تأخير التدخل؟"</p>
+          <div class="myth-answer-box">
+            <strong>مساحة رد أ.د. نسمة:</strong> ضوابط التقييم العلمي ومخاطر تأجيل فحص التطور الحركي.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- QUESTION 02: PERSONAL CAREER -->
+    <article class="scene-card highlight-case" data-category="question" id="q-02">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">المحور 02</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">🎥 كادر مشترك 2-Shot 35mm</span>
+          <span class="tag-shot-ext">💡 سؤال شخصي وتحدي</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">2. اختيار تخصص الأطفال وهل هو مجهد بدنياً ومحتاج رجل أكثر؟</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="help-circle" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+            <span class="speaker-action-note">سؤال صريح يناقش الصورة النمطية للتخصص</span>
+          </div>
+          <p class="dialogue-line">سؤال شخصي لحضرتك.. إمتى حسيتي إنك عايزة تختاري مجال الأطفال؟ خصوصاً إننا دايماً بنسمع إن مجال الأطفال مرهق بدنياً جداً ومحتاج راجل أكتر.. فهل دي حقيقة أصلاً؟</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="sparkles" style="width:17px; height:17px;"></i>
+            <strong>مساحة الحوار والنقاش العفوي المفتوح (Live Podcast Discussion):</strong>
+          </div>
+          <p class="flow-desc">تحكي أ.د. نسمة شغفها بالتعامل مع الأطفال، وتفند أسطورة "القوة البدنية"، موضحة أن علاج الأطفال يعتمد 90% على التكنيك، الصبر، وفهم التطور الحركي وليس العنف العضلي.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- QUESTION 03: COMPARISON TRAP -->
+    <article class="scene-card highlight-case" data-category="question" id="q-03">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">المحور 03</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">🎥 كادر مقرب دافئ 85mm</span>
+          <span class="tag-shot-ext">🚫 فخ المقارنات</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">3. "مين قال إن كل الأطفال زي بعض؟" — فخ مقارنة الأقارب والإخوة</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="help-circle" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+            <span class="speaker-action-note">طرح معضلة المقارنات العائلية</span>
+          </div>
+          <p class="dialogue-line">فيه جملة الأهل بيقولوها كتير: <em>"ابن خالته مشي متأخر ومفيش حاجة حصلتله"</em> أو <em>"أخوه كان كده وبعدين بقى كويس"</em>..
+          <br /><br />
+          هل المقارنة بين الأطفال ممكن تضلل الأهل؟ وهل فعلاً مقولة <em>"كل طفل له وقته"</em> صحيحة في كل الحالات؟</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="sparkles" style="width:17px; height:17px;"></i>
+            <strong>مساحة الحوار والنقاش العفوي المفتوح (Live Podcast Discussion):</strong>
+          </div>
+          <p class="flow-desc">توضح أ.د. نسمة خطورة تعميم التجارب الفردية والفارق بين الفروق الفردية الطبيعية والمؤشرات المرضية الدقيقة.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- QUESTION 04: THE WHOLE FAMILY -->
+    <article class="scene-card highlight-case" data-category="question" id="q-04">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">المحور 04</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">🎥 كادر مقرب 50mm</span>
+          <span class="tag-shot-ext">👨‍👩‍👧‍👦 المريض = الأسرة كاملة</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">4. "المريض الحقيقي مش الطفل بس" — إدارة قلق وخوف الأسرة</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="help-circle" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+            <span class="speaker-action-note">التركيز على الجانب النفسي والأسري</span>
+          </div>
+          <p class="dialogue-line">في علاج الأطفال حضرتك مش بتتعاملي مع طفل بس... أنتِ بتتعاملي مع <strong>طفل + أم + أب + أسرة كاملة</strong>.
+          <br /><br />
+          إيه أصعب جزء في التعامل مع أهل الطفل؟ وهل أحياناً خوف الأهل وقلقهم بيكون أكبر من المشكلة نفسها؟</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="sparkles" style="width:17px; height:17px;"></i>
+            <strong>مساحة الحوار والنقاش العفوي المفتوح (Live Podcast Discussion):</strong>
+          </div>
+          <p class="flow-desc">تتناول أ.د. نسمة فن احتواء الوالدين، تحويل الخوف إلى طاقة دعم إيجابية، وأهمية البرنامج المنزلي (Home Program) كشريك أساسي في نجاح العلاج.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- QUESTION 05: GOOGLE VS DOCTOR -->
+    <article class="scene-card highlight-case" data-category="question" id="q-05">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">المحور 05</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">🎥 لقطة سريعة للمقدم والضيفة</span>
+          <span class="tag-shot-ext">🌐 الإنترنت والسوشيال ميديا</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">5. "Google مش دكتور الأطفال" — سلاح الفيديوهات والتشخيص الذاتي</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="help-circle" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+            <span class="speaker-action-note">طرح تأثير السوشيال ميديا على الأهل</span>
+          </div>
+          <p class="dialogue-line">دلوقتي لازم نتكلم عن الإنترنت.. الأهل بقوا يقدروا يشوفوا فيديوهات وتمارين وتشخيصات في ثواني..
+          <br /><br />
+          هل ده ساعد الأهل؟ ولا عمل مشكلة جديدة ورعب أكبر؟</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="sparkles" style="width:17px; height:17px;"></i>
+            <strong>مساحة الحوار والنقاش العفوي المفتوح (Live Podcast Discussion):</strong>
+          </div>
+          <p class="flow-desc">توضح أ.د. نسمة إيجابيات الوعي وسلبيات الهلع وتطبيق تمارين خاطئة دون تقييم دقيق لكل حالة على حدة.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- QUESTION 06: TECHNOLOGY -->
+    <article class="scene-card highlight-case" data-category="question" id="q-06">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">المحور 06</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">🎥 كادر وسطي 50mm</span>
+          <span class="tag-shot-ext">🎮 الجلسة كلعبة</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">6. التكنولوجيا في تأهيل الأطفال: Game Changer ولا مجرد رفاهية؟</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="help-circle" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+            <span class="speaker-action-note">طرح محور الأجهزة والتكنولوجيا الحديثة</span>
+          </div>
+          <p class="dialogue-line">إيه أكتر Technology شايفة إنها غيرت طريقة تأهيل الأطفال؟ وهل التكنولوجيا ممكن تخلي جلسة العلاج أقرب للعبة؟</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="sparkles" style="width:17px; height:17px;"></i>
+            <strong>مساحة الحوار والنقاش العفوي المفتوح (Live Podcast Discussion):</strong>
+          </div>
+          <p class="flow-desc">تستعرض أ.د. نسمة أجهزة الـ VR، البدلات التكيفية (Spider Therapy / TheraTogs)، وجعل التمرين لعبة محببة للطفل لضمان التفاعل والاستمرارية.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- QUESTION 07: ADVICE FOR PARENTS -->
+    <article class="scene-card highlight-case" data-category="question" id="q-07">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">المحور 07</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">🎥 كادر مقرب دافئ 85mm</span>
+          <span class="tag-shot-ext">💛 نصائح ذهبية للأهل</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">7. "لو أنا Parent" — خلاصة ونصائح ذهبية لكل أم وأب</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="help-circle" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+            <span class="speaker-action-note">طلب النصائح الأبوية المركزة</span>
+          </div>
+          <p class="dialogue-line">لو أنا Parent دلوقتي بتفرج على حضرتك.. عايز من حضرتك نصائح ذهبية لأي أب وأم عشان يحافظوا على صحة وتطور طفلهم الحركي.</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="sparkles" style="width:17px; height:17px;"></i>
+            <strong>مساحة الحوار والنقاش العفوي المفتوح (Live Podcast Discussion):</strong>
+          </div>
+          <p class="flow-desc">تقدم أ.د. نسمة نصائح عملية: الملاحظة الهادئة، تشجيع الحركة الحرة بعيداً عن الشاشات والمشايات، واستشارة المتخصص فور الشك دون تردد.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- RAPID-FIRE QUESTIONS -->
+    <article class="scene-card highlight-case" data-category="interactive" id="sec-rapid">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge" style="background:var(--accent-gold); color:var(--primary-dark);">⚡ فقرة الإيقاع السريع</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-audio">🎙️ سؤال في السريع</span>
+          <span class="tag-shot-cam">🎥 تقطيع كادرات سريع ومباشر</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">فقرة "سؤال في السريع" — 6 أسئلة خاطفة ومباشرة</h3>
+
+      <div class="rapid-fire-grid">
+        <div class="rapid-q-item">
+          <div class="rapid-q-num">1</div>
+          <div class="rapid-q-text">أهم مهارة لازم تكون عند Pediatric Physiotherapist؟</div>
+        </div>
+
+        <div class="rapid-q-item">
+          <div class="rapid-q-num">2</div>
+          <div class="rapid-q-text">أصعب حاجة في علاج الأطفال؟</div>
+        </div>
+
+        <div class="rapid-q-item">
+          <div class="rapid-q-num">3</div>
+          <div class="rapid-q-text">أجمل لحظة في شغلك؟</div>
+        </div>
+
+        <div class="rapid-q-item">
+          <div class="rapid-q-num">4</div>
+          <div class="rapid-q-text">حاجة نفسك كل أم تعرفها؟</div>
+        </div>
+
+        <div class="rapid-q-item">
+          <div class="rapid-q-num">5</div>
+          <div class="rapid-q-text">جلسة ناجحة بالنسبة لكِ معناها إيه؟</div>
+        </div>
+
+        <div class="rapid-q-item">
+          <div class="rapid-q-num">6</div>
+          <div class="rapid-q-text">كلمة واحدة تصف Pediatric Physiotherapy؟</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- SCENE: OUTRO & CONCLUSION -->
+    <article class="scene-card" data-category="general" id="scene-outro">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">ختام الحلقة — Outro</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">🎥 لقطة ثنائية مشتركة 2-Shot</span>
+          <span class="tag-shot-audio">🎙️ الكلمة الختامية والرسالة الملهمة</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">الكلمة الختامية والرسالة الجوهرية للحلقة</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="mic" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+            <span class="speaker-action-note">نبرة ختامية عميقة وملهمة تفيض بالأمل</span>
+          </div>
+          <p class="dialogue-line">يمكن أهم رسالة نخرج بيها النهارده إن:
+          <br /><br />
+          <strong>مش كل اختلاف معناه مشكلة... لكن كل ملاحظة تستحق إننا نفهمها.</strong>
+          <br /><br />
+          والاكتشاف المبكر مش معناه إننا نخوّف الأهل... بالعكس... معناه إننا ندي الطفل فرصة أكبر إنه يوصل لأقصى إمكانياته، ويعيش باستقلالية وثقة.
+          <br /><br />
+          د. نسمة، شكراً جداً ليكي على الحوار الممتع والملهم دا..
+          <br /><br />
+          <strong>وفـ النهاية كالعادة.. اوعى تنسى تسأل نفسك ليه فيزيو.</strong></p>
+        </div>
+      </div>
+    </article>
+
+    <!-- SECTION: DIRECTORIAL TREATMENT & EXECUTIVE NOTES -->
+    <section class="guidelines-wrapper" id="guidelinesSection">
+      <div class="section-timeline-header">
+        <div class="timeline-title-wrap">
+          <i data-lucide="clapperboard" style="color:var(--accent-gold-bright); width:26px; height:26px;"></i>
+          <h2>الرؤية والمنهجية الإخراجية — مذكرة المخرج لتصوير حلقة طب الأطفال</h2>
+        </div>
+        <span class="timeline-count-badge" style="background:linear-gradient(135deg, #EA580C, #C2410C); color:#FFFFFF;">Director's Treatment</span>
+      </div>
+
+      <!-- Statement Box for the Dean & Production Review -->
+      <div style="background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 250, 240, 0.95) 100%); border: 1.5px solid var(--accent-gold); border-radius: var(--radius-md); padding: 22px; margin-bottom: 24px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);">
+        <div style="display:flex; align-items:center; gap:10px; color:#78350F; font-weight:900; font-size:1.05rem; margin-bottom:8px;">
+          <i data-lucide="bookmark" style="width:20px; height:20px; color:var(--accent-gold-bright);"></i>
+          <span>مذكرة توضيحية من مخرج العمل (مرفوعة لسيادة عميد الكلية وإدارة الإنتاج):</span>
+        </div>
+        <p style="font-size:0.94rem; color:var(--text-main); line-height:1.75;">
+          تهدف الرؤية الإخراجية لحلقة أ.د. نسمة إلى خلق بيئة دافئة ومطمئنة تنقل رسائل الأمل وتفكك القلق الوالدي. نعتمد على كادرات البورتريه 85mm لإبراز تعابير الطمأنينة والإقناع لدى أستاذة القسم، مع الاستثمار الأمثل للإضاءة الطبيعية ونقاء المايكات اللاسلكية المعتمدة بالخطة.
+        </p>
+      </div>
+
+      <div class="guidelines-grid">
+        <!-- 1 -->
+        <div class="guide-card">
+          <div class="guide-num-badge">01</div>
+          <h4>الدفء البصري والتقطيع الهادئ</h4>
+          <p>استخدام كادرات هادئة وغير متوترة تناسب الطابع الإنساني لطب الأطفال، مع الحفاظ على مدة عرض كافية للإجابات التوضيحية للأهل.</p>
+        </div>
+
+        <!-- 2 -->
+        <div class="guide-card">
+          <div class="guide-num-badge">02</div>
+          <h4>كادرات الـ Multi-Cam التفاعلية</h4>
+          <p>كاميرا A مقربة 85mm لبورتريه د. نسمة، وكاميرا B بزاوية 35mm تلتقط التفاعل الطبيعي بين المذيع والأستاذة أثناء مناقشة الحالات السريعة.</p>
+        </div>
+
+        <!-- 3 -->
+        <div class="guide-card">
+          <div class="guide-num-badge">03</div>
+          <h4>الاعتماد على الإضاءة الطبيعية المتناسقة</h4>
+          <p>توزيع الإضاءة الطبيعية لملء الكادر بنعومة دون ظلال حادة، لإبراز تفاصيل الوجه وعزل الخلفية بجمالية راقية.</p>
+        </div>
+
+        <!-- 4 -->
+        <div class="guide-card">
+          <div class="guide-num-badge">04</div>
+          <h4>نقاء الصوت بفضل مايكات الخطة الأساسية</h4>
+          <p>تسجيل مسارات الصوت بالمايك اللاسلكي المعتمد Hollyland Lark M2 لضمان وصول الرسائل والنصائح بأعلى درجات الوضوح للمشاهد.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Floating Quick-Jump Dock -->
+  <aside class="floating-dock">
+    <a href="#scene-00-00" class="dock-link"><i data-lucide="play" style="width:14px; height:14px;"></i> <span>المقدمة</span></a>
+    <a href="#sec-cases" class="dock-link"><i data-lucide="help-circle" style="width:14px; height:14px;"></i> <span>اطمن ولا أقلق؟</span></a>
+    <a href="#q-01" class="dock-link"><i data-lucide="message-square" style="width:14px; height:14px;"></i> <span>المحاور</span></a>
+    <a href="#sec-rapid" class="dock-link"><i data-lucide="zap" style="width:14px; height:14px;"></i> <span>في السريع</span></a>
+    <a href="#guidelinesSection" class="dock-link"><i data-lucide="clapperboard" style="width:14px; height:14px;"></i> <span>الإخراج</span></a>
+    <a href="index.html#sec-4" class="dock-link" style="background:var(--accent-gold); color:var(--primary-dark);"><i data-lucide="home" style="width:14px; height:14px;"></i> <span>الخطة</span></a>
+  </aside>
+
+  <!-- Interactive JavaScript Logic -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Scroll Progress Bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progressBar').style.width = scrolled + '%';
+    });
+
+    // Scene Filter Function
+    function filterScenes(category) {
+      const cards = document.querySelectorAll('.scene-card');
+      const chips = document.querySelectorAll('.filter-chip');
+      
+      chips.forEach(chip => chip.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+
+      let visibleCount = 0;
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'block';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      document.getElementById('sceneCounterBadge').textContent = `معروض: ${visibleCount} مشهد / محور`;
+    }
+
+    // Scroll to Directorial Treatment
+    function scrollToGuidelines() {
+      document.getElementById('guidelinesSection').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Toggle Font Size for Easy Reading
+    let isLargeFont = false;
+    function toggleFontSize() {
+      isLargeFont = !isLargeFont;
+      document.querySelectorAll('.dialogue-line, .flow-desc, .myth-text-quote, .myth-answer-box').forEach(el => {
+        el.style.fontSize = isLargeFont ? '1.15rem' : '';
+      });
+    }
+  </script>
+</body>
+</html>

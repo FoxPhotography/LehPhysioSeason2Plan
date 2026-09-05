@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>سكريبت الحلقة السادسة | لقاء د. مي رمضان — الذكاء الاصطناعي في العلاج الطبيعي — ليه PHYSIO</title>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="shortcut icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Google Fonts: Cairo & Tajawal & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@400;500;700;800;900&family=JetBrains+Mono:wght@500;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      /* Deep Warm Mahogany & Luxury Gold System (Matching index.html) */
+      --bg-dark: #1A090D;
+      --bg-card: rgba(255, 255, 255, 0.96);
+      
+      --primary-brown: #3D1E24;
+      --primary-dark: #1A090D;
+      --primary-deep: #14070A;
+
+      --accent-gold: #D4AF37;
+      --accent-gold-bright: #F5D061;
+      --accent-gold-glow: rgba(245, 208, 97, 0.35);
+
+      --accent-teal: #0D9488;
+      --accent-teal-light: #14B8A6;
+      --accent-teal-glow: rgba(20, 184, 166, 0.3);
+
+      --accent-cyan: #0284C7;
+      --accent-indigo: #6366F1;
+
+      --text-main: #2A1418;
+      --text-soft: #3D1E24;
+      --text-muted: #6B4E54;
+      --border-gold: rgba(212, 175, 55, 0.45);
+
+      --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.45);
+      --shadow-gold-glow: 0 0 35px rgba(212, 175, 55, 0.25);
+      --shadow-teal-glow: 0 0 30px rgba(13, 148, 136, 0.25);
+
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 28px;
+      --radius-full: 9999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', 'Tajawal', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.75;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Fixed Parallax Background (Matching index.html) */
+    .fixed-bg-layer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: url('assets/background1.webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      z-index: -2;
+      transform: scale(1.02);
+    }
+
+    .fixed-bg-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: radial-gradient(circle at center, rgba(26, 9, 13, 0.45) 0%, rgba(15, 5, 8, 0.94) 100%);
+      z-index: -1;
+    }
+
+    /* Top Reading Progress Bar */
+    .progress-bar-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      z-index: 9999;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #D4AF37, #0284C7, #F5D061);
+      box-shadow: 0 0 12px #0284C7;
+      transition: width 0.15s ease-out;
+    }
+
+    /* Top Sticky Header */
+    .top-navbar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      background: rgba(26, 9, 13, 0.94);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-gold);
+      z-index: 1000;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .nav-left-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .btn-back-plan {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 16px;
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.18), rgba(2, 132, 199, 0.18));
+      color: var(--accent-gold-bright);
+      border: 1px solid var(--accent-gold);
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .btn-back-plan:hover {
+      background: var(--accent-gold);
+      color: var(--primary-dark);
+      box-shadow: 0 0 18px var(--accent-gold-glow);
+      transform: scale(1.03);
+    }
+
+    .brand-title-box {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .brand-title-box h1 {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: #FFFFFF;
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .brand-title-box span {
+      font-size: 0.72rem;
+      color: var(--accent-gold-bright);
+      font-weight: 700;
+    }
+
+    .nav-actions-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-act-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nav-act-btn:hover {
+      background: var(--accent-gold);
+      color: var(--primary-dark);
+      border-color: var(--accent-gold);
+      transform: scale(1.08);
+    }
+
+    @media (max-width: 520px) {
+      .top-navbar {
+        padding: 8px 10px;
+        gap: 6px;
+      }
+      .nav-left-group {
+        gap: 6px;
+      }
+      .btn-back-plan {
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        justify-content: center;
+      }
+      .btn-back-plan span {
+        display: none;
+      }
+      .btn-back-plan i {
+        margin: 0;
+        width: 16px;
+        height: 16px;
+      }
+      .brand-title-box h1 {
+        font-size: 0.88rem;
+      }
+      .brand-title-box span {
+        font-size: 0.65rem;
+      }
+      .nav-act-btn {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    /* Main Content Container */
+    .script-container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px 16px 120px 16px;
+      position: relative;
+      z-index: 10;
+    }
+
+    @media (min-width: 768px) {
+      .script-container {
+        padding: 40px 24px 140px 24px;
+      }
+    }
+
+    /* Filter & Quick Jump Bar */
+    .filter-sticky-bar {
+      position: sticky;
+      top: 60px;
+      z-index: 900;
+      background: rgba(26, 9, 13, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: var(--radius-md);
+      padding: 8px 14px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      overflow-x: auto;
+    }
+
+    .filter-chips {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .filter-chip {
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      font-size: 0.76rem;
+      font-weight: 800;
+      background: rgba(255, 255, 255, 0.08);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .filter-chip.active, .filter-chip:hover {
+      background: linear-gradient(135deg, #F5D061, #D4AF37);
+      color: var(--primary-dark);
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 14px var(--accent-gold-glow);
+    }
+
+    .scene-counter-badge {
+      font-size: 0.75rem;
+      color: var(--accent-gold-bright);
+      font-weight: 800;
+      white-space: nowrap;
+      background: rgba(212, 175, 55, 0.15);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--border-gold);
+    }
+
+    /* Screenplay Header Card */
+    .script-hero-card {
+      background: #FFFFFF;
+      border: 2px solid var(--accent-gold);
+      border-radius: var(--radius-lg);
+      padding: 26px 20px;
+      box-shadow: var(--shadow-lg), var(--shadow-gold-glow);
+      margin-bottom: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+      .script-hero-card {
+        padding: 36px 32px;
+      }
+    }
+
+    .script-hero-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, #D4AF37, #0284C7, #6366F1, #D4AF37);
+    }
+
+    .ep-badge-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .ep-number-pill {
+      font-size: 0.85rem;
+      font-weight: 900;
+      padding: 5px 16px;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, #3D1E24, #1A090D);
+      color: var(--accent-gold-bright);
+      border: 1px solid var(--accent-gold);
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25);
+    }
+
+    .ep-status-pill {
+      font-size: 0.8rem;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      background: rgba(61, 30, 36, 0.08);
+      border: 1px solid var(--accent-gold);
+      color: var(--primary-brown);
+    }
+
+    .script-title {
+      font-size: 1.95rem;
+      font-weight: 900;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      line-height: 1.3;
+    }
+
+    @media (min-width: 768px) {
+      .script-title {
+        font-size: 2.35rem;
+      }
+    }
+
+    .script-subtitle {
+      font-size: 1.05rem;
+      color: var(--primary-brown);
+      font-weight: 700;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    /* Meta Attributes Grid */
+    .script-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    @media (min-width: 640px) {
+      .script-meta-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    .meta-box-item {
+      background: rgba(61, 30, 36, 0.04);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      border-radius: var(--radius-md);
+      padding: 14px;
+      text-align: center;
+    }
+
+    .meta-box-item .meta-lbl {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-weight: 700;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    .meta-box-item .meta-val {
+      font-size: 0.95rem;
+      color: var(--primary-dark);
+      font-weight: 900;
+    }
+
+    /* Permissions & Equipment Sections (Dual Box Architecture) */
+    .gear-section-college {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 241, 242, 0.95) 100%);
+      border: 2px solid #E11D48;
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-lg), 0 10px 30px rgba(225, 29, 72, 0.12);
+      margin-bottom: 28px;
+      position: relative;
+      backdrop-filter: blur(25px);
+    }
+
+    .gear-section-director {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 253, 250, 0.95) 100%);
+      border: 2px solid var(--accent-teal);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-lg), 0 10px 30px rgba(13, 148, 136, 0.15);
+      margin-bottom: 40px;
+      position: relative;
+      backdrop-filter: blur(25px);
+    }
+
+    .perm-badge-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .perm-icon-box {
+      width: 46px;
+      height: 46px;
+      border-radius: var(--radius-md);
+      background: rgba(225, 29, 72, 0.12);
+      border: 1px solid #E11D48;
+      color: #E11D48;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .perm-icon-box.director-icon {
+      background: rgba(13, 148, 136, 0.12);
+      border-color: var(--accent-teal);
+      color: var(--accent-teal);
+    }
+
+    .perm-badge-title h3 {
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: #9F1239;
+    }
+
+    .gear-section-director .perm-badge-title h3 {
+      color: #0F766E;
+    }
+
+    .perm-badge-title span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .perm-items-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .perm-items-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .perm-item-card {
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+    }
+
+    .perm-item-card i {
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .gear-section-college .perm-item-card i { color: #E11D48; }
+    .gear-section-director .perm-item-card i { color: var(--accent-teal); }
+
+    .perm-item-card strong {
+      display: block;
+      color: var(--primary-dark);
+      font-weight: 800;
+      margin-bottom: 2px;
+    }
+
+    .perm-item-card p {
+      color: var(--text-soft);
+      font-size: 0.82rem;
+      line-height: 1.55;
+    }
+
+    .lens-grid-pills {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .lens-pill {
+      background: rgba(13, 148, 136, 0.08);
+      border: 1px solid var(--accent-teal);
+      border-radius: 6px;
+      padding: 4px;
+      text-align: center;
+    }
+
+    .lens-pill strong {
+      font-size: 0.78rem;
+      color: #0F766E;
+      display: block;
+      line-height: 1;
+    }
+
+    .lens-pill span {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    /* Timeline Section Header */
+    .section-timeline-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 32px 0 20px 0;
+      padding-bottom: 12px;
+      border-bottom: 1.5px solid var(--border-gold);
+    }
+
+    .timeline-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .timeline-title-wrap h2 {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: #FFFFFF;
+    }
+
+    .timeline-count-badge {
+      font-size: 0.82rem;
+      font-weight: 800;
+      background: var(--accent-gold-bright);
+      color: var(--primary-dark);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+    }
+
+    /* Scene / Question Cards */
+    .scene-card {
+      background: #FFFFFF;
+      border: 1.5px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      margin-bottom: 22px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .scene-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    .scene-card.highlight-case {
+      border-left: 6px solid var(--accent-cyan);
+    }
+
+    .scene-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .timestamp-badge {
+      font-size: 0.78rem;
+      font-weight: 900;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      background: var(--primary-dark);
+      color: var(--accent-gold-bright);
+      border: 1px solid var(--accent-gold);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .scene-type-tags {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .tag-shot-cam {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: #E0F2FE;
+      color: #0369A1;
+      border: 1px solid #BAE6FD;
+    }
+
+    .tag-shot-audio {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: #FEF3C7;
+      color: #92400E;
+      border: 1px solid #FDE68A;
+    }
+
+    .tag-shot-ext {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 6px;
+      background: #ECFEFF;
+      color: #0E7490;
+      border: 1px solid #A5F3FC;
+    }
+
+    .scene-title-h3 {
+      font-size: 1.22rem;
+      font-weight: 900;
+      color: var(--primary-dark);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Script Blocks: Visual, Audio, Action, HUD */
+    .script-block {
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      line-height: 1.65;
+    }
+
+    .block-visual {
+      background: #F8FAFC;
+      border-right: 3.5px solid #0284C7;
+      color: #1E293B;
+    }
+
+    .block-audio {
+      background: #FFFBEB;
+      border-right: 3.5px solid #D97706;
+      color: #78350F;
+    }
+
+    .block-onscreen {
+      background: #F0F9FF;
+      border: 1px dashed #38BDF8;
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .hud-tag {
+      font-size: 0.72rem;
+      font-weight: 900;
+      color: #0284C7;
+      letter-spacing: 1px;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .hud-text {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: #0C4A6E;
+    }
+
+    /* Dialogue Stream */
+    .dialogue-stream {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .dialogue-bubble {
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      position: relative;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    }
+
+    .dialogue-bubble.speaker-host {
+      border-right: 4px solid var(--accent-gold);
+    }
+
+    .speaker-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .speaker-name {
+      font-size: 0.85rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #A16207;
+    }
+
+    .speaker-action-note {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    .dialogue-line {
+      font-size: 0.98rem;
+      color: #1A090D;
+      font-weight: 700;
+      line-height: 1.7;
+    }
+
+    /* Spontaneous Live Podcast Discussion Box */
+    .podcast-live-flow-card {
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.05) 0%, rgba(212, 175, 55, 0.05) 100%);
+      border: 1.5px dashed rgba(2, 132, 199, 0.4);
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      margin-top: 10px;
+    }
+
+    .flow-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #0369A1;
+      font-size: 0.92rem;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .flow-desc {
+      font-size: 0.9rem;
+      color: var(--text-main);
+      line-height: 1.7;
+      font-weight: 600;
+    }
+
+    /* Directorial Master Guidelines */
+    .guidelines-wrapper {
+      margin-top: 50px;
+    }
+
+    .guidelines-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-top: 25px;
+    }
+
+    @media (min-width: 768px) {
+      .guidelines-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .guide-card {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 250, 240, 0.93) 100%);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-md);
+      padding: 22px;
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(20px);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .guide-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 45px rgba(212, 175, 55, 0.3);
+      border-color: var(--accent-gold-bright);
+    }
+
+    .guide-num-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      font-size: 0.78rem;
+      font-weight: 900;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent-gold-bright);
+      background: var(--primary-dark);
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--accent-gold);
+    }
+
+    .guide-card h4 {
+      font-size: 1.05rem;
+      font-weight: 900;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      padding-left: 50px;
+    }
+
+    .guide-card p {
+      font-size: 0.88rem;
+      color: var(--text-soft);
+      line-height: 1.65;
+    }
+
+    /* Bottom Floating Quick-Jump Dock */
+    .floating-dock {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(26, 9, 13, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1.5px solid var(--border-gold);
+      border-radius: var(--radius-full);
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px var(--accent-gold-glow);
+      z-index: 1000;
+    }
+
+    .dock-link {
+      color: #FFFFFF;
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      transition: all 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .dock-link:hover, .dock-link.active {
+      background: var(--accent-gold);
+      color: var(--primary-dark);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Parallax Layers -->
+  <div class="fixed-bg-layer"></div>
+  <div class="fixed-bg-overlay"></div>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar-container">
+    <div class="progress-bar-fill" id="progressBar"></div>
+  </div>
+
+  <!-- Sticky Header Navbar -->
+  <header class="top-navbar">
+    <div class="nav-left-group">
+      <a href="index.html#sec-6" class="btn-back-plan" title="الرجوع إلى الخطة الرئيسية">
+        <i data-lucide="arrow-right"></i>
+        <span>الخطة الرئيسية</span>
+      </a>
+      <div class="brand-title-box">
+        <h1>بودكاست ليه PHYSIO — الحلقة السادسة</h1>
+        <span>لقاء د. مي رمضان • الذكاء الاصطناعي في العلاج الطبيعي</span>
+      </div>
+    </div>
+
+    <div class="nav-actions-group">
+      <button class="nav-act-btn" onclick="window.print()" title="طباعة السكريبت">
+        <i data-lucide="printer" style="width:16px; height:16px;"></i>
+      </button>
+      <button class="nav-act-btn" onclick="toggleFontSize()" title="تكبير الخط">
+        <i data-lucide="type" style="width:16px; height:16px;"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="script-container">
+
+    <!-- Sticky Filter & Quick Navigation Bar -->
+    <div class="filter-sticky-bar">
+      <div class="filter-chips">
+        <button class="filter-chip active" onclick="filterScenes('all')">
+          <i data-lucide="layers" style="width:13px; height:13px;"></i> الكل
+        </button>
+        <button class="filter-chip" onclick="filterScenes('question')">
+          <i data-lucide="help-circle" style="width:13px; height:13px;"></i> المحاور والأسئلة (06)
+        </button>
+        <button class="filter-chip" onclick="scrollToGuidelines()">
+          <i data-lucide="clapperboard" style="width:13px; height:13px;"></i> التوجيه الإخراجي
+        </button>
+      </div>
+
+      <span class="scene-counter-badge" id="sceneCounterBadge">6 محاور رئيسية شاملة</span>
+    </div>
+
+    <!-- SCRIPT HERO OVERVIEW CARD -->
+    <section class="script-hero-card">
+      <div class="ep-badge-row">
+        <span class="ep-number-pill">الحلقة 06 — لقاء د. مي رمضان</span>
+        <span class="ep-status-pill"><i data-lucide="cpu" style="width:13px; height:13px; display:inline;"></i> حلقة التكنولوجيا والذكاء الاصطناعي</span>
+      </div>
+
+      <h2 class="script-title">لقاء د. مي رمضان: الذكاء الاصطناعي في العلاج الطبيعي والتأهيل</h2>
+      <p class="script-subtitle">حوار مستقبلي يربط بين Computer Science والعلاج الطبيعي؛ يستكشف تطبيقات تحليل الحركة بالـ AI، تصميم برامج التأهيل المخصصة، وحتمية الدور الإنساني للمعالج.</p>
+
+      <div class="script-meta-grid">
+        <div class="meta-box-item">
+          <div class="meta-lbl"><i data-lucide="user" style="width:12px; height:12px;"></i> ضيفة الحلقة</div>
+          <div class="meta-val">د. مي رمضان</div>
+        </div>
+        <div class="meta-box-item">
+          <div class="meta-lbl"><i data-lucide="briefcase" style="width:12px; height:12px;"></i> الصفة الأكاديمية</div>
+          <div class="meta-val">أستاذة مساعدة • رئيسة قسم IT</div>
+        </div>
+        <div class="meta-box-item">
+          <div class="meta-lbl"><i data-lucide="map-pin" style="width:12px; height:12px;"></i> موقع التصوير</div>
+          <div class="meta-val">كلية الذكاء الاصطناعي (جامعة كفر الشيخ)</div>
+        </div>
+        <div class="meta-box-item">
+          <div class="meta-lbl"><i data-lucide="clock" style="width:12px; height:12px;"></i> المدة المقدرة</div>
+          <div class="meta-val">30 – 45 دقيقة</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: PERMISSIONS & EQUIPMENT PREREQUISITES (التصاريح والمعدات مقسمة في صندوقين فوق بعض) -->
+    <div id="permissionsSection">
+      
+      <!-- BOX 1: COLLEGE ADMINISTRATION REQUIREMENTS (المطلوب توفيره من إدارة الكلية) -->
+      <section class="gear-section-college">
+        <div class="perm-badge-title">
+          <div class="perm-icon-box">
+            <i data-lucide="landmark" style="width:24px; height:24px;"></i>
+          </div>
+          <div>
+            <h3>متطلبات وتجهيزات مطلوبة من إدارة الكلية الموقرة</h3>
+            <span>College Administration Prerequisites & Approved Core Gear</span>
+          </div>
+        </div>
+
+        <div class="perm-items-list">
+          <!-- Item 1: Location Permission -->
+          <div class="perm-item-card" style="border-right: 4px solid #E11D48;">
+            <i data-lucide="door-open"></i>
+            <div>
+              <div style="display:flex; align-items:center; gap:6px; margin-bottom:3px; flex-wrap:wrap;">
+                <strong>1. إذن وتصريح تصوير رسمي بكلية الذكاء الاصطناعي:</strong>
+                <span style="font-size:0.72rem; font-weight:900; background:#0284C7; color:#FFFFFF; padding:2px 8px; border-radius:var(--radius-full);">تصريح تصوير خارجي</span>
+              </div>
+              <p>استخراج وتوفير تصريح رسمي من إدارة كلية العلاج الطبيعي موجه لإدارة كلية الذكاء الاصطناعي لتجهيز أحد المعامل / القاعات المتخصصة لتصوير حلقة البودكاست في بيئة تكنولوجية ملائمة.</p>
+            </div>
+          </div>
+
+          <!-- Item 2: Core Mic -->
+          <div class="perm-item-card" style="border-right: 4px solid #E11D48;">
+            <i data-lucide="mic-2"></i>
+            <div>
+              <div style="display:flex; align-items:center; gap:6px; margin-bottom:3px; flex-wrap:wrap;">
+                <strong>2. طقم المايك اللاسلكي الأساسي (المعتمد بالخطة):</strong>
+                <span style="font-size:0.72rem; font-weight:900; background:rgba(225, 29, 72, 0.12); color:#9F1239; border:1px solid #E11D48; padding:2px 8px; border-radius:var(--radius-full);">Hollyland Lark Mark 2 (M2)</span>
+              </div>
+              <p>توفير جهاز المايك اللاسلكي الاحترافي المعتمد في ميزانية الخطة لتسجيل الصوت الصافي والنقي للحوار بين المقدم والضيفة.</p>
+            </div>
+          </div>
+
+          <!-- Item 3: Coordination -->
+          <div class="perm-item-card">
+            <i data-lucide="calendar-check"></i>
+            <div>
+              <strong>3. التنسيق الأكاديمي المشترك مع كلية الذكاء الاصطناعي:</strong>
+              <p>التنسيق الإداري والمسبق بين إدارة كلية العلاج الطبيعي وإدارة كلية الذكاء الاصطناعي لاستضافة د. مي رمضان، وتسهيل دخول فريق الإنتاج ومعدات التصوير للحرم الجامعي وقاعة التسجيل.</p>
+            </div>
+          </div>
+
+          <!-- Item 4: Logistics & Quietness -->
+          <div class="perm-item-card">
+            <i data-lucide="shield-check"></i>
+            <div>
+              <strong>4. التنسيق اللوجستي وتوفير الهدوء التام:</strong>
+              <p>التنسيق مع إدارة كلية الذكاء الاصطناعي لتأمين الهدوء بمحيط معمل / قاعة التسجيل طوال ساعات التصوير لضمان تسجيل صوتي نقي خالٍ من أي ضوضاء خارجية.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BOX 2: DIRECTOR'S PERSONAL GEAR & RIG (تجهيزات ومعدات المخرج الشخصية ومسؤوليته بالكامل) -->
+      <section class="gear-section-director">
+        <div class="perm-badge-title">
+          <div class="perm-icon-box director-icon">
+            <i data-lucide="clapperboard" style="width:24px; height:24px;"></i>
+          </div>
+          <div>
+            <h3>معدات وتجهيزات المخرج الخاصة — مسؤولية المخرج بالكامل</h3>
+            <span>Director's Personal Cinema Package & Camera Rig (Zero Cost on Faculty)</span>
+          </div>
+        </div>
+
+        <div class="perm-items-list">
+          <!-- Director Item 1: 2 Cameras -->
+          <div class="perm-item-card" style="border-right: 4px solid var(--accent-teal);">
+            <i data-lucide="video"></i>
+            <div>
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:3px; flex-wrap:wrap;">
+                <strong>1. كاميرتان فيديو احترافيتان (2 Video Cameras):</strong>
+                <span style="font-size:0.72rem; font-weight:900; background:linear-gradient(135deg, #0D9488, #042F2C); color:#FFFFFF; padding:2px 8px; border-radius:var(--radius-full);">Multi-Cam Setup</span>
+              </div>
+              <p>كاميرا رئيسية للكادر المقرب للضيفة + كاميرا ثانية للقطة المشتركة الواسعة (2-Shot) وكادر المقدم لضمان تقطيع بصري سلس ومتناسق.</p>
+            </div>
+          </div>
+
+          <!-- Director Item 2: 4 Cinema Lenses -->
+          <div class="perm-item-card" style="border-right: 4px solid var(--accent-teal);">
+            <i data-lucide="aperture"></i>
+            <div>
+              <div style="display:flex; align-items:center; justify-content:space-between; gap:6px; margin-bottom:3px; flex-wrap:wrap;">
+                <strong>2. طقم 4 عدسات سينمائية شاملة (16mm, 35mm, 50mm, 85mm):</strong>
+                <span style="font-size:0.72rem; font-weight:900; background:linear-gradient(135deg, #0D9488, #042F2C); color:#FFFFFF; padding:2px 8px; border-radius:var(--radius-full);">4 Prime Lenses</span>
+              </div>
+              <p>طقم عدسات سينمائية شامل لتغطية الزوايا والبورتريه وإبراز التفاعل الحي:</p>
+              
+              <div class="lens-grid-pills">
+                <div class="lens-pill">
+                  <strong>16mm</strong>
+                  <span>تأسيس الاستوديو</span>
+                </div>
+                <div class="lens-pill">
+                  <strong>35mm</strong>
+                  <span>كادر ثنائي مشترك</span>
+                </div>
+                <div class="lens-pill">
+                  <strong>50mm</strong>
+                  <span>كادر متوسط طبيعي</span>
+                </div>
+                <div class="lens-pill">
+                  <strong>85mm</strong>
+                  <span>بورتريه وعزل الضيفة</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- TIMELINE & SCREENPLAY SECTION -->
+    <div class="section-timeline-header">
+      <div class="timeline-title-wrap">
+        <i data-lucide="clapperboard" style="color:var(--accent-gold-bright); width:26px; height:26px;"></i>
+        <h2>تتابع محاور الحوار والسيناريو التنفيذي</h2>
+      </div>
+      <span class="timeline-count-badge">المقدمة + 6 محاور استراتيجية + الخاتمة</span>
+    </div>
+
+    <!-- SCENE 00:00 — COLD OPEN & INTRO -->
+    <article class="scene-card" data-category="general" id="scene-00-00">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge"><i data-lucide="play" style="width:12px; height:12px;"></i> 00:00 — COLD OPEN & HOOK</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-ext">🎬 هوك تشويقي تخيلي</span>
+          <span class="tag-shot-audio">🔊 مؤثرات تكنولوجية هادئة</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">الافتتاحية — الخيال العلمي الذي أصبح واقعاً في التأهيل</h3>
+
+      <div class="script-block block-visual">
+        <div class="block-label"><i data-lucide="eye" style="width:13px; height:13px;"></i> الصورة والكادر:</div>
+        <p>جرافيك رقمي متحرك يوضح تتبع مفاصل الجسم (Motion Tracking Skeleton) أثناء أداء التمرين، مع قياس زوايا المدى الحركي بالدرجات لحظياً، ثم قطع سريع على كادر المقدم في الاستوديو.</p>
+      </div>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="mic" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+            <span class="speaker-action-note">نبرة مشوقة ترسم صورة بصرية مدهشة</span>
+          </div>
+          <p class="dialogue-line">تخيلوا معايا مريض بيعمل تمرين قدام كاميرا ابلكيشن، والنظام بيحلل حركته في نفس اللحظة، ويكتشف الأخطاء، ويديله ملاحظات زي: "حاول تحافظ على استقامة ظهرك" أو "خلي ركبتك في الاتجاه الصح".
+          <br /><br />
+          تخيلوا كمان إن النظام يقدر يحسب عدد مرات التمرين، ويقيس مدى الحركة، ويقارن أداء المريض من جلسة للتانية.. الموضوع ممكن يبان كأنه من أفلام الخيال العلمي، لكنه في الحقيقة بدأ يبقى جزء من التطبيقات اللي بيقدمها الذكاء الاصطناعي في مجال العلاج الطبيعي وإعادة التأهيل.
+          <br /><br />
+          لكن السؤال الأهم مش بس: الذكاء الاصطناعي يقدر يعمل إيه؟ السؤال هو: إزاي الذكاء الاصطناعي يشتغل جنب الـ Physiotherapist؟ وهل ممكن يغير شكل المهنة من غير ما يلغي الدور الإنساني؟
+          <br /><br />
+          وعشان نتكلم عن الموضوع ده، كان لازم النهارده نستضيف أستاذة مساعدة ورئيسة قسم تكنولوجيا المعلومات وباحثة في مجال الذكاء الاصطناعي.. د. مي رمضان.. أهلًا بحضرتك يا دكتورة وسعداء بوجودنا اليوم في رحاب كلية الذكاء الاصطناعي.</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="sparkles" style="width:17px; height:17px;"></i>
+            <strong>ترحيب الضيفة والتفاعل الافتتاحي:</strong>
+          </div>
+          <p class="flow-desc">ترحيب د. مي رمضان بجمهور البودكاست وطلاب الكلية، والتعبير عن الشغف بالتقاطع الحيوي بين علوم الحاسب والذكاء الاصطناعي والمجال الطبي التأهيلي.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- QUESTION 01 -->
+    <article class="scene-card highlight-case" data-category="question" id="q-01">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">المحور 01</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">🎥 كادر مقرب د. مي رمضان 85mm</span>
+          <span class="tag-shot-ext">🤖 المفهوم والربط</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">1. يعني إيه ذكاء اصطناعي في العلاج الطبيعي؟ والربط بين المجالين</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="help-circle" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+            <span class="speaker-action-note">طرح السؤال الرئيسي الأول</span>
+          </div>
+          <p class="dialogue-line">في البداية، خلينا نوضح الصورة.. يعني إيه ذكاء اصطناعي في مجال العلاج الطبيعي؟ وإزاي نقدر نربط بين Computer Science وPhysiotherapy؟</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="sparkles" style="width:17px; height:17px;"></i>
+            <strong>مساحة الحوار والنقاش العفوي المفتوح (Live Podcast Discussion):</strong>
+          </div>
+          <p class="flow-desc">توضح د. مي رمضان المفهوم بأسلوب مبسط وشيق، وكيف تعالج الخوارزميات بيانات الحركة والصور، مع تفاعل ومداخلة المذيع: <em>"يعني نقدر نقول إن الذكاء الاصطناعي مش بديل عن الـ Physiotherapist، لكنه أداة بتساعده يفهم بيانات المريض بشكل أفضل؟"</em></p>
+        </div>
+      </div>
+    </article>
+
+    <!-- QUESTION 02 -->
+    <article class="scene-card highlight-case" data-category="question" id="q-02">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">المحور 02</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">🎥 تبديل كادرات ديناميكي</span>
+          <span class="tag-shot-ext">📊 البرامج المخصصة</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">2. التطبيقات العملية والطب التأهيلي المخصص (Personalized Rehab)</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="help-circle" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+            <span class="speaker-action-note">طرح السؤال الرئيسي الثاني</span>
+          </div>
+          <p class="dialogue-line">لو دخلنا في الجانب العملي، إيه أهم التطبيقات اللي ممكن يقدمها الذكاء الاصطناعي في العلاج الطبيعي؟</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="sparkles" style="width:17px; height:17px;"></i>
+            <strong>مساحة الحوار والنقاش العفوي المفتوح (Live Podcast Discussion):</strong>
+          </div>
+          <p class="flow-desc">تستعرض د. مي رمضان تطبيقات الرؤية الحاسوبية (Computer Vision)، وأجهزة الاستشعار القابلة للارتداء، وكيف يتحول التأهيل من بروتوكولات عامة موحدة إلى برامج علاجية مخصصة مبنية على بيانات كل مريض بدقة، مع تعليق وتفاعل المذيع.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- QUESTION 03 -->
+    <article class="scene-card highlight-case" data-category="question" id="q-03">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">المحور 03</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">🎥 كادر مقرب دافئ 85mm</span>
+          <span class="tag-shot-ext">🦵 دراسة حالة عملية</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">3. مثال تطبيقي عملي: مريض إصابة الركبة وبرنامج الـ Rehab الذكي</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="help-circle" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+            <span class="speaker-action-note">طرح السؤال الرئيسي الثالث</span>
+          </div>
+          <p class="dialogue-line">خلينا ناخد مثال عملي.. لو عندنا مريض عنده إصابة في الركبة وبدأ برنامج Rehabilitation، إزاي الذكاء الاصطناعي ممكن يدخل في الحالة دي؟</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="sparkles" style="width:17px; height:17px;"></i>
+            <strong>مساحة الحوار والنقاش العفوي المفتوح (Live Podcast Discussion):</strong>
+          </div>
+          <p class="flow-desc">تشرح د. مي رمضان خطوات تتبع زوايا انثناء الركبة، قياس التوازن الحركي، وتنبيه المعالج لأي انحراف أو إجهاد غير طبيعي، ويؤكد المذيع: <em>"وده بيوضح نقطة مهمة جدًا: الذكاء الاصطناعي مش بيعمل التمرين بدل المعالج، لكنه بيجمع ويحلل المعلومات اللي تساعد المعالج ياخد قرار أفضل."</em></p>
+        </div>
+      </div>
+    </article>
+
+    <!-- QUESTION 04 -->
+    <article class="scene-card highlight-case" data-category="question" id="q-04">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">المحور 04</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">🎥 كادر مشترك 2-Shot 35mm</span>
+          <span class="tag-shot-ext">🔮 هل يستبدل المعالج؟</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">4. هل الذكاء الاصطناعي سيستبدل أخصائي العلاج الطبيعي؟</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="help-circle" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+            <span class="speaker-action-note">طرح السؤال الجوهري للطلاب</span>
+          </div>
+          <p class="dialogue-line">وهنا نوصل للسؤال اللي أكيد شاغل بال ناس كتير، خصوصًا الطلاب: هل الذكاء الاصطناعي ممكن يستبدل الـ Physiotherapist في المستقبل؟</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="sparkles" style="width:17px; height:17px;"></i>
+            <strong>مساحة الحوار والنقاش العفوي المفتوح (Live Podcast Discussion):</strong>
+          </div>
+          <p class="flow-desc">تحسم د. مي رمضان الإجابة مؤكدة استحالة استبدال اللمسة الإنسانية والتقييم السريري والتفاعل النفسي، مع خلاصة المذيع الذهبية: <em>"الذكاء الاصطناعي مش هيستبدل الـ Physiotherapist، لكن الـ Physiotherapist اللي يعرف يستخدم الذكاء الاصطناعي ممكن تكون عنده ميزة أكبر من شخص مش بيطور نفسه."</em></p>
+        </div>
+      </div>
+    </article>
+
+    <!-- QUESTION 05 -->
+    <article class="scene-card highlight-case" data-category="question" id="q-05">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">المحور 05</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-audio">⚠️ التحديات والمخاطر</span>
+          <span class="tag-shot-ext">⚖️ أولوية القرار السريري</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">5. التحديات والمخاطر — والقرار الإنساني كصمام أمان</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="help-circle" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+            <span class="speaker-action-note">طرح السؤال الرئيسي الخامس</span>
+          </div>
+          <p class="dialogue-line">طبعًا أي تكنولوجيا جديدة بيكون ليها فوائد وتحديات.. إيه أهم المخاطر اللي لازم ناخد بالنا منها عند استخدام الذكاء الاصطناعي في العلاج الطبيعي؟</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="sparkles" style="width:17px; height:17px;"></i>
+            <strong>مساحة الحوار والنقاش العفوي المفتوح (Live Podcast Discussion):</strong>
+          </div>
+          <p class="flow-desc">تناقش د. مي رمضان قضايا خصوصية بيانات المرضى، انحياز الخوارزميات (Algorithmic Bias)، وضرورة ألا يُترك القرار الطبي للآلة، مع تأكيد المذيع على أن القرار السريري يظل مسؤولية بشرية أصيلة.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- QUESTION 06 -->
+    <article class="scene-card highlight-case" data-category="question" id="q-06">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">المحور 06</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">🎥 كادر مقرب دافئ 85mm</span>
+          <span class="tag-shot-ext">🎓 توجيهات للطلاب</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">6. هل لازم كل طالب علاج طبيعي يتعلم ذكاء اصطناعي؟</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="help-circle" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+            <span class="speaker-action-note">طرح السؤال الختامي للطلاب</span>
+          </div>
+          <p class="dialogue-line">لو اتكلمنا عن طلاب الجامعة، هل لازم كل طالب علاج طبيعي يتعلم الذكاء الاصطناعي؟</p>
+        </div>
+
+        <div class="podcast-live-flow-card">
+          <div class="flow-header">
+            <i data-lucide="sparkles" style="width:17px; height:17px;"></i>
+            <strong>مساحة الحوار والنقاش العفوي المفتوح (Live Podcast Discussion):</strong>
+          </div>
+          <p class="flow-desc">تقدم د. مي رمضان خارطة طريق مبسطة للطلاب لفهم واستخدام أدوات الـ AI المساعدة في البحث العلمي ومتابعة المرضى، دون الحاجة لأن يكون الطالب مبرمجاً متخصصاً.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- SCENE: OUTRO & CONCLUSION -->
+    <article class="scene-card" data-category="general" id="scene-outro">
+      <div class="scene-top-bar">
+        <span class="timestamp-badge">ختام الحلقة — Outro</span>
+        <div class="scene-type-tags">
+          <span class="tag-shot-cam">🎥 لقطة ثنائية مشتركة 2-Shot</span>
+          <span class="tag-shot-audio">🎙️ الكلمة الختامية والرسالة الملهمة</span>
+        </div>
+      </div>
+
+      <h3 class="scene-title-h3">الكلمة الختامية والرسالة الجوهرية للحلقة</h3>
+
+      <div class="dialogue-stream">
+        <div class="dialogue-bubble speaker-host">
+          <div class="speaker-meta">
+            <span class="speaker-name"><i data-lucide="mic" style="width:14px; height:14px;"></i> مقدم البودكاست</span>
+            <span class="speaker-action-note">نبرة ختامية عميقة وملهمة تجمع بين العلم والإنسانية</span>
+          </div>
+          <p class="dialogue-line">في نهاية حلقتنا، نقدر نقول إن الذكاء الاصطناعي مش مجرد Technology جديدة، لكنه أداة ممكن تغير طريقة تقييم الحركة، ومتابعة المرضى، وتصميم برامج Rehabilitation..
+          <br /><br />
+          لكن فيه حقيقة لازم نفتكرها: التكنولوجيا تقدر تحلل البيانات، لكن الـ Physiotherapist هو اللي بيفهم الإنسان اللي ورا البيانات.. الـ AI ممكن يقول لنا: <em>"المريض اتحرك بالطريقة دي"</em>.. لكن الـ Physiotherapist هو اللي بيسأل: <em>"ليه اتحرك بالطريقة دي؟ وإيه أفضل طريقة نقدر نساعده بيها؟"</em>
+          <br /><br />
+          وربما تكون دي أهم رسالة لكل طالب: ما نخافش من التكنولوجيا، لكن نتعلم إزاي نستخدمها.. المستقبل مش محتاج بالضرورة Physiotherapist يعرف كل حاجة عن الذكاء الاصطناعي، لكنه محتاج Physiotherapist يعرف يستخدمه بشكل آمن وذكي لخدمة المريض.
+          <br /><br />
+          شكرًا جدًا لحضرتك دكتور على الحوار الممتع دا..
+          <br /><br />
+          <strong>و ف النهايه اوعي تنسي تسال نفسك ليه فيزيو</strong></p>
+        </div>
+      </div>
+    </article>
+
+    <!-- SECTION: DIRECTORIAL TREATMENT & EXECUTIVE NOTES -->
+    <section class="guidelines-wrapper" id="guidelinesSection">
+      <div class="section-timeline-header">
+        <div class="timeline-title-wrap">
+          <i data-lucide="clapperboard" style="color:var(--accent-gold-bright); width:26px; height:26px;"></i>
+          <h2>الرؤية والمنهجية الإخراجية — مذكرة المخرج لتصوير حلقة الذكاء الاصطناعي</h2>
+        </div>
+        <span class="timeline-count-badge" style="background:linear-gradient(135deg, #0284C7, #0369A1); color:#FFFFFF;">Director's Treatment</span>
+      </div>
+
+      <!-- Statement Box for the Dean & Production Review -->
+      <div style="background: linear-gradient(145deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 250, 240, 0.95) 100%); border: 1.5px solid var(--accent-gold); border-radius: var(--radius-md); padding: 22px; margin-bottom: 24px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);">
+        <div style="display:flex; align-items:center; gap:10px; color:#78350F; font-weight:900; font-size:1.05rem; margin-bottom:8px;">
+          <i data-lucide="bookmark" style="width:20px; height:20px; color:var(--accent-gold-bright);"></i>
+          <span>مذكرة توضيحية من مخرج العمل (مرفوعة لسيادة عميد الكلية وإدارة الإنتاج):</span>
+        </div>
+        <p style="font-size:0.94rem; color:var(--text-main); line-height:1.75;">
+          تم بناء الرؤية الإخراجية لهذه الحلقة لدمج الروح التكنولوجية المستقبلية مع الدفء الإنساني لمهنة العلاج الطبيعي؛ مع توظيف جرافيك شاشات الـ Motion Tracking، والاعتماد على التوزيع المتناسق للضوء الطبيعي، واستخدام عدسات البورتريه 85mm لإبراز تفاعل الضيفة ونقل الرسالة بوضوح وسلاسة للمشاهد.
+        </p>
+      </div>
+
+      <div class="guidelines-grid">
+        <!-- 1 -->
+        <div class="guide-card">
+          <div class="guide-num-badge">01</div>
+          <h4>توظيف جرافيك الـ HUD التوضيحي لتحليل الحركة</h4>
+          <p>عرض بطاقات جرافيك رقمية شفافة Motion Overlay تظهر كيف تتعرف الكاميرات الذكية على مفاصل الرياضي وزوايا الحركة دون تشتيت انتباه المشاهد عن الحوار الصوتي.</p>
+        </div>
+
+        <!-- 2 -->
+        <div class="guide-card">
+          <div class="guide-num-badge">02</div>
+          <h4>توزيع كادرات الـ Multi-Cam التفاعلي</h4>
+          <p>توزيع الكاميرا A المقربة 85mm لبورتريه د. مي رمضان، وكاميرا B بزاوية 35mm للقطة الثنائية مع شاشة عرض البيانات الجانبية لتأكيد الطابع التكنولوجي التخصصي.</p>
+        </div>
+
+        <!-- 3 -->
+        <div class="guide-card">
+          <div class="guide-num-badge">03</div>
+          <h4>استثمار الإضاءة الطبيعية المتوازنة</h4>
+          <p>الاعتماد على التوزيع الطبيعي للضوء داخل الاستوديو مع تجنب أي انعكاسات مزعجة على الشاشات التكنولوجية لضمان كادر نقي وسينمائي.</p>
+        </div>
+
+        <!-- 4 -->
+        <div class="guide-card">
+          <div class="guide-num-badge">04</div>
+          <h4>نقاء الصوت والاعتماد على مايكات الخطة الأساسية</h4>
+          <p>استخدام مايكات Hollyland Lark M2 اللاسلكية المعتمدة بالخطة لضمان تسجيل صوتي نقي خالٍ من الضوضاء والترددات.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Bottom Floating Quick-Jump Dock -->
+  <aside class="floating-dock">
+    <a href="#scene-00-00" class="dock-link"><i data-lucide="play" style="width:14px; height:14px;"></i> <span>المقدمة</span></a>
+    <a href="#q-01" class="dock-link"><i data-lucide="help-circle" style="width:14px; height:14px;"></i> <span>المحاور</span></a>
+    <a href="#guidelinesSection" class="dock-link"><i data-lucide="clapperboard" style="width:14px; height:14px;"></i> <span>الإخراج</span></a>
+    <a href="index.html#sec-6" class="dock-link" style="background:var(--accent-gold); color:var(--primary-dark);"><i data-lucide="home" style="width:14px; height:14px;"></i> <span>الخطة</span></a>
+  </aside>
+
+  <!-- Interactive JavaScript Logic -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Scroll Progress Bar
+    window.addEventListener('scroll', () => {
+      const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById('progressBar').style.width = scrolled + '%';
+    });
+
+    // Scene Filter Function
+    function filterScenes(category) {
+      const cards = document.querySelectorAll('.scene-card');
+      const chips = document.querySelectorAll('.filter-chip');
+      
+      chips.forEach(chip => chip.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+
+      let visibleCount = 0;
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category === category) {
+          card.style.display = 'block';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      document.getElementById('sceneCounterBadge').textContent = `معروض: ${visibleCount} مشهد / محور`;
+    }
+
+    // Scroll to Directorial Treatment
+    function scrollToGuidelines() {
+      document.getElementById('guidelinesSection').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Toggle Font Size for Easy Reading
+    let isLargeFont = false;
+    function toggleFontSize() {
+      isLargeFont = !isLargeFont;
+      document.querySelectorAll('.dialogue-line, .flow-desc').forEach(el => {
+        el.style.fontSize = isLargeFont ? '1.15rem' : '';
+      });
+    }
+  </script>
+</body>
+</html>
