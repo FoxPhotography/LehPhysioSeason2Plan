@@ -413,13 +413,15 @@
 
     .search-box-input {
       position: relative;
-      min-width: 220px;
+      min-width: 250px;
+      display: flex;
+      align-items: center;
     }
 
     .search-box-input input {
       width: 100%;
-      padding: 7px 34px 7px 12px;
-      background: rgba(0, 0, 0, 0.4);
+      padding: 8px 40px 8px 14px;
+      background: rgba(0, 0, 0, 0.45);
       border: 1px solid rgba(212, 175, 55, 0.4);
       border-radius: var(--radius-full);
       color: #FFFFFF;
@@ -430,19 +432,126 @@
 
     .search-box-input input:focus {
       border-color: var(--accent-amber);
-      box-shadow: 0 0 12px rgba(245, 158, 11, 0.3);
-      background: rgba(0, 0, 0, 0.6);
+      box-shadow: 0 0 14px rgba(245, 158, 11, 0.35);
+      background: rgba(0, 0, 0, 0.65);
     }
 
-    .search-box-input i {
+    .search-box-input i,
+    .search-box-input svg {
       position: absolute;
-      right: 12px;
+      right: 14px;
       top: 50%;
       transform: translateY(-50%);
       color: var(--accent-amber);
       pointer-events: none;
-      width: 15px;
-      height: 15px;
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Floating Side Navigation Controls (Same style as index.html) */
+    .nav-controls {
+      position: fixed;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 990;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    @media (min-width: 1120px) {
+      .nav-controls {
+        display: flex;
+      }
+    }
+
+    .nav-arrow-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: rgba(26, 9, 13, 0.9);
+      border: 1.5px solid var(--accent-gold);
+      color: var(--accent-gold-bright);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .nav-arrow-btn:hover {
+      background: var(--accent-gold);
+      color: #1A090D;
+      transform: scale(1.12);
+      box-shadow: 0 0 16px var(--accent-gold-glow);
+    }
+
+    .side-dots-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: rgba(26, 9, 13, 0.85);
+      padding: 12px 9px;
+      border-radius: var(--radius-full);
+      border: 1.5px solid rgba(212, 175, 55, 0.35);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .dot-node {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      border: 1.5px solid var(--accent-gold);
+      cursor: pointer;
+      position: relative;
+      transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+      display: block;
+      text-decoration: none;
+    }
+
+    .dot-node:hover {
+      background: var(--accent-gold);
+      transform: scale(1.25);
+    }
+
+    .dot-node.active {
+      background: var(--accent-gold-bright);
+      border-color: #FFFFFF;
+      transform: scale(1.45);
+      box-shadow: 0 0 14px var(--accent-gold-bright);
+    }
+
+    .dot-node .dot-label {
+      position: absolute;
+      left: 26px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(26, 9, 13, 0.96);
+      border: 1px solid var(--accent-gold);
+      color: #FFFFFF;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+    }
+
+    .dot-node:hover .dot-label {
+      opacity: 1;
+      transform: translateY(-50%) translateX(4px);
     }
 
     /* Section Separators */
@@ -453,6 +562,7 @@
       margin: 35px 0 20px 0;
       padding-bottom: 10px;
       border-bottom: 2px solid var(--border-gold);
+      scroll-margin-top: 110px;
     }
 
     .section-category-header h2 {
@@ -483,6 +593,7 @@
       box-shadow: var(--shadow-lg);
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      scroll-margin-top: 110px;
     }
 
     .reel-script-card:hover {
@@ -1080,6 +1191,41 @@
       </a>
     </div>
   </header>
+
+  <!-- Floating Side Navigation Controls (Direct Reels Navigation) -->
+  <aside class="nav-controls" id="reelsNavControls" aria-label="شريط التنقل السريع بين الريلز">
+    <button class="nav-arrow-btn" onclick="scrollToPrevReel()" title="الريل السابق"><i data-lucide="chevron-up"></i></button>
+    <div class="side-dots-list">
+      <a href="#promo-physiohaya" class="dot-node active" data-target="promo-physiohaya" onclick="event.preventDefault(); scrollToReel('promo-physiohaya');" title="برومو البرنامج">
+        <span class="dot-label">البرومو: دجال مودرن 🧙‍♂️</span>
+      </a>
+      <a href="#reel-01" class="dot-node" data-target="reel-01" onclick="event.preventDefault(); scrollToReel('reel-01');" title="ريل 01">
+        <span class="dot-label">01 - الألم المنعكس والقلب ❤️</span>
+      </a>
+      <a href="#reel-02" class="dot-node" data-target="reel-02" onclick="event.preventDefault(); scrollToReel('reel-02');" title="ريل 02">
+        <span class="dot-label">02 - نيمار والرباط الصليبي ⚽</span>
+      </a>
+      <a href="#reel-03" class="dot-node" data-target="reel-03" onclick="event.preventDefault(); scrollToReel('reel-03');" title="ريل 03">
+        <span class="dot-label">03 - علاج المرآة وعضو الشبح 🪞</span>
+      </a>
+      <a href="#reel-04" class="dot-node" data-target="reel-04" onclick="event.preventDefault(); scrollToReel('reel-04');" title="ريل 04">
+        <span class="dot-label">04 - كارثة مشاية الأطفال 👶</span>
+      </a>
+      <a href="#reel-05" class="dot-node" data-target="reel-05" onclick="event.preventDefault(); scrollToReel('reel-05');" title="ريل 05">
+        <span class="dot-label">05 - الحروق وتورم الليمفيديما 🧤</span>
+      </a>
+      <a href="#reel-06" class="dot-node" data-target="reel-06" onclick="event.preventDefault(); scrollToReel('reel-06');" title="ريل 06">
+        <span class="dot-label">06 - الذكاء الاصطناعي في التأهيل 🤖</span>
+      </a>
+      <a href="#reel-07" class="dot-node" data-target="reel-07" onclick="event.preventDefault(); scrollToReel('reel-07');" title="ريل 07">
+        <span class="dot-label">07 - السفر ومعادلة الـ NPTE ✈️</span>
+      </a>
+      <a href="#reel-08" class="dot-node" data-target="reel-08" onclick="event.preventDefault(); scrollToReel('reel-08');" title="ريل 08">
+        <span class="dot-label">08 - سوق العمل والميداني 🏥</span>
+      </a>
+    </div>
+    <button class="nav-arrow-btn" onclick="scrollToNextReel()" title="الريل التالي"><i data-lucide="chevron-down"></i></button>
+  </aside>
 
   <!-- Main Content Container -->
   <main class="page-main-container">
@@ -3698,6 +3844,74 @@
         }, 3000);
       }
     }
+
+    // Side Floating Navigation Controller
+    const reelTargets = [
+      'promo-physiohaya',
+      'reel-01',
+      'reel-02',
+      'reel-03',
+      'reel-04',
+      'reel-05',
+      'reel-06',
+      'reel-07',
+      'reel-08'
+    ];
+
+    function scrollToReel(targetId) {
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        // If hidden by category filter, show all first
+        if (targetEl.style.display === 'none') {
+          const allBtn = document.querySelector('.filter-pill');
+          if (allBtn) filterScripts('all', allBtn);
+        }
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        updateActiveSideDot(targetId);
+      }
+    }
+
+    function getCurrentReelIndex() {
+      const scrollPos = window.scrollY + 180;
+      let currentIndex = 0;
+      for (let i = 0; i < reelTargets.length; i++) {
+        const el = document.getElementById(reelTargets[i]);
+        if (el && el.offsetTop <= scrollPos) {
+          currentIndex = i;
+        }
+      }
+      return currentIndex;
+    }
+
+    function scrollToPrevReel() {
+      const current = getCurrentReelIndex();
+      const prev = Math.max(0, current - 1);
+      scrollToReel(reelTargets[prev]);
+    }
+
+    function scrollToNextReel() {
+      const current = getCurrentReelIndex();
+      const next = Math.min(reelTargets.length - 1, current + 1);
+      scrollToReel(reelTargets[next]);
+    }
+
+    function updateActiveSideDot(targetId) {
+      document.querySelectorAll('.side-dots-list .dot-node').forEach(dot => {
+        if (dot.getAttribute('data-target') === targetId) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+
+    // Dynamic ScrollSpy for Side Navigation Dots
+    window.addEventListener('scroll', () => {
+      const currentIdx = getCurrentReelIndex();
+      if (reelTargets[currentIdx]) {
+        updateActiveSideDot(reelTargets[currentIdx]);
+      }
+    }, { passive: true });
   </script>
 </body>
 
