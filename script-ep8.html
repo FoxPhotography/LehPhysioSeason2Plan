@@ -122,6 +122,8 @@
       display: flex;
       align-items: center;
       gap: 16px;
+      min-width: 0;
+      flex: 1;
     }
 
     .btn-back-plan {
@@ -137,6 +139,8 @@
       font-size: 0.84rem;
       font-weight: 800;
       transition: all 0.3s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .btn-back-plan:hover {
@@ -146,17 +150,29 @@
       box-shadow: 0 0 15px var(--accent-gold-glow);
     }
 
+    .brand-title-box {
+      min-width: 0;
+      flex: 1;
+    }
+
     .brand-title-box h1 {
       font-size: 0.98rem;
       font-weight: 900;
       color: #FFFFFF;
-      line-height: 1.2;
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .brand-title-box span {
       font-size: 0.76rem;
       color: var(--accent-gold-bright);
       font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
     }
 
     .nav-actions-group {
@@ -730,11 +746,173 @@
       border-radius: var(--radius-full);
       transition: all 0.25s ease;
       white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .dock-link:hover, .dock-link.active {
       background: var(--accent-gold);
       color: var(--primary-dark);
+    }
+
+    /* ==========================================================================
+       Mobile Polish: Header Navbar, Filter Bar & Bottom Floating Dock
+       ========================================================================== */
+    @media (max-width: 768px) {
+      .top-navbar {
+        padding: 8px 14px;
+        gap: 8px;
+      }
+
+      .nav-left-group {
+        gap: 10px;
+      }
+
+      .btn-back-plan {
+        padding: 6px 12px;
+        font-size: 0.78rem;
+        gap: 5px;
+        flex-shrink: 0;
+      }
+
+      .brand-title-box h1 {
+        font-size: 0.88rem;
+      }
+
+      .brand-title-box span {
+        font-size: 0.70rem;
+      }
+
+      .nav-actions-group {
+        gap: 5px;
+        flex-shrink: 0;
+      }
+
+      .nav-act-btn {
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+      }
+
+      .nav-act-btn i,
+      .nav-act-btn svg {
+        width: 14px !important;
+        height: 14px !important;
+      }
+
+      .main-container,
+      .script-container {
+        margin-top: 14px;
+        padding: 0 12px 95px;
+      }
+
+      .filter-sticky-bar {
+        top: 50px;
+        padding: 5px 8px;
+        gap: 6px;
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        border-radius: var(--radius-full);
+      }
+
+      .filter-sticky-bar::-webkit-scrollbar {
+        display: none;
+      }
+
+      .filter-chip {
+        padding: 5px 11px;
+        font-size: 0.74rem;
+        flex-shrink: 0;
+        white-space: nowrap;
+      }
+
+      .floating-dock {
+        bottom: 12px;
+        bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 20px);
+        max-width: 480px;
+        padding: 5px 8px;
+        gap: 4px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        justify-content: flex-start;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75), 0 0 20px var(--accent-gold-glow);
+      }
+
+      .floating-dock::-webkit-scrollbar {
+        display: none;
+      }
+
+      .dock-link {
+        padding: 5px 9px;
+        font-size: 0.72rem;
+        gap: 4px;
+        flex-shrink: 0;
+      }
+
+      .dock-link i,
+      .dock-link svg {
+        width: 13px !important;
+        height: 13px !important;
+      }
+
+      body {
+        padding-bottom: 95px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .top-navbar {
+        padding: 7px 10px;
+      }
+
+      .btn-back-plan {
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border-radius: 50%;
+        justify-content: center;
+      }
+
+      .btn-back-plan span {
+        display: none;
+      }
+
+      .btn-back-plan i,
+      .btn-back-plan svg {
+        margin: 0;
+        width: 16px !important;
+        height: 16px !important;
+      }
+
+      .nav-left-group {
+        gap: 8px;
+      }
+
+      .brand-title-box h1 {
+        font-size: 0.82rem;
+      }
+
+      .brand-title-box span {
+        font-size: 0.66rem;
+      }
+
+      .nav-actions-group {
+        gap: 4px;
+      }
+
+      .hero-script-card {
+        padding: 18px 14px;
+        border-radius: var(--radius-md);
+      }
+
+      .scene-card {
+        padding: 16px 12px;
+      }
     }
   </style>
 </head>

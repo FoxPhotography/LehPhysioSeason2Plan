@@ -1105,7 +1105,38 @@
     /* Responsive Queries */
     @media (max-width: 768px) {
       .top-navbar {
-        padding: 10px 14px;
+        padding: 8px 14px;
+        gap: 8px;
+      }
+
+      .nav-left-group {
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .btn-back-plan {
+        padding: 6px 12px;
+        font-size: 0.78rem;
+        gap: 5px;
+        flex-shrink: 0;
+      }
+
+      .brand-title-box h1 {
+        font-size: 0.88rem;
+      }
+
+      .brand-title-box p {
+        font-size: 0.70rem;
+      }
+
+      .nav-right-actions {
+        gap: 5px;
+        flex-shrink: 0;
+      }
+
+      .nav-action-btn {
+        padding: 6px 10px;
+        font-size: 0.76rem;
       }
 
       .page-main-container {
@@ -1121,8 +1152,29 @@
       }
 
       .filter-sticky-bar {
-        top: 54px;
-        padding: 8px;
+        top: 50px;
+        padding: 6px 8px;
+        gap: 6px;
+      }
+
+      .filter-pills-group {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        flex-wrap: nowrap;
+        width: 100%;
+        padding-bottom: 2px;
+      }
+
+      .filter-pills-group::-webkit-scrollbar {
+        display: none;
+      }
+
+      .filter-pill {
+        flex-shrink: 0;
+        white-space: nowrap;
+        padding: 5px 11px;
+        font-size: 0.75rem;
       }
 
       .search-box-input {
@@ -1145,6 +1197,52 @@
 
       .card-titles-group h3 {
         font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .top-navbar {
+        padding: 7px 10px;
+      }
+
+      .btn-back-plan {
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border-radius: 50%;
+        justify-content: center;
+      }
+
+      .btn-back-plan span {
+        display: none;
+      }
+
+      .btn-back-plan i,
+      .btn-back-plan svg {
+        margin: 0;
+        width: 16px !important;
+        height: 16px !important;
+      }
+
+      .brand-title-box h1 {
+        font-size: 0.82rem;
+      }
+
+      .brand-title-box p {
+        font-size: 0.66rem;
+      }
+
+      .nav-right-actions {
+        gap: 4px;
+      }
+
+      .nav-action-btn {
+        padding: 6px 8px;
+        font-size: 0.72rem;
+      }
+
+      .nav-action-btn span {
+        display: none;
       }
     }
   </style>

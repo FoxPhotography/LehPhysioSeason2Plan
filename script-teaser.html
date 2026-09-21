@@ -157,6 +157,10 @@
       box-shadow: var(--shadow-orange-glow);
     }
 
+    .brand-title-box {
+      min-width: 0;
+    }
+
     .brand-title-box h1 {
       font-size: 1.08rem;
       font-weight: 900;
@@ -165,17 +169,24 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .brand-title-box p {
       font-size: 0.78rem;
       color: rgba(255, 255, 255, 0.75);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .nav-right-actions {
       display: flex;
       align-items: center;
       gap: 8px;
+      flex-shrink: 0;
     }
 
     .nav-action-btn {
@@ -486,12 +497,93 @@
     }
 
     @media (max-width: 768px) {
+      .top-navbar {
+        padding: 8px 14px;
+        gap: 8px;
+      }
+
+      .nav-left-group {
+        gap: 10px;
+        min-width: 0;
+      }
+
+      .btn-back-plan {
+        padding: 6px 12px;
+        font-size: 0.78rem;
+        gap: 5px;
+        flex-shrink: 0;
+      }
+
+      .brand-title-box h1 {
+        font-size: 0.88rem;
+      }
+
+      .brand-title-box p {
+        font-size: 0.70rem;
+      }
+
+      .nav-right-actions {
+        gap: 5px;
+        flex-shrink: 0;
+      }
+
+      .nav-action-btn {
+        padding: 6px 10px;
+        font-size: 0.76rem;
+      }
+
       .hero-title {
         font-size: 1.6rem;
       }
 
       .script-body-content {
         padding: 16px 12px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .top-navbar {
+        padding: 7px 10px;
+      }
+
+      .btn-back-plan {
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border-radius: 50%;
+        justify-content: center;
+      }
+
+      .btn-back-plan span {
+        display: none;
+      }
+
+      .btn-back-plan i,
+      .btn-back-plan svg {
+        margin: 0;
+        width: 16px !important;
+        height: 16px !important;
+      }
+
+      .brand-title-box h1 {
+        font-size: 0.82rem;
+      }
+
+      .brand-title-box p {
+        font-size: 0.66rem;
+      }
+
+      .nav-right-actions {
+        gap: 4px;
+      }
+
+      .nav-action-btn {
+        padding: 6px 8px;
+        font-size: 0.72rem;
+      }
+
+      .nav-action-btn span {
+        display: none;
       }
     }
   </style>

@@ -190,6 +190,10 @@
       font-size: 0.72rem;
       color: var(--accent-gold-bright);
       font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
     }
 
     .nav-actions-group {
@@ -1028,11 +1032,73 @@
       border-radius: var(--radius-full);
       transition: all 0.25s ease;
       white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .dock-link:hover, .dock-link.active {
       background: var(--accent-gold);
       color: var(--primary-dark);
+    }
+
+    @media (max-width: 768px) {
+      .floating-dock {
+        bottom: 12px;
+        bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 20px);
+        max-width: 480px;
+        padding: 5px 8px;
+        gap: 4px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        justify-content: flex-start;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75), 0 0 20px var(--accent-gold-glow);
+      }
+
+      .floating-dock::-webkit-scrollbar {
+        display: none;
+      }
+
+      .dock-link {
+        padding: 5px 9px;
+        font-size: 0.72rem;
+        gap: 4px;
+        flex-shrink: 0;
+      }
+
+      .dock-link i,
+      .dock-link svg {
+        width: 13px !important;
+        height: 13px !important;
+      }
+
+      .filter-sticky-bar {
+        top: 50px;
+        padding: 5px 8px;
+        gap: 6px;
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        border-radius: var(--radius-full);
+      }
+
+      .filter-sticky-bar::-webkit-scrollbar {
+        display: none;
+      }
+
+      .filter-pill {
+        padding: 5px 11px;
+        font-size: 0.74rem;
+        flex-shrink: 0;
+        white-space: nowrap;
+      }
+
+      body {
+        padding-bottom: 95px;
+      }
     }
   </style>
 </head>
