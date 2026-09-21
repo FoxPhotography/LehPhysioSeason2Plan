@@ -123,6 +123,8 @@
       display: flex;
       align-items: center;
       gap: 16px;
+      min-width: 0;
+      flex: 1;
     }
 
     .btn-nav-return {
@@ -138,6 +140,8 @@
       font-size: 0.84rem;
       font-weight: 800;
       transition: all 0.3s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .btn-nav-return:hover {
@@ -147,17 +151,29 @@
       box-shadow: 0 0 15px var(--accent-gold-glow);
     }
 
+    .nav-title-box {
+      min-width: 0;
+      flex: 1;
+    }
+
     .nav-title-box h1 {
       font-size: 0.98rem;
       font-weight: 900;
       color: #FFFFFF;
-      line-height: 1.2;
+      line-height: 1.25;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .nav-title-box span {
       font-size: 0.76rem;
       color: var(--accent-gold-bright);
       font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
     }
 
     .nav-actions-cluster {
@@ -906,11 +922,177 @@
       cursor: pointer;
       transition: all 0.25s ease;
       white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .dock-btn:hover, .dock-btn.active {
       background: var(--accent-gold);
       color: var(--primary-dark);
+    }
+
+    /* ==========================================================================
+       Mobile Polish: Header Navbar, Filter Tabs & Bottom Quick Dock
+       ========================================================================== */
+    @media (max-width: 768px) {
+      .script-nav-header {
+        padding: 8px 14px;
+        gap: 8px;
+      }
+
+      .nav-brand-group {
+        gap: 10px;
+      }
+
+      .btn-nav-return {
+        padding: 6px 12px;
+        font-size: 0.78rem;
+        gap: 5px;
+        flex-shrink: 0;
+      }
+
+      .nav-title-box h1 {
+        font-size: 0.88rem;
+      }
+
+      .nav-title-box span {
+        font-size: 0.70rem;
+      }
+
+      .nav-actions-cluster {
+        gap: 5px;
+        flex-shrink: 0;
+      }
+
+      .nav-btn-icon {
+        width: 32px;
+        height: 32px;
+        flex-shrink: 0;
+      }
+
+      .nav-btn-icon i,
+      .nav-btn-icon svg {
+        width: 14px !important;
+        height: 14px !important;
+      }
+
+      .main-container {
+        margin-top: 14px;
+        padding: 0 12px;
+      }
+
+      /* Filter quick tabs smooth horizontal scroll on mobile */
+      .filter-tabs-wrapper {
+        top: 50px;
+        padding: 5px 8px;
+        gap: 6px;
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        border-radius: var(--radius-full);
+      }
+
+      .filter-tabs-wrapper::-webkit-scrollbar {
+        display: none;
+      }
+
+      .filter-pill-btn {
+        padding: 5px 11px;
+        font-size: 0.74rem;
+        flex-shrink: 0;
+      }
+
+      /* Bottom quick dock mobile */
+      .floating-quick-dock {
+        bottom: 12px;
+        bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+        left: 50%;
+        transform: translateX(-50%);
+        width: calc(100% - 20px);
+        max-width: 480px;
+        padding: 5px 8px;
+        gap: 4px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        justify-content: flex-start;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75), 0 0 20px var(--accent-gold-glow);
+      }
+
+      .floating-quick-dock::-webkit-scrollbar {
+        display: none;
+      }
+
+      .dock-btn {
+        padding: 5px 9px;
+        font-size: 0.72rem;
+        gap: 4px;
+        flex-shrink: 0;
+      }
+
+      .dock-btn i,
+      .dock-btn svg {
+        width: 13px !important;
+        height: 13px !important;
+      }
+
+      body {
+        padding-bottom: 95px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .script-nav-header {
+        padding: 7px 10px;
+      }
+
+      .btn-nav-return {
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border-radius: 50%;
+        justify-content: center;
+      }
+
+      .btn-nav-return span {
+        display: none;
+      }
+
+      .btn-nav-return i,
+      .btn-nav-return svg {
+        margin: 0;
+        width: 16px !important;
+        height: 16px !important;
+      }
+
+      .nav-brand-group {
+        gap: 8px;
+      }
+
+      .nav-title-box h1 {
+        font-size: 0.82rem;
+      }
+
+      .nav-title-box span {
+        font-size: 0.66rem;
+      }
+
+      .nav-actions-cluster {
+        gap: 4px;
+      }
+
+      .hero-script-card {
+        padding: 18px 14px;
+        border-radius: var(--radius-md);
+      }
+
+      .scene-card {
+        padding: 16px 12px;
+      }
+
+      .guidelines-wrapper {
+        margin-top: 35px;
+      }
     }
   </style>
 </head>
